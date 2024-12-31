@@ -39,7 +39,8 @@ source = "vcs"
 [[tool.mypy.overrides]]
 ignore_missing_imports = true
 module = [
-    "joblib.memory"
+    "joblib.memory",
+    "sklearn.utils._tags"
 ]
 
 [tool.ruff]
