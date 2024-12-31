@@ -20,7 +20,6 @@ from nilearn.plotting.img_plotting import (
     plot_prob_atlas,
     plot_roi,
     plot_stat_map,
-    show,
 )
 from nilearn.plotting.matrix_plotting import (
     plot_contrast_matrix,
@@ -64,7 +63,6 @@ __all__ = [
     "plot_surf_contours",
     "plot_surf_roi",
     "plot_surf_stat_map",
-    "show",
     "view_connectome",
     "view_img",
     "view_img_on_surf",

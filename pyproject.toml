@@ -83,9 +83,9 @@ warn_unused_ignores = true
 ignore_missing_imports = true
 module = [
     "joblib.memory",
-    "sklearn.utils._tags",
-    "sklearn.utils.estimator_checks",
-    "sklearn.base"
+    "sklearn.*",
+    "scipy.*",
+    "mpl_toolkits.*"
 ]
 
 [tool.ruff]
