@@ -45,5 +45,3 @@ repos:
         args: [--fix, --show-fixes]
     # Run the formatter.
     -   id: ruff-format
-
-
