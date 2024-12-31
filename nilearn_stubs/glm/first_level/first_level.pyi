@@ -4,12 +4,11 @@ from typing import (
 )
 
 from nibabel.nifti1 import Nifti1Image
+from nilearn.glm.regression import RegressionResults
 from nilearn.surface.surface import SurfaceImage
 from numpy import ndarray, random, str_
 from pandas.core.frame import DataFrame
 from sklearn.utils._tags import Tags
-
-from nilearn_stubs.glm.regression import RegressionResults
 
 def first_level_from_bids(
     dataset_path: int | PosixPath | str,
@@ -45,7 +44,7 @@ def first_level_from_bids(
 ) -> (
     tuple[
         list[FirstLevelModel],
-        list[list[SurfaceImage]],
+        list[list[str]],
         list[list[DataFrame]],
         list[list[DataFrame]],
     ]
@@ -57,7 +56,7 @@ def first_level_from_bids(
     ]
     | tuple[
         list[FirstLevelModel],
-        list[list[str]],
+        list[list[SurfaceImage]],
         list[list[DataFrame]],
         list[list[DataFrame]],
     ]
@@ -95,7 +94,7 @@ class FirstLevelModel:
         memory_level: ndarray | float | str | int | list[int] = ...,
         standardize: Any = ...,
         signal_scaling: Any = ...,
-        noise_model: list[int] | ndarray | float | str | int = ...,
+        noise_model: ndarray | float | str | int | list[int] = ...,
         verbose: ndarray | float | str | int | list[int] = ...,
         n_jobs: ndarray | float | str | int | list[int] = ...,
         minimize_memory: Any = ...,
@@ -108,10 +107,10 @@ class FirstLevelModel:
         self,
         run_imgs: Any,
         events: Any,
-        confounds: ndarray
-        | list[ndarray]
-        | DataFrame
+        confounds: DataFrame
+        | ndarray
         | list[DataFrame]
+        | list[ndarray]
         | None,
         sample_masks: ndarray | None,
         design_matrices: Any,
@@ -119,9 +118,9 @@ class FirstLevelModel:
     def _check_fitted(self): ...
     def _create_all_designs(
         self,
-        run_imgs: list[Nifti1Image | SurfaceImage | str | PosixPath],
+        run_imgs: list[PosixPath | str | Nifti1Image | SurfaceImage],
         events: list[DataFrame] | None,
-        confounds: list[DataFrame] | list[ndarray] | None,
+        confounds: list[ndarray] | list[DataFrame] | None,
         design_matrices: list[DataFrame] | None,
     ) -> list[DataFrame]: ...
     def _create_single_design(
@@ -135,12 +134,12 @@ class FirstLevelModel:
         self,
         sample_masks: list[ndarray] | None,
         bins: int,
-        run_img: SurfaceImage | PosixPath | str | Nifti1Image,
+        run_img: Nifti1Image | PosixPath | str | SurfaceImage,
         run_idx: int,
     ): ...
     def _get_voxelwise_model_attribute(
         self, attribute: str, result_as_time_series: bool
-    ) -> list[SurfaceImage | Nifti1Image]: ...
+    ) -> list[Nifti1Image | SurfaceImage]: ...
     def _log(
         self,
         step: str,
@@ -151,30 +150,30 @@ class FirstLevelModel:
     ): ...
     def _more_tags(self) -> Tags: ...
     def _prepare_mask(
-        self, run_img: SurfaceImage | PosixPath | str | Nifti1Image
+        self, run_img: Nifti1Image | PosixPath | str | SurfaceImage
     ): ...
     def _report_progress(
         self, run_idx: int, n_runs: int, t0: float
     ) -> str: ...
     def compute_contrast(
         self,
-        contrast_def: ndarray | list[ndarray] | str | int,
+        contrast_def: list[ndarray] | ndarray | str | int,
         stat_type: str | None = ...,
         output_type: str = ...,
     ) -> (
-        dict[str, Nifti1Image]
+        Nifti1Image
         | dict[str, SurfaceImage]
+        | dict[str, Nifti1Image]
         | SurfaceImage
-        | Nifti1Image
     ): ...
     def fit(
         self,
         run_imgs: Any,
         events: Any | None = ...,
-        confounds: ndarray
-        | list[ndarray]
-        | DataFrame
+        confounds: DataFrame
+        | ndarray
         | list[DataFrame]
+        | list[ndarray]
         | None = ...,
         sample_masks: ndarray | None = ...,
         design_matrices: Any | None = ...,
