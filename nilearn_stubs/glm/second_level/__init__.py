@@ -1,7 +1,7 @@
-from nilearn.glm.first_level.design_matrix import (
+from nilearn_stubs.glm.first_level.design_matrix import (
     make_second_level_design_matrix,
 )
-from nilearn.glm.second_level.second_level import (
+from nilearn_stubs.glm.second_level.second_level import (
     SecondLevelModel,
     non_parametric_inference,
 )

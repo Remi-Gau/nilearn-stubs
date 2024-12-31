@@ -1,24 +1,24 @@
 """Analyzing fMRI data using GLMs."""
 
-from nilearn.glm import first_level, second_level
-from nilearn.glm.contrasts import (
+from nilearn_stubs.glm import first_level, second_level
+from nilearn_stubs.glm.contrasts import (
     Contrast,
     compute_contrast,
     compute_fixed_effects,
     expression_to_contrast_vector,
 )
-from nilearn.glm.model import (
+from nilearn_stubs.glm.model import (
     FContrastResults,
     LikelihoodModelResults,
     TContrastResults,
 )
-from nilearn.glm.regression import (
+from nilearn_stubs.glm.regression import (
     ARModel,
     OLSModel,
     RegressionResults,
     SimpleRegressionResults,
 )
-from nilearn.glm.thresholding import (
+from nilearn_stubs.glm.thresholding import (
     cluster_level_inference,
     fdr_threshold,
     threshold_stats_img,

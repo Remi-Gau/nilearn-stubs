@@ -12,13 +12,13 @@ description = "Type stubs for Nilearn"
 dynamic = ["version"]
 license = {text = "new BSD"}
 maintainers = [{name = "Rémi Gau", email = "remi.gau@inria.fr"}]
-name = "nilearn_types"
+name = "nilearn_stubs"
 requires-python = ">=3.9"
 
 [project.optional-dependencies]
 # A combination of dependencies useful for developers
 dev = [
-    "nilearn_types",
+    "nilearn_stubs",
     "mypy",
     "pre-commit",
     "pandas-stubs",
@@ -26,10 +26,10 @@ dev = [
 ]
 
 [tool.hatch.build.hooks.vcs]
-version-file = "nilearn/_version.py"
+version-file = "nilearn_stubs/_version.py"
 
 [tool.hatch.build.targets.wheel]
-packages = ["nilearn_types"]
+packages = ["nilearn_stubs"]
 
 [tool.hatch.version]
 source = "vcs"
@@ -64,6 +64,7 @@ fixable = ["ALL"]
 ignore = [
     "D104",
     "D205",
+    "N802",
     "N803"
 ]
 # List of all the ruff rules (includes why the rule matters)
