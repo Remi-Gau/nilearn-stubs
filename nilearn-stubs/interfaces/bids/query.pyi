@@ -1,7 +1,4 @@
 from pathlib import PosixPath
-from typing import (
-    Any,
-)
 
 def get_bids_files(
     main_path: PosixPath,
@@ -11,7 +8,7 @@ def get_bids_files(
     modality_folder: str = ...,
     filters: list[tuple[str, str]] | None = ...,
     sub_folder: bool = ...,
-) -> list[Any | str]: ...
+) -> list[str]: ...
 def parse_bids_filename(
     img_path: PosixPath | str,
 ) -> dict[str, PosixPath | str | list[str]]: ...
