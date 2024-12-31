@@ -39,15 +39,15 @@ class BaseSlicer:
     ): ...
     def _map_show(
         self,
-        img: _MNI152Template | Nifti1Image,
+        img: Nifti1Image | _MNI152Template,
         type: str = ...,
         resampling_interpolation: str = ...,
         threshold: float64 | ndarray | float | int | None = ...,
         **kwargs,
-    ) -> list[Any | AxesImage | QuadContourSet]: ...
+    ) -> list[AxesImage | QuadContourSet | Any]: ...
     def _show_colorbar(
         self,
-        cmap: ListedColormap | str | LinearSegmentedColormap,
+        cmap: str | ListedColormap | LinearSegmentedColormap,
         norm: Normalize,
         cbar_vmin: int | float32 | None = ...,
         cbar_vmax: int | float32 | None = ...,
@@ -72,15 +72,15 @@ class BaseSlicer:
     def add_markers(
         self,
         marker_coords: list[tuple[int, int, int]] | list[list[int]] | ndarray,
-        marker_color: list[str]
-        | list[tuple[float64, float64, float64, float64]]
+        marker_color: list[tuple[float64, float64, float64, float64]]
+        | list[str]
         | str = ...,
         marker_size: int | float | list[int] | ndarray = ...,
         **kwargs,
     ): ...
     def add_overlay(
         self,
-        img: _MNI152Template | Nifti1Image,
+        img: Nifti1Image | _MNI152Template,
         threshold: float64 | ndarray | float | int | None = ...,
         colorbar: bool = ...,
         cbar_tick_format: str = ...,
@@ -108,7 +108,7 @@ class BaseSlicer:
     @classmethod
     def init_with_figure(
         cls,
-        img: _MNI152Template | Nifti1Image | bool | None,
+        img: Nifti1Image | _MNI152Template | bool | None,
         threshold: Any | None = ...,
         cut_coords: Any | None = ...,
         figure: Figure | None = ...,
@@ -137,13 +137,13 @@ class BaseSlicer:
 class BaseStackedSlicer:
     def _init_axes(self, **kwargs): ...
     def _locator(
-        self, axes: Axes, renderer: RendererAgg | MixedModeRenderer
+        self, axes: Axes, renderer: MixedModeRenderer | RendererAgg
     ) -> Bbox: ...
     def draw_cross(self, cut_coords: None = ..., **kwargs): ...
     @classmethod
     def find_cut_coords(
         cls,
-        img: _MNI152Template | Nifti1Image | bool | None = ...,
+        img: Nifti1Image | _MNI152Template | bool | None = ...,
         threshold: float64 | ndarray | float | int | None = ...,
         cut_coords: ndarray | int | list[float | int] | list[int] | None = ...,
     ) -> list[float | int] | list[float] | list[int] | ndarray: ...
@@ -171,14 +171,14 @@ class MosaicSlicer:
 class OrthoSlicer:
     def _init_axes(self, **kwargs): ...
     def _locator(
-        self, axes: Axes, renderer: RendererAgg | MixedModeRenderer
+        self, axes: Axes, renderer: MixedModeRenderer | RendererAgg
     ) -> Bbox: ...
     def draw_cross(self, cut_coords: None = ..., **kwargs): ...
     @classmethod
     def find_cut_coords(
         cls,
-        img: _MNI152Template | bool | Nifti1Image | None = ...,
-        threshold: float | int | None = ...,
+        img: Nifti1Image | _MNI152Template | bool | None = ...,
+        threshold: int | float | None = ...,
         cut_coords: tuple[int, int]
         | tuple[int, int, int]
         | list[float]
@@ -217,7 +217,14 @@ class TiledSlicer:
     @classmethod
     def find_cut_coords(
         cls,
-        img: _MNI152Template | Nifti1Image | None = ...,
+        img: Nifti1Image | _MNI152Template | None = ...,
         threshold: float | None = ...,
         cut_coords: tuple[int, int] | tuple[int, int, int] | None = ...,
     ) -> tuple[int, int] | list[float] | tuple[int, int, int]: ...
+
+class XSlicer(BaseStackedSlicer): ...
+class XZSlicer(OrthoSlicer): ...
+class YSlicer(BaseStackedSlicer): ...
+class YXSlicer(OrthoSlicer): ...
+class YZSlicer(OrthoSlicer): ...
+class ZSlicer(BaseStackedSlicer): ...

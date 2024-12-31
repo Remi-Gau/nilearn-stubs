@@ -82,10 +82,11 @@ warn_unused_ignores = true
 [[tool.mypy.overrides]]
 ignore_missing_imports = true
 module = [
-    "joblib.memory",
+    "joblib.*",
     "sklearn.*",
     "scipy.*",
-    "mpl_toolkits.*"
+    "mpl_toolkits.*",
+    "plotly.*"
 ]
 
 [tool.ruff]
