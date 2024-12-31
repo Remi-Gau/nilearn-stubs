@@ -48,7 +48,7 @@ disallow_any_unimported = false  # TODO
 disallow_incomplete_defs = false  # TODO
 disallow_subclassing_any = true
 # Untyped definitions and calls
-disallow_untyped_calls = false  # TODO
+disallow_untyped_calls = true
 disallow_untyped_decorators = true
 disallow_untyped_defs = false  # TODO
 enable_error_code = "ignore-without-code"  # same as in pandas
