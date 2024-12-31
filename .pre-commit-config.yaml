@@ -42,6 +42,6 @@ repos:
     # Run the linter.
     -   id: ruff
         # args: [--statistics]
-        args: [--fix, --show-fixes]
+        args: [--fix, --show-fixes, --unsafe-fixes]
     # Run the formatter.
     -   id: ruff-format

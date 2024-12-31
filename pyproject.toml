@@ -20,7 +20,9 @@ requires-python = ">=3.9"
 dev = [
     "nilearn_types",
     "mypy",
-    "pre-commit"
+    "pre-commit",
+    "pandas-stubs",
+    "ruff"
 ]
 
 [tool.hatch.build.hooks.vcs]
@@ -60,6 +62,8 @@ skip-magic-trailing-comma = false
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 fixable = ["ALL"]
 ignore = [
+    "D104",
+    "D205",
     "N803"
 ]
 # List of all the ruff rules (includes why the rule matters)
