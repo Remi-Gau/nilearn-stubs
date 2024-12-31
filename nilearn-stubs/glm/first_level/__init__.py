@@ -1,14 +1,14 @@
-from nilearn_stubs.glm.first_level.design_matrix import (
+from nilearn.glm.first_level.design_matrix import (
     check_design_matrix,
     make_first_level_design_matrix,
 )
-from nilearn_stubs.glm.first_level.first_level import (
+from nilearn.glm.first_level.first_level import (
     FirstLevelModel,
     first_level_from_bids,
     mean_scaling,
     run_glm,
 )
-from nilearn_stubs.glm.first_level.hemodynamic_models import (
+from nilearn.glm.first_level.hemodynamic_models import (
     compute_regressor,
     glover_dispersion_derivative,
     glover_hrf,

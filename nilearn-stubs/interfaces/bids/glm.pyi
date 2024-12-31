@@ -1,9 +1,8 @@
 from pathlib import PosixPath
 
+from nilearn.glm.first_level.first_level import FirstLevelModel
+from nilearn.glm.second_level.second_level import SecondLevelModel
 from numpy import ndarray
-
-from nilearn_stubs.glm.first_level.first_level import FirstLevelModel
-from nilearn_stubs.glm.second_level.second_level import SecondLevelModel
 
 def save_glm_to_bids(
     model: FirstLevelModel | SecondLevelModel,

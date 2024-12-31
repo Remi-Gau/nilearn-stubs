@@ -1,12 +1,11 @@
+from nilearn.glm.regression import (
+    ARModel,
+    OLSModel,
+)
 from numpy import (
     float64,
     int64,
     ndarray,
-)
-
-from nilearn_stubs.glm.regression import (
-    ARModel,
-    OLSModel,
 )
 
 class FContrastResults:
