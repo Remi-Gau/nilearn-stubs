@@ -3,9 +3,7 @@ from typing import Literal
 
 from nibabel.nifti1 import Nifti1Image
 from nibabel.nifti2 import Nifti2Image
-from numpy import (
-    ndarray,
-)
+from numpy import ndarray
 from typing_extensions import TypeAlias
 
 FilePath: TypeAlias = str | os.PathLike[str]
