@@ -1,8 +1,9 @@
-from pathlib import PosixPath
+from pathlib import Path, PosixPath
 from typing import (
     Any,
 )
 
+from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from nilearn.surface.surface import SurfaceImage
 from numpy import (
@@ -23,16 +24,16 @@ class Decoder:
         scoring: Any = ...,
         smoothing_fwhm: Any | None = ...,
         standardize: Any = ...,
-        target_affine: Any | None = ...,
-        target_shape: Any | None = ...,
+        target_affine: ndarray | None = ...,
+        target_shape: tuple[int, int, int] | list[int] | None = ...,
         mask_strategy: ndarray | str | float | list[int] | int = ...,
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: Any | None = ...,
-        memory: Any | None = ...,
+        memory: Memory | str | Path | None = ...,
         memory_level: ndarray | float | str | int | list[int] = ...,
         n_jobs: ndarray | float | str | int | list[int] = ...,
-        verbose: ndarray | float | str | int | list[int] = ...,
+        verbose: int = ...,
     ): ...
     def __sklearn_tags__(self) -> Tags: ...
 
@@ -47,16 +48,16 @@ class DecoderRegressor:
         scoring: Any = ...,
         smoothing_fwhm: Any | None = ...,
         standardize: Any = ...,
-        target_affine: Any | None = ...,
-        target_shape: Any | None = ...,
+        target_affine: ndarray | None = ...,
+        target_shape: tuple[int, int, int] | list[int] | None = ...,
         mask_strategy: ndarray | str | float | list[int] | int = ...,
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: Any | None = ...,
-        memory: Any | None = ...,
+        memory: Memory | str | Path | None = ...,
         memory_level: ndarray | str | float | list[int] | int = ...,
         n_jobs: ndarray | str | float | list[int] | int = ...,
-        verbose: ndarray | str | float | list[int] | int = ...,
+        verbose: int = ...,
     ): ...
     def __sklearn_tags__(self) -> Tags: ...
 
@@ -72,16 +73,16 @@ class FREMClassifier:
         scoring: ndarray | str | float | list[int] | int = ...,
         smoothing_fwhm: Any | None = ...,
         standardize: Any = ...,
-        target_affine: Any | None = ...,
-        target_shape: Any | None = ...,
+        target_affine: ndarray | None = ...,
+        target_shape: tuple[int, int, int] | list[int] | None = ...,
         mask_strategy: ndarray | str | float | list[int] | int = ...,
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: Any | None = ...,
-        memory: Any | None = ...,
+        memory: Memory | str | Path | None = ...,
         memory_level: ndarray | float | str | int | list[int] = ...,
         n_jobs: ndarray | float | str | int | list[int] = ...,
-        verbose: ndarray | float | str | int | list[int] = ...,
+        verbose: int = ...,
     ): ...
 
 class FREMRegressor:
@@ -96,16 +97,16 @@ class FREMRegressor:
         scoring: ndarray | float | str | int | list[int] = ...,
         smoothing_fwhm: Any | None = ...,
         standardize: Any = ...,
-        target_affine: Any | None = ...,
-        target_shape: Any | None = ...,
+        target_affine: ndarray | None = ...,
+        target_shape: tuple[int, int, int] | list[int] | None = ...,
         mask_strategy: ndarray | float | str | int | list[int] = ...,
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: Any | None = ...,
-        memory: Any | None = ...,
+        memory: Memory | str | Path | None = ...,
         memory_level: ndarray | float | str | int | list[int] = ...,
         n_jobs: ndarray | float | str | int | list[int] = ...,
-        verbose: ndarray | float | str | int | list[int] = ...,
+        verbose: int = ...,
     ): ...
 
 class _BaseDecoder:
@@ -120,17 +121,17 @@ class _BaseDecoder:
         scoring: Any | None = ...,
         smoothing_fwhm: Any | None = ...,
         standardize: Any = ...,
-        target_affine: Any | None = ...,
-        target_shape: Any | None = ...,
+        target_affine: ndarray | None = ...,
+        target_shape: tuple[int, int, int] | list[int] | None = ...,
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: Any | None = ...,
         mask_strategy: ndarray | str | float | list[int] | int = ...,
         is_classification: Any = ...,
-        memory: Any | None = ...,
+        memory: Memory | str | Path | None = ...,
         memory_level: ndarray | float | str | int | list[int] = ...,
         n_jobs: ndarray | float | str | int | list[int] = ...,
-        verbose: ndarray | float | str | int | list[int] = ...,
+        verbose: int = ...,
     ): ...
     def __sklearn_tags__(self) -> Tags: ...
     def decision_function(

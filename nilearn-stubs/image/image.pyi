@@ -1,9 +1,8 @@
 from collections.abc import Iterator
-from pathlib import PosixPath
-from typing import (
-    Any,
-)
+from pathlib import Path, PosixPath
+from typing import Any
 
+from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from nibabel.nifti2 import Nifti2Image
 from nibabel.spatialimages import SpatialImage
@@ -41,7 +40,7 @@ def concat_imgs(
     niimgs: Any,
     dtype: type[float32] | None = ...,
     ensure_ndim: int | None = ...,
-    memory: None = ...,
+    memory: Memory | str | Path | None = ...,
     memory_level: int = ...,
     auto_resample: bool = ...,
     verbose: int = ...,
@@ -81,7 +80,7 @@ def math_img(
 def mean_img(
     imgs: Nifti1Image | list[str] | list[Nifti1Image] | str | Series,
     target_affine: ndarray | None = ...,
-    target_shape: None = ...,
+    target_shape: tuple[int, int, int] | list[int] | None = ...,
     verbose: int = ...,
     n_jobs: int = ...,
     copy_header: bool = ...,

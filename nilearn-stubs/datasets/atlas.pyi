@@ -66,7 +66,9 @@ def fetch_atlas_msdl(
     verbose: int = ...,
 ) -> Bunch: ...
 def fetch_atlas_pauli_2017(
-    atlas_type: str = ..., data_dir: str | None = ..., verbose: int = ...
+    atlas_type: str = ...,
+    data_dir: str | None = ...,
+    verbose: int = ...,
 ) -> Bunch: ...
 def fetch_atlas_schaefer_2018(
     n_rois: int = ...,
@@ -93,7 +95,9 @@ def fetch_atlas_surf_destrieux(
     verbose: int = ...,
 ) -> Bunch: ...
 def fetch_atlas_talairach(
-    level_name: str, data_dir: PosixPath | None = ..., verbose: int = ...
+    level_name: str,
+    data_dir: PosixPath | None = ...,
+    verbose: int = ...,
 ) -> Bunch: ...
 def fetch_atlas_yeo_2011(
     data_dir: PosixPath | None = ...,

@@ -1,7 +1,9 @@
+from pathlib import Path
 from typing import (
     Any,
 )
 
+from joblib.memory import Memory
 from numpy import (
     memmap,
     ndarray,
@@ -24,8 +26,8 @@ class GroupSparseCovariance:
         alpha: Any = ...,
         tol: ndarray | str | float | list[int] | int = ...,
         max_iter: ndarray | float | str | int | list[int] = ...,
-        verbose: ndarray | float | str | int | list[int] = ...,
-        memory: Any | None = ...,
+        verbose: int = ...,
+        memory: Memory | str | Path | None = ...,
         memory_level: ndarray | float | str | int | list[int] = ...,
     ): ...
     def fit(
@@ -42,7 +44,7 @@ class GroupSparseCovarianceCV:
         max_iter_cv: ndarray | float | str | int | list[int] = ...,
         tol: ndarray | str | float | list[int] | int = ...,
         max_iter: ndarray | float | str | int | list[int] = ...,
-        verbose: ndarray | float | str | int | list[int] = ...,
+        verbose: int = ...,
         n_jobs: ndarray | float | str | int | list[int] = ...,
         debug: Any = ...,
         early_stopping: Any = ...,

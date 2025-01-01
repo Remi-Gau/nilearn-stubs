@@ -1,3 +1,6 @@
+from pathlib import Path
+
+from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from numpy import ndarray, str_
 
@@ -36,7 +39,7 @@ class RegionExtractor:
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: None = ...,
-        memory: None = ...,
+        memory: Memory | str | Path | None = ...,
         memory_level: int = ...,
         verbose: int = ...,
     ): ...

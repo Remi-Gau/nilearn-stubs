@@ -1,3 +1,4 @@
+from pathlib import Path
 from typing import Any
 
 from joblib.memory import MemorizedResult, Memory
@@ -17,12 +18,12 @@ class MultiNiftiMasker:
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: int | None = ...,
-        target_affine: int | None = ...,
-        target_shape: int | None = ...,
+        target_affine: ndarray | None = ...,
+        target_shape: tuple[int, int, int] | list[int] | None = ...,
         mask_strategy: int | str = ...,
         mask_args: int | dict[str, int] | None = ...,
         dtype: int | str | None = ...,
-        memory: int | Memory | None = ...,
+        memory: Memory | str | Path | None = ...,
         memory_level: int = ...,
         n_jobs: int = ...,
         verbose: int = ...,

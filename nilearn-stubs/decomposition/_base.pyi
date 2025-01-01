@@ -1,7 +1,9 @@
+from pathlib import Path
 from typing import (
     Any,
 )
 
+from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from nilearn.decomposition._multi_pca import _MultiPCA
 from nilearn.decomposition.canica import CanICA
@@ -28,14 +30,14 @@ class _BaseDecomposition:
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: Any | None = ...,
-        target_affine: Any | None = ...,
-        target_shape: Any | None = ...,
+        target_affine: ndarray | None = ...,
+        target_shape: tuple[int, int, int] | list[int] | None = ...,
         mask_strategy: ndarray | float | str | int | list[int] = ...,
         mask_args: Any | None = ...,
-        memory: Any | None = ...,
+        memory: Memory | str | Path | None = ...,
         memory_level: ndarray | float | str | int | list[int] = ...,
         n_jobs: ndarray | float | str | int | list[int] = ...,
-        verbose: Any = ...,
+        verbose: int = ...,
     ): ...
     def __sklearn_tags__(self) -> Tags: ...
     def fit(

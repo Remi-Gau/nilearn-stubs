@@ -1,5 +1,7 @@
+from pathlib import Path
 from typing import Any
 
+from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from nilearn.surface.surface import SurfaceImage
 from numpy import memmap, ndarray
@@ -23,9 +25,9 @@ class ReNA:
         scaling: Any = ...,
         n_iter: ndarray | float | str | int | list[int] = ...,
         threshold: ndarray | str | float | list[int] | int = ...,
-        memory: Any | None = ...,
+        memory: Memory | str | Path | None = ...,
         memory_level: ndarray | float | str | int | list[int] = ...,
-        verbose: ndarray | float | str | int | list[int] = ...,
+        verbose: int = ...,
     ): ...
     def __sklearn_tags__(self) -> Tags: ...
     def fit(

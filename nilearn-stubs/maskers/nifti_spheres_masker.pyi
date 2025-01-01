@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from numpy import memmap, ndarray
@@ -24,7 +26,7 @@ class NiftiSpheresMasker:
         high_pass: float | None = ...,
         t_r: int | None = ...,
         dtype: int | None = ...,
-        memory: int | Memory | None = ...,
+        memory: Memory | str | Path | None = ...,
         memory_level: int = ...,
         verbose: int = ...,
         reports: int | bool = ...,

@@ -1,3 +1,6 @@
+from pathlib import Path
+
+from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from nilearn.surface.surface import SurfaceImage
 from numpy import ndarray
@@ -15,16 +18,16 @@ class Parcellations:
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: None = ...,
-        target_affine: None = ...,
-        target_shape: None = ...,
+        target_affine: ndarray | None = ...,
+        target_shape: tuple[int, int, int] | list[int] | None = ...,
         mask_strategy: str = ...,
         mask_args: None = ...,
         scaling: bool = ...,
         n_iter: int = ...,
-        memory: None = ...,
+        memory: Memory | str | Path | None = ...,
         memory_level: int = ...,
         n_jobs: int = ...,
-        verbose: int | bool = ...,
+        verbose: int = ...,
     ): ...
     def fit_transform(
         self,

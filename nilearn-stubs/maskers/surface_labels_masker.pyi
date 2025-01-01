@@ -1,6 +1,7 @@
-from pathlib import PosixPath
+from pathlib import Path, PosixPath
 from typing import Any
 
+from joblib.memory import Memory
 from nilearn.surface.surface import SurfaceImage
 from numpy import memmap, ndarray
 from sklearn.utils.estimator_checks import _NotAnArray
@@ -20,9 +21,9 @@ class SurfaceLabelsMasker:
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: Any | None = ...,
-        memory: Any | None = ...,
+        memory: Memory | str | Path | None = ...,
         memory_level: ndarray | float | str | int | list[int] = ...,
-        verbose: ndarray | float | str | int | list[int] = ...,
+        verbose: int = ...,
         reports: Any = ...,
         cmap: ndarray | float | str | int | list[int] = ...,
         clean_args: Any | None = ...,

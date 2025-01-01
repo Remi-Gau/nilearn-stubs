@@ -12,7 +12,7 @@ class HierarchicalKMeans:
         batch_size: ndarray | float | str | int | list[int] = ...,
         n_init: ndarray | float | str | int | list[int] = ...,
         max_no_improvement: ndarray | float | str | int | list[int] = ...,
-        verbose: ndarray | float | str | int | list[int] = ...,
+        verbose: int = ...,
         random_state: ndarray | float | str | int | list[int] = ...,
         scaling: Any = ...,
     ): ...

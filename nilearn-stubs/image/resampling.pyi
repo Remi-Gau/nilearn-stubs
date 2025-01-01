@@ -28,8 +28,8 @@ def reorder_img(
 ) -> _MNI152Template | Nifti1Image: ...
 def resample_img(
     img: PosixPath | str | Nifti1Image | MGHImage,
-    target_affine: list[list[float]] | ndarray | None = ...,
-    target_shape: tuple[int, int] | tuple[int, int, int] | None = ...,
+    target_affine: ndarray | None = ...,
+    target_shape: tuple[int, int, int] | list[int] | None = ...,
     interpolation: str = ...,
     copy: bool = ...,
     order: str = ...,

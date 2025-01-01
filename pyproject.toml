@@ -71,6 +71,9 @@ namespace_packages = false
 no_implicit_optional = true
 no_silence_site_packages = false
 no_site_packages = false
+plugins = [
+    "numpy.typing.mypy_plugin"
+]
 show_column_numbers = false
 show_error_codes = true
 # Configuring error messages

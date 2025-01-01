@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from numpy import ndarray
@@ -19,7 +21,7 @@ class MultiNiftiLabelsMasker:
         t_r: int | None = ...,
         dtype: int | None = ...,
         resampling_target: int | str | None = ...,
-        memory: int | Memory | None = ...,
+        memory: Memory | str | Path | None = ...,
         memory_level: int = ...,
         verbose: int = ...,
         strategy: int | str = ...,

@@ -1,6 +1,7 @@
-from pathlib import PosixPath
+from pathlib import Path, PosixPath
 from typing import Any
 
+from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from nilearn.maskers.nifti_masker import NiftiMasker
 from nilearn.surface.surface import SurfaceImage
@@ -30,12 +31,12 @@ class SecondLevelModel:
     def __init__(
         self,
         mask_img: Any | None = ...,
-        target_affine: Any | None = ...,
-        target_shape: Any | None = ...,
+        target_affine: ndarray | None = ...,
+        target_shape: tuple[int, int, int] | list[int] | None = ...,
         smoothing_fwhm: Any | None = ...,
-        memory: Any | None = ...,
+        memory: Memory | str | Path | None = ...,
         memory_level: ndarray | float | str | int | list[int] = ...,
-        verbose: ndarray | float | str | int | list[int] = ...,
+        verbose: int = ...,
         n_jobs: ndarray | float | str | int | list[int] = ...,
         minimize_memory: Any = ...,
     ): ...

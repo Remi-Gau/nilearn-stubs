@@ -1,3 +1,4 @@
+from pathlib import Path
 from typing import Any
 
 from joblib.memory import Memory
@@ -23,7 +24,7 @@ class NiftiMapsMasker:
         dtype: int | None = ...,
         resampling_target: int | str | None = ...,
         keep_masked_maps: int | bool = ...,
-        memory: int | Memory | None = ...,
+        memory: Memory | str | Path | None = ...,
         memory_level: int = ...,
         verbose: int = ...,
         reports: int | bool = ...,

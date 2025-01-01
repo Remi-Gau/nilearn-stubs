@@ -1,4 +1,4 @@
-from pathlib import PosixPath
+from pathlib import Path, PosixPath
 from typing import Any
 
 from joblib.memory import MemorizedResult, Memory
@@ -20,15 +20,15 @@ class NiftiMasker:
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: float | int | None = ...,
-        target_affine: int | ndarray | None = ...,
-        target_shape: int | tuple[int, int, int] | None = ...,
+        target_affine: ndarray | None = ...,
+        target_shape: tuple[int, int, int] | list[int] | None = ...,
         mask_strategy: int | str = ...,
         mask_args: (
             dict[str, float] | dict[str, int] | int | dict[str, bool] | None
         ) = ...,
         dtype: int | str | None = ...,
         memory_level: int = ...,
-        memory: int | Memory | None = ...,
+        memory: Memory | str | Path | None = ...,
         verbose: int = ...,
         reports: int | bool = ...,
         cmap: int | str = ...,

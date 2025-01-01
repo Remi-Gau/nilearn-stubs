@@ -1,6 +1,7 @@
-from pathlib import PosixPath
+from pathlib import Path, PosixPath
 from typing import Any
 
+from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from nilearn.glm.regression import RegressionResults
 from nilearn.surface.surface import SurfaceImage
@@ -26,10 +27,10 @@ def first_level_from_bids(
     fir_delays: None = ...,
     min_onset: int = ...,
     mask_img: None = ...,
-    target_affine: None = ...,
-    target_shape: None = ...,
+    target_affine: ndarray | None = ...,
+    target_shape: tuple[int, int, int] | list[int] | None = ...,
     smoothing_fwhm: None = ...,
-    memory: None = ...,
+    memory: Memory | str | Path | None = ...,
     memory_level: int = ...,
     standardize: bool = ...,
     signal_scaling: int = ...,
@@ -85,15 +86,15 @@ class FirstLevelModel:
         fir_delays: Any | None = ...,
         min_onset: ndarray | float | str | int | list[int] = ...,
         mask_img: Any | None = ...,
-        target_affine: Any | None = ...,
-        target_shape: Any | None = ...,
+        target_affine: ndarray | None = ...,
+        target_shape: tuple[int, int, int] | list[int] | None = ...,
         smoothing_fwhm: Any | None = ...,
-        memory: Any | None = ...,
+        memory: Memory | str | Path | None = ...,
         memory_level: ndarray | float | str | int | list[int] = ...,
         standardize: Any = ...,
         signal_scaling: Any = ...,
         noise_model: ndarray | float | str | int | list[int] = ...,
-        verbose: ndarray | float | str | int | list[int] = ...,
+        verbose: int = ...,
         n_jobs: ndarray | float | str | int | list[int] = ...,
         minimize_memory: Any = ...,
         subject_label: Any | None = ...,

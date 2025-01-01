@@ -1,7 +1,9 @@
+from pathlib import Path
 from typing import (
     Any,
 )
 
+from joblib.memory import Memory
 from numpy import ndarray
 
 class CanICA:
@@ -20,12 +22,12 @@ class CanICA:
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: Any | None = ...,
-        target_affine: Any | None = ...,
-        target_shape: Any | None = ...,
+        target_affine: ndarray | None = ...,
+        target_shape: tuple[int, int, int] | list[int] | None = ...,
         mask_strategy: ndarray | float | str | int | list[int] = ...,
         mask_args: Any | None = ...,
-        memory: Any | None = ...,
+        memory: Memory | str | Path | None = ...,
         memory_level: ndarray | float | str | int | list[int] = ...,
         n_jobs: ndarray | float | str | int | list[int] = ...,
-        verbose: ndarray | float | str | int | list[int] = ...,
+        verbose: int = ...,
     ): ...

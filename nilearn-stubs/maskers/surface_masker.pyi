@@ -1,5 +1,7 @@
+from pathlib import Path
 from typing import Any
 
+from joblib.memory import Memory
 from nilearn.reporting.html_report import HTMLReport
 from nilearn.surface.surface import SurfaceImage
 from numpy import memmap, ndarray
@@ -17,9 +19,9 @@ class SurfaceMasker:
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: Any | None = ...,
-        memory: Any | None = ...,
+        memory: Memory | str | Path | None = ...,
         memory_level: ndarray | str | float | list[int] | int = ...,
-        verbose: ndarray | str | float | list[int] | int = ...,
+        verbose: int = ...,
         reports: Any = ...,
         cmap: ndarray | str | float | list[int] | int = ...,
         clean_args: Any | None = ...,
