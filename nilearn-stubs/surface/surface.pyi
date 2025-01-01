@@ -1,25 +1,34 @@
+import os
+from collections.abc import Sequence
 from pathlib import PosixPath
-from typing import Any
+from typing import Literal
 
 from nibabel.nifti1 import Nifti1Image
+from nibabel.nifti2 import Nifti2Image
 from numpy import ndarray
+from typing_extensions import TypeAlias
 
-def load_surf_data(surf_data: str | ndarray | PosixPath) -> ndarray: ...
-def load_surf_mesh(surf_mesh: Any) -> InMemoryMesh: ...
+FilePath: TypeAlias = str | os.PathLike[str]
+NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image
+
+def load_surf_data(surf_data: FilePath | ndarray) -> ndarray: ...
+def load_surf_mesh(
+    surf_mesh: FilePath | ndarray | InMemoryMesh,
+) -> InMemoryMesh: ...
 def vol_to_surf(
-    img: Nifti1Image,
-    surf_mesh: tuple[ndarray, ndarray] | FileMesh | InMemoryMesh | str,
+    img: NiimgLike,
+    surf_mesh: ndarray | InMemoryMesh | FilePath,
     radius: float = ...,
-    interpolation: str = ...,
-    kind: str = ...,
-    n_samples: None = ...,
-    mask_img: Nifti1Image | None = ...,
-    inner_mesh: str | FileMesh | InMemoryMesh | None = ...,
-    depth: list[float] | None = ...,
+    interpolation: Literal["linear", "nearest"] = ...,
+    kind: Literal["auto", "depth", "line", "ball"] = ...,
+    n_samples: int | None = ...,
+    mask_img: NiimgLike | None = ...,
+    inner_mesh: FilePath | SurfaceMesh | None | ndarray = ...,
+    depth: Sequence[float] | None = ...,
 ) -> ndarray: ...
 
 class FileMesh:
-    def __init__(self, file_path: PosixPath | str): ...
+    def __init__(self, file_path: FilePath): ...
     @property
     def coordinates(self) -> ndarray: ...
     @property
@@ -33,46 +42,37 @@ class InMemoryMesh:
 class PolyData:
     def __init__(
         self,
-        left: str | ndarray | PosixPath | None = ...,
-        right: str | ndarray | PosixPath | None = ...,
+        left: FilePath | ndarray | None = ...,
+        right: FilePath | ndarray | None = ...,
     ): ...
     def __repr__(self) -> str: ...
     @property
     def shape(self) -> tuple[int, int] | tuple[int]: ...
-    def to_filename(self, filename: str | PosixPath): ...
+    def to_filename(self, filename: FilePath) -> None: ...
 
 class PolyMesh:
     def __init__(
         self,
-        left: InMemoryMesh | str | FileMesh | PosixPath | None = ...,
-        right: InMemoryMesh | str | FileMesh | PosixPath | None = ...,
+        left: FilePath | SurfaceMesh | None = ...,
+        right: FilePath | SurfaceMesh | None = ...,
     ) -> None: ...
-    def to_filename(self, filename: PosixPath | str): ...
+    def to_filename(self, filename: FilePath) -> None: ...
 
 class SurfaceImage:
     def __init__(
         self,
-        mesh: (
-            dict[str, InMemoryMesh]
-            | dict[str, str]
-            | PolyMesh
-            | dict[str, PosixPath]
-        ),
-        data: (
-            dict[str, str]
-            | dict[str, PosixPath]
-            | int
-            | dict[str, ndarray]
-            | PolyData
-        ),
+        mesh: (dict[str, SurfaceMesh] | dict[str, FilePath] | PolyMesh),
+        data: (dict[str, FilePath] | dict[str, ndarray] | PolyData),
     ): ...
     def __repr__(self) -> str: ...
     @classmethod
     def from_volume(
         cls,
         mesh: PolyMesh,
-        volume_img: Nifti1Image | str | PosixPath,
-        inner_mesh: PolyMesh | None = ...,
+        volume_img: NiimgLike,
+        inner_mesh: (
+            dict[str, SurfaceMesh] | dict[str, FilePath] | PolyMesh | None
+        ) = ...,
         **vol_to_surf_kwargs,
     ) -> SurfaceImage: ...
     @property
