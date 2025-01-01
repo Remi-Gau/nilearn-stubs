@@ -1,6 +1,12 @@
+from pathlib import Path
+
 from nibabel.nifti1 import Nifti1Image
 from nilearn.surface.surface import SurfaceImage
 from sklearn.utils._bunch import Bunch
+
+GM_MNI152_FILE_PATH: Path
+MNI152_FILE_PATH: Path
+WM_MNI152_FILE_PATH: Path
 
 def fetch_icbm152_2009(
     data_dir: str | None = ...,
