@@ -3,6 +3,7 @@ from pathlib import Path
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from numpy import ndarray
+from numpy.typing import DTypeLike
 
 class MultiNiftiMapsMasker:
     def __init__(
@@ -18,7 +19,7 @@ class MultiNiftiMapsMasker:
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: float | None = ...,
-        dtype: int | None = ...,
+        dtype: DTypeLike | None = ...,
         resampling_target: int | str | None = ...,
         memory: Memory | str | Path | None = ...,
         memory_level: int = ...,

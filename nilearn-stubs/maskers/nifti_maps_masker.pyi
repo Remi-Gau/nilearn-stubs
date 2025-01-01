@@ -5,7 +5,7 @@ from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from nilearn.maskers.multi_nifti_maps_masker import MultiNiftiMapsMasker
 from numpy import memmap, ndarray
-from sklearn.utils.estimator_checks import _NotAnArray
+from numpy.typing import DTypeLike
 
 class NiftiMapsMasker:
     def __init__(
@@ -21,7 +21,7 @@ class NiftiMapsMasker:
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: float | None = ...,
-        dtype: int | None = ...,
+        dtype: DTypeLike | None = ...,
         resampling_target: int | str | None = ...,
         keep_masked_maps: int | bool = ...,
         memory: Memory | str | Path | None = ...,
@@ -33,7 +33,7 @@ class NiftiMapsMasker:
     def fit(
         self,
         imgs: Any | None = ...,
-        y: _NotAnArray | ndarray | memmap | None = ...,
+        y: ndarray | memmap | None = ...,
     ) -> MultiNiftiMapsMasker | NiftiMapsMasker: ...
     def fit_transform(
         self,

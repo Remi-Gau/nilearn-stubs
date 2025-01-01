@@ -4,7 +4,6 @@ from typing import Any
 from joblib.memory import Memory
 from nilearn.surface.surface import SurfaceImage
 from numpy import memmap, ndarray
-from sklearn.utils.estimator_checks import _NotAnArray
 
 class SurfaceMapsMasker:
     def __init__(
@@ -30,8 +29,8 @@ class SurfaceMapsMasker:
     def __sklearn_is_fitted__(self) -> bool: ...
     def fit(
         self,
-        img: _NotAnArray | memmap | ndarray | None = ...,
-        y: _NotAnArray | ndarray | memmap | None = ...,
+        img: memmap | ndarray | None = ...,
+        y: ndarray | memmap | None = ...,
     ) -> SurfaceMapsMasker: ...
     def fit_transform(
         self,

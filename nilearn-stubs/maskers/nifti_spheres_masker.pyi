@@ -3,7 +3,7 @@ from pathlib import Path
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from numpy import memmap, ndarray
-from sklearn.utils.estimator_checks import _NotAnArray
+from numpy.typing import DTypeLike
 
 class NiftiSpheresMasker:
     def __init__(
@@ -25,7 +25,7 @@ class NiftiSpheresMasker:
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: float | None = ...,
-        dtype: int | None = ...,
+        dtype: DTypeLike | None = ...,
         memory: Memory | str | Path | None = ...,
         memory_level: int = ...,
         verbose: int = ...,
@@ -34,8 +34,8 @@ class NiftiSpheresMasker:
     ): ...
     def fit(
         self,
-        X: _NotAnArray | ndarray | memmap | Nifti1Image | None = ...,
-        y: _NotAnArray | ndarray | memmap | None = ...,
+        X: ndarray | memmap | Nifti1Image | None = ...,
+        y: ndarray | memmap | None = ...,
     ) -> NiftiSpheresMasker: ...
     def fit_transform(
         self,

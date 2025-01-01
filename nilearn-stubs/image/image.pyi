@@ -7,12 +7,12 @@ from nibabel.nifti1 import Nifti1Image
 from nibabel.nifti2 import Nifti2Image
 from nibabel.spatialimages import SpatialImage
 from numpy import (
-    float32,
     float64,
     memmap,
     ndarray,
 )
 from numpy.ma.core import MaskedArray
+from numpy.typing import DTypeLike
 from pandas.core.frame import DataFrame
 from pandas.core.series import Series
 
@@ -38,7 +38,7 @@ def clean_img(
 ) -> Nifti2Image | Nifti1Image: ...
 def concat_imgs(
     niimgs: Any,
-    dtype: type[float32] | None = ...,
+    dtype: DTypeLike | None = ...,
     ensure_ndim: int | None = ...,
     memory: Memory | str | Path | None = ...,
     memory_level: int = ...,
@@ -72,7 +72,7 @@ def largest_connected_component_img(
     imgs: str | tuple[Nifti1Image, Nifti1Image] | Nifti1Image | list[str],
 ) -> list[Nifti1Image] | Nifti1Image: ...
 def load_img(
-    img: Any, wildcards: bool = ..., dtype: str | None = ...
+    img: Any, wildcards: bool = ..., dtype: DTypeLike | None = ...
 ) -> Nifti1Image: ...
 def math_img(
     formula: str, copy_header_from: str | None = ..., **imgs

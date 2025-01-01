@@ -5,7 +5,6 @@ from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from nilearn.maskers.multi_nifti_labels_masker import MultiNiftiLabelsMasker
 from numpy import memmap, ndarray
-from sklearn.utils.estimator_checks import _NotAnArray
 
 class NiftiLabelsMasker:
     def __init__(
@@ -35,7 +34,7 @@ class NiftiLabelsMasker:
     def fit(
         self,
         imgs: Any | None = ...,
-        y: memmap | _NotAnArray | ndarray | None = ...,
+        y: memmap | ndarray | None = ...,
     ) -> MultiNiftiLabelsMasker | NiftiLabelsMasker: ...
     def fit_transform(
         self,

@@ -14,7 +14,6 @@ from numpy import (
     random,
 )
 from sklearn.utils._tags import Tags
-from sklearn.utils.estimator_checks import _NotAnArray
 
 class _BaseDecomposition:
     def __init__(
@@ -42,7 +41,7 @@ class _BaseDecomposition:
     def fit(
         self,
         imgs: Any,
-        y: memmap | ndarray | _NotAnArray | None = ...,
+        y: memmap | ndarray | None = ...,
         confounds: list[ndarray] | None = ...,
     ) -> _MultiPCA | DictLearning | Parcellations | CanICA: ...
     def inverse_transform(

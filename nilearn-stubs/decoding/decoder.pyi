@@ -9,7 +9,6 @@ from numpy import (
     ndarray,
 )
 from sklearn.utils._tags import Tags
-from sklearn.utils.estimator_checks import _NotAnArray
 
 class Decoder:
     def __init__(
@@ -138,7 +137,7 @@ class _BaseDecoder:
     def fit(
         self,
         X: Any,
-        y: _NotAnArray | ndarray | list[str] | memmap | None,
+        y: ndarray | list[str] | memmap | None,
         groups: ndarray | None = ...,
     ): ...
     def predict(

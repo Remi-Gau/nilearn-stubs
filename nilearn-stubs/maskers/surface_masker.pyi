@@ -5,7 +5,6 @@ from joblib.memory import Memory
 from nilearn.reporting.html_report import HTMLReport
 from nilearn.surface.surface import SurfaceImage
 from numpy import memmap, ndarray
-from sklearn.utils.estimator_checks import _NotAnArray
 
 class SurfaceMasker:
     def __init__(
@@ -30,7 +29,7 @@ class SurfaceMasker:
     def fit(
         self,
         img: Any | None = ...,
-        y: _NotAnArray | ndarray | memmap | None = ...,
+        y: ndarray | memmap | None = ...,
     ) -> SurfaceMasker: ...
     def fit_transform(
         self,

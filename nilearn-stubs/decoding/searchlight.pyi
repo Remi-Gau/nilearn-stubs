@@ -6,7 +6,6 @@ from numpy import (
     ndarray,
 )
 from sklearn.utils._tags import Tags
-from sklearn.utils.estimator_checks import _NotAnArray
 
 class SearchLight:
     def __init__(
@@ -24,8 +23,8 @@ class SearchLight:
     def __sklearn_tags__(self) -> Tags: ...
     def fit(
         self,
-        imgs: _NotAnArray | Nifti1Image | list[Nifti1Image] | ndarray | memmap,
-        y: _NotAnArray | ndarray | memmap | list[int],
+        imgs: Nifti1Image | list[Nifti1Image] | ndarray | memmap,
+        y: ndarray | memmap | list[int],
         groups: ndarray | None = ...,
     ) -> SearchLight: ...
     @property

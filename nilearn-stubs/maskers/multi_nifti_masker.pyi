@@ -4,7 +4,7 @@ from typing import Any
 from joblib.memory import MemorizedResult, Memory
 from nibabel.nifti1 import Nifti1Image
 from numpy import memmap, ndarray
-from sklearn.utils.estimator_checks import _NotAnArray
+from numpy.typing import DTypeLike
 
 class MultiNiftiMasker:
     def __init__(
@@ -22,7 +22,7 @@ class MultiNiftiMasker:
         target_shape: tuple[int, int, int] | list[int] | None = ...,
         mask_strategy: int | str = ...,
         mask_args: int | dict[str, int] | None = ...,
-        dtype: int | str | None = ...,
+        dtype: DTypeLike | None = ...,
         memory: Memory | str | Path | None = ...,
         memory_level: int = ...,
         n_jobs: int = ...,
@@ -33,7 +33,7 @@ class MultiNiftiMasker:
     def fit(
         self,
         imgs: Any | None = ...,
-        y: _NotAnArray | memmap | ndarray | None = ...,
+        y: memmap | ndarray | None = ...,
     ) -> MultiNiftiMasker: ...
     def transform(
         self,
