@@ -88,7 +88,7 @@ def plot_surf_roi(
     view: None = ...,
     engine: str = ...,
     avg_method: str | None = ...,
-    threshold: float | int = ...,
+    threshold: float = ...,
     alpha: None = ...,
     vmin: int | float | None = ...,
     vmax: float | None = ...,

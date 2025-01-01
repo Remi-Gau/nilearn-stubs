@@ -13,7 +13,7 @@ class BaseSpaceNet:
         penalty: str = ...,
         is_classif: bool = ...,
         loss: str | None = ...,
-        l1_ratios: float | int = ...,
+        l1_ratios: float = ...,
         alphas: float | list[float] | None = ...,
         n_alphas: float = ...,
         mask: SurfaceImage | str | Nifti1Image | None = ...,
@@ -33,7 +33,7 @@ class BaseSpaceNet:
         eps: float = ...,
         cv: int = ...,
         fit_intercept: bool = ...,
-        screening_percentile: float | int = ...,
+        screening_percentile: float = ...,
         debias: bool = ...,
     ): ...
     def check_params(self): ...

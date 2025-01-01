@@ -8,7 +8,7 @@ def load_confounds(
     strategy: Any = ...,
     motion: str = ...,
     scrub: int = ...,
-    fd_threshold: float | int = ...,
+    fd_threshold: float = ...,
     std_dvars_threshold: int = ...,
     wm_csf: str = ...,
     global_signal: str = ...,

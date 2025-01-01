@@ -4,8 +4,8 @@ from numpy import ndarray
 def alpha_cmap(
     color: tuple[int, int, int] | ndarray,
     name: str = ...,
-    alpha_min: float | int = ...,
-    alpha_max: float | int = ...,
+    alpha_min: float = ...,
+    alpha_max: float = ...,
 ) -> LinearSegmentedColormap: ...
 def dim_cmap(
     cmap: LinearSegmentedColormap, factor: float = ..., to_white: bool = ...

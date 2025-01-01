@@ -45,7 +45,7 @@ def resample_to_img(
     copy: bool = ...,
     order: str = ...,
     clip: bool = ...,
-    fill_value: float | int = ...,
+    fill_value: float = ...,
     force_resample: bool | None = ...,
     copy_header: bool = ...,
 ) -> Nifti1Image: ...

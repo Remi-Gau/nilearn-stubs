@@ -5,7 +5,7 @@ def cluster_level_inference(
     stat_img: Nifti1Image,
     mask_img: Nifti1Image | None = ...,
     threshold: int | list[int] = ...,
-    alpha: float | int = ...,
+    alpha: float = ...,
     verbose: int = ...,
 ) -> Nifti1Image: ...
 def fdr_threshold(z_vals: ndarray, alpha: float) -> float64 | float: ...

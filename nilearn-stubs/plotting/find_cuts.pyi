@@ -5,7 +5,7 @@ from numpy import float32, float64, ndarray
 def find_cut_slices(
     img: Nifti1Image | _MNI152Template,
     direction: str = ...,
-    n_cuts: float | int = ...,
+    n_cuts: float = ...,
     spacing: int | str = ...,
 ) -> ndarray: ...
 def find_parcellation_cut_coords(
