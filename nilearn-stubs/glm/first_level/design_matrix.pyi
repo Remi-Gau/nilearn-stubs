@@ -18,7 +18,7 @@ def make_first_level_design_matrix(
     events: str | DataFrame | PosixPath | None = ...,
     hrf_model: Callable | str = ...,
     drift_model: str | None = ...,
-    high_pass: float = ...,
+    high_pass: float | None = ...,
     drift_order: int = ...,
     fir_delays: range | list[int] | None = ...,
     add_regs: DataFrame | ndarray | None = ...,

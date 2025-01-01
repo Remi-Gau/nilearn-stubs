@@ -31,7 +31,7 @@ def clean_img(
     standardize: bool = ...,
     confounds: DataFrame | None = ...,
     low_pass: float | None = ...,
-    high_pass: None = ...,
+    high_pass: float | None = ...,
     t_r: float | None = ...,
     ensure_finite: bool = ...,
     mask_img: Nifti1Image | None = ...,

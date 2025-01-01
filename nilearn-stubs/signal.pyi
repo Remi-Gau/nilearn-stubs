@@ -1,6 +1,6 @@
-from typing import Any
+from typing import Any, Literal
 
-from numpy import float64, memmap, ndarray
+from numpy import memmap, ndarray
 
 __all__ = [
     "butterworth",
@@ -10,11 +10,11 @@ __all__ = [
 
 def butterworth(
     signals: ndarray,
-    sampling_rate: float | float64 | int,
-    low_pass: float | float64 | int | None = ...,
-    high_pass: float | float64 | int | None = ...,
+    sampling_rate: float | int,
+    low_pass: float | None = ...,
+    high_pass: float | None = ...,
     order: int = ...,
-    padtype: str | None = ...,
+    padtype: Literal["odd", "even", "constant", None] = ...,
     padlen: int | None = ...,
     copy: bool = ...,
 ) -> ndarray: ...
@@ -27,9 +27,9 @@ def clean(
     confounds: Any | None = ...,
     standardize_confounds: bool = ...,
     filter: bool | str = ...,
-    low_pass: float | bool | float64 | None = ...,
-    high_pass: float64 | float | int | bool | None = ...,
-    t_r: float | float64 | int | None = ...,
+    low_pass: float | None = ...,
+    high_pass: float | None = ...,
+    t_r: float | int | None = ...,
     ensure_finite: bool | None = ...,
     extrapolate: bool = ...,
     **kwargs,
