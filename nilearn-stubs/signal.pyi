@@ -1,6 +1,8 @@
-from typing import Any, Literal
+from pathlib import Path
+from typing import Literal
 
-from numpy import memmap, ndarray
+import pandas as pd
+from numpy import ndarray
 
 __all__ = [
     "butterworth",
@@ -19,21 +21,27 @@ def butterworth(
     copy: bool = ...,
 ) -> ndarray: ...
 def clean(
-    signals: memmap | list[list[float]] | ndarray,
+    signals: ndarray,
     runs: ndarray | None = ...,
-    detrend: bool | None = ...,
-    standardize: bool | str = ...,
-    sample_mask: str | list[ndarray] | ndarray | None = ...,
-    confounds: Any | None = ...,
+    detrend: bool = ...,
+    standardize: Literal["zscore_sample", "zscore", "psc", True, False] = ...,
+    sample_mask: str | list[ndarray] | ndarray | None = ...,  # TODO
+    confounds: ndarray
+    | str
+    | Path
+    | pd.DataFrame
+    | list[ndarray | str | Path | pd.DataFrame]
+    | tuple[ndarray | str | Path | pd.DataFrame]
+    | None = ...,
     standardize_confounds: bool = ...,
-    filter: bool | str = ...,
+    filter: Literal["butterworth", "cosine", False] = ...,
     low_pass: float | None = ...,
     high_pass: float | None = ...,
-    t_r: float | int | None = ...,
-    ensure_finite: bool | None = ...,
+    t_r: float = ...,
+    ensure_finite: bool = ...,
     extrapolate: bool = ...,
     **kwargs,
-) -> memmap | ndarray: ...
+) -> ndarray: ...
 def high_variance_confounds(
     series: ndarray,
     n_confounds: int = ...,
