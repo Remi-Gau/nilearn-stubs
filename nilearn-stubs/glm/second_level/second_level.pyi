@@ -5,7 +5,7 @@ from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from nilearn.maskers.nifti_masker import NiftiMasker
 from nilearn.surface.surface import SurfaceImage
-from numpy import ndarray
+from numpy import ndarray, random
 from pandas.core.frame import DataFrame
 from sklearn.utils._tags import Tags
 
@@ -20,7 +20,7 @@ def non_parametric_inference(
     model_intercept: bool = ...,
     n_perm: int = ...,
     two_sided_test: bool = ...,
-    random_state: None = ...,
+    random_state: int | random.mtrand.RandomState | None = ...,
     n_jobs: int = ...,
     verbose: int = ...,
     threshold: float | None = ...,

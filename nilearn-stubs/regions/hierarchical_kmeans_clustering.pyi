@@ -1,6 +1,6 @@
 from typing import Any
 
-from numpy import memmap, ndarray
+from numpy import memmap, ndarray, random
 from sklearn.utils._tags import Tags
 from sklearn.utils.estimator_checks import _NotAnArray
 
@@ -13,7 +13,7 @@ class HierarchicalKMeans:
         n_init: ndarray | float | str | int | list[int] = ...,
         max_no_improvement: ndarray | float | str | int | list[int] = ...,
         verbose: int = ...,
-        random_state: ndarray | float | str | int | list[int] = ...,
+        random_state: int | random.mtrand.RandomState | None = ...,
         scaling: Any = ...,
     ): ...
     def __sklearn_tags__(self) -> Tags: ...

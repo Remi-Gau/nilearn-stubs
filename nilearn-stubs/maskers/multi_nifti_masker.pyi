@@ -17,7 +17,7 @@ class MultiNiftiMasker:
         high_variance_confounds: int | bool = ...,
         low_pass: float | None = ...,
         high_pass: float | None = ...,
-        t_r: int | None = ...,
+        t_r: float | None = ...,
         target_affine: ndarray | None = ...,
         target_shape: tuple[int, int, int] | list[int] | None = ...,
         mask_strategy: int | str = ...,

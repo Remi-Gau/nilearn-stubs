@@ -1,6 +1,7 @@
 from nilearn.maskers.nifti_masker import NiftiMasker
 from numpy import (
     ndarray,
+    random,
 )
 
 def permuted_ols(
@@ -10,7 +11,7 @@ def permuted_ols(
     model_intercept: bool = ...,
     n_perm: float = ...,
     two_sided_test: bool = ...,
-    random_state: int | None = ...,
+    random_state: int | random.mtrand.RandomState | None = ...,
     n_jobs: int = ...,
     verbose: int = ...,
     masker: NiftiMasker | None = ...,

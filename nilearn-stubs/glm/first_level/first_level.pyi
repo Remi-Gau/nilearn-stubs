@@ -18,7 +18,7 @@ def first_level_from_bids(
     | list[tuple[int, int]]
     | list[tuple[str, str]]
     | None = ...,
-    t_r: int | str | None = ...,
+    t_r: float | None = ...,
     slice_time_ref: float | str | None = ...,
     hrf_model: str = ...,
     drift_model: str | None = ...,
@@ -77,7 +77,7 @@ def run_glm(
 class FirstLevelModel:
     def __init__(
         self,
-        t_r: Any | None = ...,
+        t_r: float | None = ...,
         slice_time_ref: ndarray | str | float | list[int] | int = ...,
         hrf_model: Any = ...,
         drift_model: Any = ...,
@@ -98,7 +98,7 @@ class FirstLevelModel:
         n_jobs: ndarray | float | str | int | list[int] = ...,
         minimize_memory: Any = ...,
         subject_label: Any | None = ...,
-        random_state: Any | None = ...,
+        random_state: int | random.mtrand.RandomState | None = ...,
     ): ...
     def __sklearn_is_fitted__(self) -> bool: ...
     def __sklearn_tags__(self) -> Tags: ...

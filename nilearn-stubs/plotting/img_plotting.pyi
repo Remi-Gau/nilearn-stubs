@@ -48,7 +48,7 @@ def plot_carpet(
     img: Nifti1Image,
     mask_img: Nifti1Image | None = ...,
     mask_labels: dict[str, int] | None = ...,
-    t_r: int | None = ...,
+    t_r: float | None = ...,
     detrend: bool = ...,
     output_file: PosixPath | None = ...,
     figure: Figure | None = ...,

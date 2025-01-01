@@ -18,7 +18,7 @@ class MultiNiftiLabelsMasker:
         detrend: int | bool = ...,
         low_pass: float | None = ...,
         high_pass: float | None = ...,
-        t_r: int | None = ...,
+        t_r: float | None = ...,
         dtype: int | None = ...,
         resampling_target: int | str | None = ...,
         memory: Memory | str | Path | None = ...,

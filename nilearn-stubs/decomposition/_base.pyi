@@ -11,6 +11,7 @@ from numpy import (
     float64,
     memmap,
     ndarray,
+    random,
 )
 from sklearn.utils._tags import Tags
 from sklearn.utils.estimator_checks import _NotAnArray
@@ -19,7 +20,7 @@ class _BaseDecomposition:
     def __init__(
         self,
         n_components: Any = ...,
-        random_state: Any | None = ...,
+        random_state: int | random.mtrand.RandomState | None = ...,
         mask: Any | None = ...,
         smoothing_fwhm: Any | None = ...,
         standardize: Any = ...,
@@ -27,7 +28,7 @@ class _BaseDecomposition:
         detrend: Any = ...,
         low_pass: float | None = ...,
         high_pass: float | None = ...,
-        t_r: Any | None = ...,
+        t_r: float | None = ...,
         target_affine: ndarray | None = ...,
         target_shape: tuple[int, int, int] | list[int] | None = ...,
         mask_strategy: ndarray | float | str | int | list[int] = ...,

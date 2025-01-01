@@ -20,7 +20,7 @@ class SurfaceLabelsMasker:
         high_variance_confounds: Any = ...,
         low_pass: float | None = ...,
         high_pass: float | None = ...,
-        t_r: Any | None = ...,
+        t_r: float | None = ...,
         memory: Memory | str | Path | None = ...,
         memory_level: int = ...,
         verbose: int = ...,
