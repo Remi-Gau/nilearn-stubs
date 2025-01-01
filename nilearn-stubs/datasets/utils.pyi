@@ -1,0 +1,3 @@
+from pathlib import PosixPath
+
+def get_data_dirs(data_dir: PosixPath | str | None = ...) -> list[str]: ...
