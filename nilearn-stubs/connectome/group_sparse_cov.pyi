@@ -1,52 +1,51 @@
 from pathlib import Path
-from typing import Any
+from typing import Callable
 
 from joblib.memory import Memory
 from numpy import (
-    memmap,
     ndarray,
 )
 
 def group_sparse_covariance(
-    subjects: int | list[ndarray],
-    alpha: float | str,
+    subjects: list[ndarray],
+    alpha: float,
     max_iter: int = ...,
-    tol: float = ...,
+    tol: float | None = ...,
     verbose: int = ...,
-    probe_function: None = ...,
-    precisions_init: None = ...,
+    probe_function: Callable | None = ...,
+    precisions_init: ndarray | None = ...,
     debug: bool = ...,
 ) -> tuple[ndarray, ndarray]: ...
 
 class GroupSparseCovariance:
     def __init__(
         self,
-        alpha: Any = ...,
-        tol: ndarray | str | float | list[int] | int = ...,
-        max_iter: ndarray | float | str | int | list[int] = ...,
+        alpha: float = ...,
+        tol: float = ...,
+        max_iter: int = ...,
         verbose: int = ...,
         memory: Memory | str | Path | None = ...,
         memory_level: int = ...,
     ): ...
     def fit(
-        self, subjects: Any, y: ndarray | memmap | None = ...
+        self, subjects: list[ndarray], y: None = ...
     ) -> GroupSparseCovariance: ...
 
 class GroupSparseCovarianceCV:
     def __init__(
         self,
-        alphas: ndarray | float | str | int | list[int] = ...,
-        n_refinements: ndarray | float | str | int | list[int] = ...,
-        cv: Any | None = ...,
-        tol_cv: ndarray | str | float | list[int] | int = ...,
-        max_iter_cv: ndarray | float | str | int | list[int] = ...,
-        tol: ndarray | str | float | list[int] | int = ...,
-        max_iter: ndarray | float | str | int | list[int] = ...,
+        alphas: int = ...,
+        n_refinements: int = ...,
+        cv: int | None = ...,
+        tol_cv: float = ...,
+        max_iter_cv: int = ...,
+        tol: float = ...,
+        max_iter: int = ...,
         verbose: int = ...,
-        n_jobs: ndarray | float | str | int | list[int] = ...,
-        debug: Any = ...,
-        early_stopping: Any = ...,
+        n_jobs: int = ...,
+        debug: bool = ...,
+        early_stopping: bool = ...,
     ): ...
     def fit(
-        self, subjects: Any, y: memmap | ndarray | None = ...
+        self, subjects: list[ndarray], y: None = ...
     ) -> GroupSparseCovarianceCV: ...

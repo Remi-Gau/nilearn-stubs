@@ -37,7 +37,7 @@ class SecondLevelModel:
         memory: Memory | str | Path | None = ...,
         memory_level: int = ...,
         verbose: int = ...,
-        n_jobs: ndarray | float | str | int | list[int] = ...,
+        n_jobs: int = ...,
         minimize_memory: Any = ...,
     ): ...
     def __sklearn_tags__(self) -> Tags: ...

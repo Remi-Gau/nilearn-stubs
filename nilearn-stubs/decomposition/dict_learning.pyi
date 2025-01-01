@@ -26,7 +26,7 @@ class DictLearning:
         target_shape: tuple[int, int, int] | list[int] | None = ...,
         mask_strategy: ndarray | str | float | list[int] | int = ...,
         mask_args: Any | None = ...,
-        n_jobs: ndarray | float | str | int | list[int] = ...,
+        n_jobs: int = ...,
         verbose: int = ...,
         memory: Memory | str | Path | None = ...,
         memory_level: int = ...,

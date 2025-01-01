@@ -14,7 +14,7 @@ class SearchLight:
         process_mask_img: Any | None = ...,
         radius: ndarray | str | float | list[int] | int = ...,
         estimator: ndarray | str | float | list[int] | int = ...,
-        n_jobs: ndarray | float | str | int | list[int] = ...,
+        n_jobs: int = ...,
         scoring: Any | None = ...,
         cv: Any | None = ...,
         verbose: int = ...,

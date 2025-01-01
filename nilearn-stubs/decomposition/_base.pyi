@@ -34,7 +34,7 @@ class _BaseDecomposition:
         mask_args: Any | None = ...,
         memory: Memory | str | Path | None = ...,
         memory_level: int = ...,
-        n_jobs: ndarray | float | str | int | list[int] = ...,
+        n_jobs: int = ...,
         verbose: int = ...,
     ): ...
     def __sklearn_tags__(self) -> Tags: ...

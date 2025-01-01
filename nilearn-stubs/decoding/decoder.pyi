@@ -29,7 +29,7 @@ class Decoder:
         t_r: float | None = ...,
         memory: Memory | str | Path | None = ...,
         memory_level: int = ...,
-        n_jobs: ndarray | float | str | int | list[int] = ...,
+        n_jobs: int = ...,
         verbose: int = ...,
     ): ...
     def __sklearn_tags__(self) -> Tags: ...
@@ -53,7 +53,7 @@ class DecoderRegressor:
         t_r: float | None = ...,
         memory: Memory | str | Path | None = ...,
         memory_level: int = ...,
-        n_jobs: ndarray | str | float | list[int] | int = ...,
+        n_jobs: int = ...,
         verbose: int = ...,
     ): ...
     def __sklearn_tags__(self) -> Tags: ...
@@ -78,7 +78,7 @@ class FREMClassifier:
         t_r: float | None = ...,
         memory: Memory | str | Path | None = ...,
         memory_level: int = ...,
-        n_jobs: ndarray | float | str | int | list[int] = ...,
+        n_jobs: int = ...,
         verbose: int = ...,
     ): ...
 
@@ -102,7 +102,7 @@ class FREMRegressor:
         t_r: float | None = ...,
         memory: Memory | str | Path | None = ...,
         memory_level: int = ...,
-        n_jobs: ndarray | float | str | int | list[int] = ...,
+        n_jobs: int = ...,
         verbose: int = ...,
     ): ...
 
@@ -127,7 +127,7 @@ class _BaseDecoder:
         is_classification: Any = ...,
         memory: Memory | str | Path | None = ...,
         memory_level: int = ...,
-        n_jobs: ndarray | float | str | int | list[int] = ...,
+        n_jobs: int = ...,
         verbose: int = ...,
     ): ...
     def __sklearn_tags__(self) -> Tags: ...

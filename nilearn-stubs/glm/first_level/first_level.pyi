@@ -95,7 +95,7 @@ class FirstLevelModel:
         signal_scaling: Any = ...,
         noise_model: ndarray | float | str | int | list[int] = ...,
         verbose: int = ...,
-        n_jobs: ndarray | float | str | int | list[int] = ...,
+        n_jobs: int = ...,
         minimize_memory: Any = ...,
         subject_label: Any | None = ...,
         random_state: int | random.mtrand.RandomState | None = ...,

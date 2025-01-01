@@ -19,7 +19,7 @@ class ConnectivityMeasure:
     def __init__(
         self,
         cov_estimator: Any | None = ...,
-        kind: ndarray | float | str | int | list[int] = ...,
+        kind: ndarray | float | str | list[int] = ...,
         vectorize: Any = ...,
         discard_diagonal: Any = ...,
         standardize: Any = ...,
