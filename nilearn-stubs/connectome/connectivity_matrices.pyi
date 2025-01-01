@@ -1,7 +1,6 @@
-from typing import Any
+from typing import Any, Literal
 
 from numpy import (
-    memmap,
     ndarray,
 )
 from pandas.core.frame import DataFrame
@@ -12,31 +11,35 @@ def sym_matrix_to_vec(
     symmetric: ndarray, discard_diagonal: bool = ...
 ) -> ndarray: ...
 def vec_to_sym_matrix(
-    vec: ndarray, diagonal: ndarray | None = ...
+    vec: ndarray | list[ndarray], diagonal: ndarray | None = ...
 ) -> ndarray: ...
 
 class ConnectivityMeasure:
     def __init__(
         self,
         cov_estimator: Any | None = ...,
-        kind: ndarray | float | str | list[int] = ...,
-        vectorize: Any = ...,
-        discard_diagonal: Any = ...,
-        standardize: Any = ...,
+        kind: Literal[
+            "covariance",
+            "correlation",
+            "partial correlation",
+            "tangent",
+            "precision",
+        ] = ...,
+        vectorize: bool = ...,
+        discard_diagonal: bool = ...,
+        standardize: bool = ...,
     ): ...
     def __sklearn_is_fitted__(self) -> bool: ...
-    def fit(
-        self, X: Any, y: ndarray | memmap | None = ...
-    ) -> ConnectivityMeasure: ...
+    def fit(self, X: ndarray, y: None = ...) -> ConnectivityMeasure: ...
     def fit_transform(
         self,
-        X: list[ndarray] | ndarray,
-        y: ndarray | None = ...,
-        confounds: float | ndarray | DataFrame | None = ...,
+        X: list[ndarray],
+        y: None = ...,
+        confounds: ndarray | DataFrame | None = ...,
     ) -> ndarray: ...
     def inverse_transform(
         self, connectivities: ndarray, diagonal: ndarray | None = ...
     ) -> ndarray: ...
     def transform(
-        self, X: list[ndarray] | ndarray, confounds: None = ...
+        self, X: list[ndarray], confounds: ndarray | None = ...
     ) -> ndarray: ...

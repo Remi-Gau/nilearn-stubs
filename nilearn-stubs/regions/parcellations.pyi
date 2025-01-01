@@ -26,12 +26,14 @@ class Parcellations:
         ],
         n_parcels: int = ...,
         random_state: int | random.mtrand.RandomState | None = ...,
-        mask: NiimgLike
-        | SurfaceImage
-        | NiftiMasker
-        | MultiNiftiMasker
-        | SurfaceMasker
-        | None = ...,
+        mask: (
+            NiimgLike
+            | SurfaceImage
+            | NiftiMasker
+            | MultiNiftiMasker
+            | SurfaceMasker
+            | None
+        ) = ...,
         smoothing_fwhm: float = ...,
         standardize: bool = ...,
         detrend: bool = ...,

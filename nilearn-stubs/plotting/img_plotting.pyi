@@ -204,9 +204,11 @@ def plot_prob_atlas(
 def plot_roi(
     roi_img: Nifti1Image | PosixPath,
     bg_img: Nifti1Image | _MNI152Template = ...,
-    cut_coords: (
-        tuple[int, int] | tuple[int, int, int] | int | list[float] | None
-    ) = ...,
+    cut_coords: tuple[int, int]
+    | tuple[int, int, int]
+    | int
+    | list[float]
+    | None = ...,
     output_file: PosixPath | BufferedWriter | None = ...,
     display_mode: str = ...,
     figure: None = ...,

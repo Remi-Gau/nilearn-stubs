@@ -99,11 +99,13 @@ def smooth_array(
     copy: bool = ...,
 ) -> MaskedArray | memmap | ndarray: ...
 def smooth_img(
-    imgs: list[Nifti2Image]
-    | Nifti1Image
-    | list[str]
-    | str
-    | tuple[Nifti1Image, Nifti1Image],
+    imgs: (
+        list[Nifti2Image]
+        | Nifti1Image
+        | list[str]
+        | str
+        | tuple[Nifti1Image, Nifti1Image]
+    ),
     fwhm: float64 | tuple[float, float, float] | float | None,
 ) -> list[Nifti1Image] | list[Nifti2Image] | Nifti1Image: ...
 def swap_img_hemispheres(img: Nifti1Image) -> Nifti1Image: ...

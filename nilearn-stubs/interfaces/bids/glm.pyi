@@ -13,9 +13,10 @@ NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image
 
 def save_glm_to_bids(
     model: FirstLevelModel | SecondLevelModel,
-    contrasts: (
-        str | ndarray | list[str | ndarray] | dict[str, str | list | ndarray]
-    ),
+    contrasts: str
+    | ndarray
+    | list[str | ndarray]
+    | dict[str, str | list | ndarray],
     contrast_types: dict[str, Literal["t", "F"]] | None = ...,
     out_dir: FilePath = ...,
     prefix: str | None = ...,

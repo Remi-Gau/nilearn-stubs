@@ -2,9 +2,7 @@ from pathlib import Path
 from typing import Callable
 
 from joblib.memory import Memory
-from numpy import (
-    ndarray,
-)
+from numpy import ndarray
 
 def group_sparse_covariance(
     subjects: list[ndarray],

@@ -26,13 +26,15 @@ def clean(
     detrend: bool = ...,
     standardize: Literal["zscore_sample", "zscore", "psc", True, False] = ...,
     sample_mask: str | list[ndarray] | ndarray | None = ...,  # TODO
-    confounds: ndarray
-    | str
-    | Path
-    | pd.DataFrame
-    | list[ndarray | str | Path | pd.DataFrame]
-    | tuple[ndarray | str | Path | pd.DataFrame]
-    | None = ...,
+    confounds: (
+        ndarray
+        | str
+        | Path
+        | pd.DataFrame
+        | list[ndarray | str | Path | pd.DataFrame]
+        | tuple[ndarray | str | Path | pd.DataFrame]
+        | None
+    ) = ...,
     standardize_confounds: bool = ...,
     filter: Literal["butterworth", "cosine", False] = ...,
     low_pass: float | None = ...,

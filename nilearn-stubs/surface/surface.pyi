@@ -61,8 +61,8 @@ class PolyMesh:
 class SurfaceImage:
     def __init__(
         self,
-        mesh: (dict[str, SurfaceMesh] | dict[str, FilePath] | PolyMesh),
-        data: (dict[str, FilePath] | dict[str, ndarray] | PolyData),
+        mesh: dict[str, SurfaceMesh] | dict[str, FilePath] | PolyMesh,
+        data: dict[str, FilePath] | dict[str, ndarray] | PolyData,
     ): ...
     def __repr__(self) -> str: ...
     @classmethod
