@@ -10,5 +10,5 @@ def load_confounds_strategy(
     ] = ...,
     **kwargs,
 ) -> tuple[
-    DataFrame | list[DataFrame], None | ndarray | list[ndarray, None]
+    DataFrame | list[DataFrame], None | ndarray | list[ndarray | None]
 ]: ...

@@ -1,21 +1,28 @@
+import os
 from pathlib import Path
+from typing import Literal
 
 from nibabel.nifti1 import Nifti1Image
+from nibabel.nifti2 import Nifti2Image
 from nilearn.surface.surface import SurfaceImage
 from sklearn.utils._bunch import Bunch
+from typing_extensions import TypeAlias
+
+FilePath: TypeAlias = str | os.PathLike[str]
+NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image
 
 GM_MNI152_FILE_PATH: Path
 MNI152_FILE_PATH: Path
 WM_MNI152_FILE_PATH: Path
 
 def fetch_icbm152_2009(
-    data_dir: str | None = ...,
-    url: None = ...,
+    data_dir: FilePath | None = ...,
+    url: str | None = ...,
     resume: bool = ...,
     verbose: int = ...,
 ) -> Bunch: ...
 def fetch_icbm152_brain_gm_mask(
-    data_dir: str | None = ...,
+    data_dir: FilePath | None = ...,
     threshold: float = ...,
     resume: bool = ...,
     n_iter: int = ...,
@@ -24,20 +31,39 @@ def fetch_icbm152_brain_gm_mask(
 def fetch_oasis_vbm(
     n_subjects: None = ...,
     dartel_version: bool = ...,
-    data_dir: str | None = ...,
-    url: None = ...,
+    data_dir: FilePath | None = ...,
+    url: str | None = ...,
     resume: bool = ...,
     verbose: int = ...,
 ) -> Bunch: ...
 def fetch_surf_fsaverage(
     mesh: str = ..., data_dir: str | None = ...
 ) -> Bunch: ...
-def load_fsaverage(mesh: str = ..., data_dir: None = ...) -> Bunch: ...
-def load_fsaverage_data(
-    mesh: str = ...,
-    mesh_type: str = ...,
-    data_type: str = ...,
+def load_fsaverage(
+    mesh: Literal[
+        "fsaverage",
+        "fsaverage3",
+        "fsaverage4",
+        "fsaverage5",
+        "fsaverage6",
+        "fsaverage7",
+    ] = ...,
     data_dir: None = ...,
+) -> Bunch: ...
+def load_fsaverage_data(
+    mesh: Literal[
+        "fsaverage",
+        "fsaverage3",
+        "fsaverage4",
+        "fsaverage5",
+        "fsaverage6",
+        "fsaverage7",
+    ] = ...,
+    mesh_type: Literal[
+        "pial", "white_matter", "inflated", "sphere", "flat"
+    ] = ...,
+    data_type: Literal["curvature", "sulcal", "thickness"] = ...,
+    data_dir: FilePath | None = ...,
 ) -> SurfaceImage: ...
 def load_mni152_brain_mask(
     resolution: int | None = ..., threshold: float = ...
