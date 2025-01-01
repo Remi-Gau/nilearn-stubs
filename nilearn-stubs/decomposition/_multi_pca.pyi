@@ -23,7 +23,7 @@ class _MultiPCA:
         mask_strategy: ndarray | float | str | int | list[int] = ...,
         mask_args: Any | None = ...,
         memory: Memory | str | Path | None = ...,
-        memory_level: ndarray | float | str | int | list[int] = ...,
+        memory_level: int = ...,
         n_jobs: ndarray | float | str | int | list[int] = ...,
         verbose: int = ...,
     ): ...

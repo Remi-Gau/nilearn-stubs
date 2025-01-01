@@ -26,7 +26,7 @@ class GroupSparseCovariance:
         max_iter: ndarray | float | str | int | list[int] = ...,
         verbose: int = ...,
         memory: Memory | str | Path | None = ...,
-        memory_level: ndarray | float | str | int | list[int] = ...,
+        memory_level: int = ...,
     ): ...
     def fit(
         self, subjects: Any, y: ndarray | memmap | None = ...

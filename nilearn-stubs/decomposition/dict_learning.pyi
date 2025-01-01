@@ -29,5 +29,5 @@ class DictLearning:
         n_jobs: ndarray | float | str | int | list[int] = ...,
         verbose: int = ...,
         memory: Memory | str | Path | None = ...,
-        memory_level: ndarray | float | str | int | list[int] = ...,
+        memory_level: int = ...,
     ): ...

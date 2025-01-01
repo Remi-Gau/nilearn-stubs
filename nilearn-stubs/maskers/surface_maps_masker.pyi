@@ -21,7 +21,7 @@ class SurfaceMapsMasker:
         high_pass: float | None = ...,
         t_r: Any | None = ...,
         memory: Memory | str | Path | None = ...,
-        memory_level: ndarray | str | float | list[int] | int = ...,
+        memory_level: int = ...,
         verbose: int = ...,
         reports: Any = ...,
         cmap: ndarray | str | float | list[int] | int = ...,

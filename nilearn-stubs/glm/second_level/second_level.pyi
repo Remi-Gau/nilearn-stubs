@@ -35,7 +35,7 @@ class SecondLevelModel:
         target_shape: tuple[int, int, int] | list[int] | None = ...,
         smoothing_fwhm: Any | None = ...,
         memory: Memory | str | Path | None = ...,
-        memory_level: ndarray | float | str | int | list[int] = ...,
+        memory_level: int = ...,
         verbose: int = ...,
         n_jobs: ndarray | float | str | int | list[int] = ...,
         minimize_memory: Any = ...,

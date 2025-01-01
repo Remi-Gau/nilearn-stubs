@@ -29,7 +29,7 @@ class Decoder:
         high_pass: float | None = ...,
         t_r: Any | None = ...,
         memory: Memory | str | Path | None = ...,
-        memory_level: ndarray | float | str | int | list[int] = ...,
+        memory_level: int = ...,
         n_jobs: ndarray | float | str | int | list[int] = ...,
         verbose: int = ...,
     ): ...
@@ -53,7 +53,7 @@ class DecoderRegressor:
         high_pass: float | None = ...,
         t_r: Any | None = ...,
         memory: Memory | str | Path | None = ...,
-        memory_level: ndarray | str | float | list[int] | int = ...,
+        memory_level: int = ...,
         n_jobs: ndarray | str | float | list[int] | int = ...,
         verbose: int = ...,
     ): ...
@@ -78,7 +78,7 @@ class FREMClassifier:
         high_pass: float | None = ...,
         t_r: Any | None = ...,
         memory: Memory | str | Path | None = ...,
-        memory_level: ndarray | float | str | int | list[int] = ...,
+        memory_level: int = ...,
         n_jobs: ndarray | float | str | int | list[int] = ...,
         verbose: int = ...,
     ): ...
@@ -102,7 +102,7 @@ class FREMRegressor:
         high_pass: float | None = ...,
         t_r: Any | None = ...,
         memory: Memory | str | Path | None = ...,
-        memory_level: ndarray | float | str | int | list[int] = ...,
+        memory_level: int = ...,
         n_jobs: ndarray | float | str | int | list[int] = ...,
         verbose: int = ...,
     ): ...
@@ -127,7 +127,7 @@ class _BaseDecoder:
         mask_strategy: ndarray | str | float | list[int] | int = ...,
         is_classification: Any = ...,
         memory: Memory | str | Path | None = ...,
-        memory_level: ndarray | float | str | int | list[int] = ...,
+        memory_level: int = ...,
         n_jobs: ndarray | float | str | int | list[int] = ...,
         verbose: int = ...,
     ): ...

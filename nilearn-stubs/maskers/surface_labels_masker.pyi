@@ -22,7 +22,7 @@ class SurfaceLabelsMasker:
         high_pass: float | None = ...,
         t_r: Any | None = ...,
         memory: Memory | str | Path | None = ...,
-        memory_level: ndarray | float | str | int | list[int] = ...,
+        memory_level: int = ...,
         verbose: int = ...,
         reports: Any = ...,
         cmap: ndarray | float | str | int | list[int] = ...,
