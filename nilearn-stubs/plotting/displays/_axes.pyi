@@ -1,5 +1,4 @@
 from matplotlib.axes._axes import Axes
-from matplotlib.colors import LinearSegmentedColormap
 from matplotlib.contour import QuadContourSet
 from matplotlib.image import AxesImage
 from numpy import float64, ma, ndarray
@@ -72,23 +71,6 @@ class GlassBrainAxes:
         coord: int | None,
         plot_abs: bool = ...,
         radiological: bool = ...,
-        **kwargs,
-    ): ...
-    def _add_lines(
-        self,
-        line_coords: list[ndarray],
-        line_values: ndarray,
-        cmap: LinearSegmentedColormap | str | None,
-        vmin: int | None = ...,
-        vmax: int | None = ...,
-        directed: bool = ...,
-        **kwargs,
-    ): ...
-    def _add_markers(
-        self,
-        marker_coords: ndarray,
-        marker_color: list[str] | ndarray | str,
-        marker_size: int | list[int],
         **kwargs,
     ): ...
     def draw_position(self, size: int, bg_color: str, **kwargs): ...

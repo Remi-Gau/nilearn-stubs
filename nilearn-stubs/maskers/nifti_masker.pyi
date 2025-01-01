@@ -34,7 +34,6 @@ class NiftiMasker:
         cmap: int | str = ...,
         **kwargs,
     ): ...
-    def _check_fitted(self): ...
     def fit(
         self,
         imgs: Any | None = ...,

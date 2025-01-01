@@ -9,13 +9,6 @@ from scipy.sparse._coo import coo_matrix
 def get_projector(display_mode: str) -> Callable: ...
 
 class OrthoProjector:
-    def _check_inputs_add_graph(
-        self,
-        adjacency_matrix: MaskedArray | ndarray,
-        node_coords: ndarray,
-        node_color: list[str] | ndarray | str,
-        node_kwargs: dict[str, int | str],
-    ): ...
     def add_graph(
         self,
         adjacency_matrix: coo_matrix | MaskedArray | ndarray,

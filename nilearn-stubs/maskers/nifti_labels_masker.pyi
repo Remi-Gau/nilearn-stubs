@@ -3,7 +3,7 @@ from typing import Any
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from nilearn.maskers.multi_nifti_labels_masker import MultiNiftiLabelsMasker
-from numpy import float32, int8, int32, int64, memmap, ndarray
+from numpy import memmap, ndarray
 from sklearn.utils.estimator_checks import _NotAnArray
 
 class NiftiLabelsMasker:
@@ -31,25 +31,6 @@ class NiftiLabelsMasker:
         reports: int | bool = ...,
         **kwargs,
     ): ...
-    def _check_fitted(self): ...
-    def _check_mismatch_labels_regions(
-        self,
-        region_ids: list[int32] | list[int8] | list[float32] | ndarray,
-        tolerant: bool = ...,
-        resampling_done: bool = ...,
-    ): ...
-    def _get_labels_values(
-        self, labels_image: int | Nifti1Image
-    ) -> ndarray: ...
-    def _number_of_regions(
-        self, region_ids: list[int32] | list[float32] | ndarray
-    ) -> int64: ...
-    def _resample_labels(
-        self, imgs_: Nifti1Image
-    ) -> MultiNiftiLabelsMasker | NiftiLabelsMasker: ...
-    def _sanitize_labels(
-        self, labels: list[str] | list[int] | str | None
-    ) -> list[str] | None: ...
     def fit(
         self,
         imgs: Any | None = ...,

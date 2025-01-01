@@ -30,7 +30,6 @@ class NiftiSpheresMasker:
         reports: int | bool = ...,
         **kwargs,
     ): ...
-    def _check_fitted(self): ...
     def fit(
         self,
         X: _NotAnArray | ndarray | memmap | Nifti1Image | None = ...,
