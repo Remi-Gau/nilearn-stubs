@@ -104,12 +104,12 @@ def smooth_img(
     | list[str]
     | str
     | tuple[Nifti1Image, Nifti1Image],
-    fwhm: float64 | tuple[float, float, float] | float | int | None,
+    fwhm: float64 | tuple[float, float, float] | float | None,
 ) -> list[Nifti1Image] | list[Nifti2Image] | Nifti1Image: ...
 def swap_img_hemispheres(img: Nifti1Image) -> Nifti1Image: ...
 def threshold_img(
     img: Nifti1Image,
-    threshold: float64 | str | float | int | None,
+    threshold: float64 | str | float | None,
     cluster_threshold: int = ...,
     two_sided: bool = ...,
     mask_img: Nifti1Image | None = ...,

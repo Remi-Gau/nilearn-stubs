@@ -1,6 +1,6 @@
 from typing import Callable
 
-from numpy import float64, int64, ndarray
+from numpy import float64, ndarray
 
 def compute_regressor(
     exp_condition: (
@@ -15,13 +15,13 @@ def compute_regressor(
     min_onset: int = ...,
 ) -> tuple[ndarray, list[str]]: ...
 def glover_dispersion_derivative(
-    t_r: float | int,
+    t_r: float,
     oversampling: int = ...,
     time_length: float = ...,
     onset: float = ...,
 ) -> ndarray: ...
 def glover_hrf(
-    t_r: int | float | int64 | float64,
+    t_r: int | float64 | float64,
     oversampling: int = ...,
     time_length: float = ...,
     onset: float = ...,
@@ -45,7 +45,7 @@ def spm_hrf(
     onset: float = ...,
 ) -> ndarray: ...
 def spm_time_derivative(
-    t_r: float64 | float | int,
+    t_r: float64 | float,
     oversampling: int = ...,
     time_length: float = ...,
     onset: float = ...,

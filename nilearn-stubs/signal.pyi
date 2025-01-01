@@ -12,7 +12,7 @@ __all__ = [
 
 def butterworth(
     signals: ndarray,
-    sampling_rate: float | int,
+    sampling_rate: float,
     low_pass: float | None = ...,
     high_pass: float | None = ...,
     order: int = ...,

@@ -9,8 +9,8 @@ from numpy import (
 )
 
 def coord_transform(
-    x: float64 | ndarray | float | int | list[int],
-    y: float64 | ndarray | float | int | list[int],
+    x: float64 | ndarray | float | list[int],
+    y: float64 | ndarray | float | list[int],
     z: float64 | ndarray | float | list[int] | int,
     affine: ndarray,
 ) -> tuple[float, float, float] | tuple[ndarray, ndarray, ndarray]: ...

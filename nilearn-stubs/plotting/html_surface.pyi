@@ -13,7 +13,7 @@ class SurfaceView(HTMLDocument):
 def view_img_on_surf(
     stat_map_img: PosixPath | list[Nifti1Image] | Nifti1Image | str,
     surf_mesh: Bunch | str = ...,
-    threshold: float | int | str | None = ...,
+    threshold: float | str | None = ...,
     cmap: LinearSegmentedColormap | str = ...,
     black_bg: bool = ...,
     vmax: None = ...,

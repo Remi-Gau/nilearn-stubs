@@ -19,7 +19,7 @@ def first_level_from_bids(
     | list[tuple[str, str]]
     | None = ...,
     t_r: int | str | None = ...,
-    slice_time_ref: float | int | str | None = ...,
+    slice_time_ref: float | str | None = ...,
     hrf_model: str = ...,
     drift_model: str | None = ...,
     high_pass: float | None = ...,

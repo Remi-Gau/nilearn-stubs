@@ -23,7 +23,7 @@ def view_connectome(
 def view_markers(
     marker_coords: ndarray,
     marker_color: list[str] | str = ...,
-    marker_size: float | int | list[int] | ndarray = ...,
+    marker_size: float | list[int] | ndarray = ...,
     marker_labels: list[str] | None = ...,
     title: None = ...,
     title_fontsize: int = ...,

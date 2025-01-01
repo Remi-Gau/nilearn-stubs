@@ -4,7 +4,7 @@ from nibabel.nifti1 import Nifti1Image
 from nilearn.glm.regression import RegressionResults, SimpleRegressionResults
 from nilearn.maskers.surface_masker import SurfaceMasker
 from nilearn.surface.surface import SurfaceImage
-from numpy import int64, ndarray, str_
+from numpy import ndarray, str_
 
 def compute_contrast(
     labels: ndarray,
@@ -50,7 +50,7 @@ class Contrast:
         effect: ndarray,
         variance: ndarray,
         dim: int | None = ...,
-        dof: float | int64 = ...,
+        dof: float = ...,
         stat_type: str = ...,
         tiny: float = ...,
         dofmax: float = ...,

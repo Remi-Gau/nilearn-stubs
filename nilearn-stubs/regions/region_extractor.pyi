@@ -1,44 +1,50 @@
+import os
 from pathlib import Path
+from typing import Literal
 
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
-from numpy import ndarray, str_
+from nibabel.nifti2 import Nifti2Image
+from numpy import ndarray
+from typing_extensions import TypeAlias
+
+FilePath: TypeAlias = str | os.PathLike[str]
+NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image
 
 def connected_label_regions(
-    labels_img: Nifti1Image,
-    min_size: int | str | None = ...,
-    connect_diag: bool | None = ...,
-    labels: str | list[str] | ndarray | None = ...,
-) -> (
-    Nifti1Image
-    | tuple[Nifti1Image, list[str]]
-    | tuple[Nifti1Image, list[str_]]
-): ...
+    labels_img: NiimgLike,
+    min_size: float | None = ...,
+    connect_diag: bool = ...,
+    labels: list[str] | ndarray | None = ...,
+) -> Nifti1Image | tuple[Nifti1Image, list[str]]: ...
 def connected_regions(
-    maps_img: Nifti1Image,
+    maps_img: NiimgLike,
     min_region_size: float = ...,
-    extract_type: int | str = ...,
+    extract_type: Literal["local_regions", "connected_components"] = ...,
     smoothing_fwhm: float = ...,
-    mask_img: Nifti1Image | None = ...,
-) -> tuple[Nifti1Image, list[int]]: ...
+    mask_img: NiimgLike | None = ...,
+) -> tuple[Nifti1Image, ndarray]: ...
 
 class RegionExtractor:
     def __init__(
         self,
-        maps_img: Nifti1Image,
-        mask_img: Nifti1Image | None = ...,
+        maps_img: NiimgLike,
+        mask_img: NiimgLike | None = ...,
         min_region_size: float = ...,
-        threshold: float | int | str | None = ...,
-        thresholding_strategy: str = ...,
+        threshold: float | None = ...,
+        thresholding_strategy: Literal[
+            "ratio_n_voxels", "img_value", "percentile"
+        ] = ...,
         two_sided: bool = ...,
-        extractor: str = ...,
+        extractor: Literal["local_regions", "connected_components"] = ...,
+        str=...,
         smoothing_fwhm: float = ...,
         standardize: bool = ...,
         standardize_confounds: bool = ...,
         detrend: bool = ...,
         low_pass: float | None = ...,
         high_pass: float | None = ...,
-        t_r: None = ...,
+        t_r: float | None = ...,
         memory: Memory | str | Path | None = ...,
         memory_level: int = ...,
         verbose: int = ...,

@@ -39,7 +39,7 @@ class BaseSlicer:
     def add_overlay(
         self,
         img: _MNI152Template | Nifti1Image,
-        threshold: float64 | ndarray | float | int | None = ...,
+        threshold: float64 | ndarray | float | None = ...,
         colorbar: bool = ...,
         cbar_tick_format: str = ...,
         cbar_vmin: int | float32 | None = ...,
@@ -98,9 +98,9 @@ class BaseStackedSlicer:
     def find_cut_coords(
         cls,
         img: bool | _MNI152Template | Nifti1Image | None = ...,
-        threshold: float64 | ndarray | float | int | None = ...,
-        cut_coords: ndarray | int | list[float | int] | list[int] | None = ...,
-    ) -> list[float | int] | list[float] | list[int] | ndarray: ...
+        threshold: float64 | ndarray | float | None = ...,
+        cut_coords: ndarray | int | list[float] | list[int] | None = ...,
+    ) -> list[float] | list[float] | list[int] | ndarray: ...
 
 class MosaicSlicer:
     def draw_cross(self, cut_coords: None = ..., **kwargs): ...
@@ -124,7 +124,7 @@ class OrthoSlicer:
     def find_cut_coords(
         cls,
         img: _MNI152Template | Nifti1Image | bool | None = ...,
-        threshold: float | int | None = ...,
+        threshold: float | None = ...,
         cut_coords: (
             tuple[int, int]
             | tuple[int, int, int]

@@ -164,7 +164,7 @@ def plot_markers(
     node_cmap: ListedColormap | LinearSegmentedColormap | str = ...,
     node_vmin: int | None = ...,
     node_vmax: int | None = ...,
-    node_threshold: float | int | None = ...,
+    node_threshold: float | None = ...,
     alpha: float = ...,
     output_file: PosixPath | None = ...,
     display_mode: str = ...,
@@ -205,7 +205,7 @@ def plot_roi(
     roi_img: Nifti1Image | PosixPath,
     bg_img: Nifti1Image | _MNI152Template = ...,
     cut_coords: (
-        tuple[int, int] | tuple[int, int, int] | int | list[float | int] | None
+        tuple[int, int] | tuple[int, int, int] | int | list[float] | None
     ) = ...,
     output_file: PosixPath | BufferedWriter | None = ...,
     display_mode: str = ...,
@@ -240,7 +240,7 @@ def plot_stat_map(
     figure: None = ...,
     axes: Axes | None = ...,
     title: str | None = ...,
-    threshold: float | int | float64 | ndarray = ...,
+    threshold: float | float64 | ndarray = ...,
     annotate: bool = ...,
     draw_cross: bool = ...,
     black_bg: str = ...,
