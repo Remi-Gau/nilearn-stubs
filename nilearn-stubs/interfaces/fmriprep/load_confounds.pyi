@@ -1,24 +1,39 @@
-from typing import Any
+from typing import Literal
 
 from numpy import ndarray
 from pandas.core.frame import DataFrame
 
 def load_confounds(
-    img_files: list[str] | list[list[str]] | str,
-    strategy: Any = ...,
-    motion: str = ...,
+    img_files: str | list[str],
+    strategy: tuple[
+        Literal[
+            "motion",
+            "high_pass",
+            "wm_csf",
+            "global_signal",
+            "compcor",
+            "ica_aroma",
+            "scrub",
+            "non_steady_state",
+        ],
+        ...,
+    ] = ...,
+    motion: Literal["basic", "power2", "derivatives", "full"] = ...,
     scrub: int = ...,
     fd_threshold: float = ...,
     std_dvars_threshold: int = ...,
-    wm_csf: str = ...,
-    global_signal: str = ...,
-    compcor: str = ...,
-    n_compcor: int | str = ...,
-    ica_aroma: str = ...,
+    wm_csf: Literal["basic", "power2", "derivatives", "full"] = ...,
+    global_signal: Literal["basic", "power2", "derivatives", "full"] = ...,
+    compcor: Literal[
+        "anat_combined",
+        "anat_separated",
+        "temporal",
+        "temporal_anat_combined",
+        "temporal_anat_separated",
+    ] = ...,
+    n_compcor: int | Literal["all"] = ...,
+    ica_aroma: Literal["basic", "full"] = ...,
     demean: bool = ...,
-) -> (
-    tuple[list[DataFrame], list[ndarray]]
-    | tuple[DataFrame, ndarray]
-    | tuple[DataFrame, None]
-    | tuple[None, ndarray]
-): ...
+) -> tuple[
+    DataFrame | list[DataFrame], None | ndarray | list[ndarray, None]
+]: ...

@@ -1,7 +1,13 @@
-from pathlib import PosixPath
+import os
 
+from nibabel.nifti1 import Nifti1Image
+from nibabel.nifti2 import Nifti2Image
 from pandas.core.frame import DataFrame
+from typing_extensions import TypeAlias
+
+FilePath: TypeAlias = str | os.PathLike[str]
+NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image
 
 def get_design_from_fslmat(
-    fsl_design_matrix_path: PosixPath, column_names: None = ...
+    fsl_design_matrix_path: FilePath, column_names: list[str] | None = ...
 ) -> DataFrame: ...

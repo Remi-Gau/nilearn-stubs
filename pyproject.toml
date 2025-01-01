@@ -50,13 +50,6 @@ disallow_untyped_calls = true
 disallow_untyped_decorators = true
 disallow_untyped_defs = false  # TODO
 enable_error_code = "ignore-without-code"  # same as in pandas
-exclude = [
-    "^doc/.*py$",
-    "^examples/.*py$",
-    "^.*tempita/.*py$",
-    "^nilearn/.*/tests/.*py$",
-    "^env/.*py$"
-]
 explicit_package_bases = false
 follow_imports = "normal"
 follow_imports_for_stubs = true
