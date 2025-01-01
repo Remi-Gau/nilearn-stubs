@@ -1,37 +1,47 @@
+import os
+from typing import Literal
+
 from nibabel.nifti1 import Nifti1Image
-from numpy import float32, int8, int32, int64, ndarray, uint8
+from nibabel.nifti2 import Nifti2Image
+from numpy import ndarray
+from typing_extensions import TypeAlias
+
+FilePath: TypeAlias = str | os.PathLike[str]
+NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image
 
 def img_to_signals_labels(
-    imgs: str | Nifti1Image,
-    labels_img: Nifti1Image,
-    mask_img: Nifti1Image | None = ...,
-    background_label: int = ...,
-    order: str = ...,
-    strategy: str = ...,
+    imgs: NiimgLike,
+    labels_img: NiimgLike,
+    mask_img: NiimgLike | None = ...,
+    background_label: float = ...,
+    order: Literal["C", "F"] = ...,
+    strategy: Literal[
+        "sum",
+        "mean",
+        "median",
+        "minimum",
+        "maximum",
+        "variance",
+        "standard_deviation",
+    ] = ...,
     keep_masked_labels: bool = ...,
     return_masked_atlas: bool = ...,
-) -> (
-    tuple[ndarray, list[uint8], Nifti1Image]
-    | tuple[ndarray, list[float32], Nifti1Image]
-    | tuple[ndarray, list[int32]]
-    | tuple[ndarray, list[int8], Nifti1Image]
-    | tuple[ndarray, list[int32], Nifti1Image]
-): ...
+) -> tuple[ndarray, list[float] | tuple[float], Nifti1Image]: ...
 def img_to_signals_maps(
-    imgs: Nifti1Image,
-    maps_img: Nifti1Image,
-    mask_img: Nifti1Image | None = ...,
+    imgs: NiimgLike,
+    maps_img: NiimgLike,
+    mask_img: NiimgLike | None = ...,
     keep_masked_maps: bool = ...,
-) -> tuple[ndarray, list[int64]]: ...
+) -> tuple[ndarray, list[float]]: ...
 def signals_to_img_labels(
-    signals: ndarray | Nifti1Image,
-    labels_img: str | Nifti1Image,
-    mask_img: str | Nifti1Image | None = ...,
+    signals: ndarray,
+    labels_img: NiimgLike,
+    mask_img: NiimgLike | None = ...,
     background_label: int = ...,
-    order: str = ...,
+    order: Literal["C", "F"] = ...,
 ) -> Nifti1Image: ...
 def signals_to_img_maps(
     region_signals: ndarray,
-    maps_img: Nifti1Image,
-    mask_img: Nifti1Image | None = ...,
+    maps_img: NiimgLike,
+    mask_img: NiimgLike | None = ...,
 ) -> Nifti1Image: ...
