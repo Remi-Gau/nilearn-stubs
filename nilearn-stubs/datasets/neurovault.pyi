@@ -1,14 +1,9 @@
 import os
-from typing import (
-    Callable,
-)
+from collections.abc import Container
+from typing import Callable, Literal
 
 from nibabel.nifti1 import Nifti1Image
 from nibabel.nifti2 import Nifti2Image
-from numpy import (
-    int64,
-    ndarray,
-)
 from sklearn.utils._bunch import Bunch
 from typing_extensions import TypeAlias
 
@@ -19,9 +14,9 @@ def fetch_neurovault(
     max_images: int = ...,
     collection_terms: None = ...,
     collection_filter: Callable = ...,
-    image_terms: None = ...,
+    image_terms: dict | None = ...,
     image_filter: Callable = ...,
-    mode: str = ...,
+    mode: Literal["download_new", "overwrite", "offline"] = ...,
     data_dir: FilePath | None = ...,
     fetch_neurosynth_words: bool = ...,
     resample: bool = ...,
@@ -30,9 +25,9 @@ def fetch_neurovault(
     **kwarg_image_filters,
 ) -> Bunch: ...
 def fetch_neurovault_ids(
-    collection_ids: list[int64] | tuple[()] = ...,
-    image_ids: list[int64] | tuple[()] | ndarray = ...,
-    mode: str = ...,
+    collection_ids: Container[int] = ...,
+    image_ids: Container[int] = ...,
+    mode: Literal["download_new", "overwrite", "offline"] = ...,
     data_dir: FilePath | None = ...,
     fetch_neurosynth_words: bool = ...,
     resample: bool = ...,
