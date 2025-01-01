@@ -19,7 +19,7 @@ from pandas.core.series import Series
 
 def binarize_img(
     img: Nifti1Image,
-    threshold: int | float = ...,
+    threshold: int | float | str = ...,
     mask_img: None = ...,
     two_sided: bool = ...,
     copy_header: bool = ...,
