@@ -5,6 +5,7 @@ from typing import Literal
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from nibabel.nifti2 import Nifti2Image
+from nilearn.maskers import MultiNiftiMasker, NiftiMasker, SurfaceMasker
 from nilearn.surface.surface import SurfaceImage
 from numpy import ndarray, random
 from typing_extensions import TypeAlias
@@ -25,7 +26,12 @@ class Parcellations:
         ],
         n_parcels: int = ...,
         random_state: int | random.mtrand.RandomState | None = ...,
-        mask: NiimgLike | SurfaceImage | None = ...,
+        mask: NiimgLike
+        | SurfaceImage
+        | NiftiMasker
+        | MultiNiftiMasker
+        | SurfaceMasker
+        | None = ...,
         smoothing_fwhm: float = ...,
         standardize: bool = ...,
         detrend: bool = ...,
