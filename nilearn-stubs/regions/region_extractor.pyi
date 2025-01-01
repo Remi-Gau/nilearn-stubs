@@ -16,9 +16,9 @@ def connected_label_regions(
 ): ...
 def connected_regions(
     maps_img: Nifti1Image,
-    min_region_size: int | float = ...,
+    min_region_size: float = ...,
     extract_type: int | str = ...,
-    smoothing_fwhm: int | float = ...,
+    smoothing_fwhm: float = ...,
     mask_img: Nifti1Image | None = ...,
 ) -> tuple[Nifti1Image, list[int]]: ...
 
@@ -27,12 +27,12 @@ class RegionExtractor:
         self,
         maps_img: Nifti1Image,
         mask_img: Nifti1Image | None = ...,
-        min_region_size: int | float = ...,
+        min_region_size: float = ...,
         threshold: float | int | str | None = ...,
         thresholding_strategy: str = ...,
         two_sided: bool = ...,
         extractor: str = ...,
-        smoothing_fwhm: int | float = ...,
+        smoothing_fwhm: float = ...,
         standardize: bool = ...,
         standardize_confounds: bool = ...,
         detrend: bool = ...,

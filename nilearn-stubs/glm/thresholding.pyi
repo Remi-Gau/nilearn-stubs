@@ -13,7 +13,7 @@ def threshold_stats_img(
     stat_img: Nifti1Image | None = ...,
     mask_img: Nifti1Image | None = ...,
     alpha: float = ...,
-    threshold: int | float = ...,
+    threshold: float = ...,
     height_control: str | None = ...,
     cluster_threshold: int = ...,
     two_sided: bool = ...,

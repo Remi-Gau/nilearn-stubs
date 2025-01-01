@@ -10,7 +10,7 @@ def compute_regressor(
     hrf_model: Callable | str,
     frame_times: ndarray,
     con_id: str = ...,
-    oversampling: int | float = ...,
+    oversampling: float = ...,
     fir_delays: range | list[int] | ndarray | None = ...,
     min_onset: int = ...,
 ) -> tuple[ndarray, list[str]]: ...
@@ -27,7 +27,7 @@ def glover_hrf(
     onset: float = ...,
 ) -> ndarray: ...
 def glover_time_derivative(
-    t_r: int | float | float64,
+    t_r: float,
     oversampling: int = ...,
     time_length: float = ...,
     onset: float = ...,
@@ -39,7 +39,7 @@ def spm_dispersion_derivative(
     onset: float = ...,
 ) -> ndarray: ...
 def spm_hrf(
-    t_r: int | float | float64,
+    t_r: float,
     oversampling: int = ...,
     time_length: float = ...,
     onset: float = ...,

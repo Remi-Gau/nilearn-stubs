@@ -1,12 +1,17 @@
+import os
+
 from nibabel.nifti1 import Nifti1Image
-from numpy import float64
+from nibabel.nifti2 import Nifti2Image
 from pandas.core.frame import DataFrame
+from typing_extensions import TypeAlias
+
+NiimgLike: TypeAlias = str | os.PathLike[str] | Nifti1Image | Nifti2Image
 
 def get_clusters_table(
-    stat_img: Nifti1Image | str,
-    stat_threshold: int | float | float64,
+    stat_img: NiimgLike,
+    stat_threshold: float,
     cluster_threshold: int | None = ...,
     two_sided: bool = ...,
-    min_distance: int | float = ...,
+    min_distance: float = ...,
     return_label_maps: bool = ...,
 ) -> tuple[DataFrame, list[Nifti1Image]] | DataFrame: ...

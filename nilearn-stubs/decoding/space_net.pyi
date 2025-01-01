@@ -15,7 +15,7 @@ class BaseSpaceNet:
         loss: str | None = ...,
         l1_ratios: float | int = ...,
         alphas: float | list[float] | None = ...,
-        n_alphas: int | float = ...,
+        n_alphas: float = ...,
         mask: SurfaceImage | str | Nifti1Image | None = ...,
         target_affine: ndarray | None = ...,
         target_shape: tuple[int, int, int] | list[int] | None = ...,

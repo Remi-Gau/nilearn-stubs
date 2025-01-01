@@ -34,7 +34,7 @@ def resample_img(
     copy: bool = ...,
     order: str = ...,
     clip: bool = ...,
-    fill_value: int | float = ...,
+    fill_value: float = ...,
     force_resample: bool | None = ...,
     copy_header: bool = ...,
 ) -> MGHImage | Nifti1Image: ...

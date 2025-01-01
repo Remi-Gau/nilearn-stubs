@@ -8,7 +8,7 @@ def permuted_ols(
     target_vars: ndarray,
     confounding_vars: ndarray | None = ...,
     model_intercept: bool = ...,
-    n_perm: int | float = ...,
+    n_perm: float = ...,
     two_sided_test: bool = ...,
     random_state: int | None = ...,
     n_jobs: int = ...,
