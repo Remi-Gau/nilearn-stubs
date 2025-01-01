@@ -39,7 +39,7 @@ allow_untyped_globals = false
 check_untyped_defs = true
 disallow_any_decorated = true
 disallow_any_explicit = false  # TODO
-disallow_any_expr = false  # TODO
+disallow_any_expr = true
 disallow_any_generics = false  # TODO
 # Disallow dynamic typing
 disallow_any_unimported = false  # TODO
@@ -50,6 +50,13 @@ disallow_untyped_calls = true
 disallow_untyped_decorators = true
 disallow_untyped_defs = false  # TODO
 enable_error_code = "ignore-without-code"  # same as in pandas
+exclude = [
+    "^doc/.*py$",
+    "^examples/.*py$",
+    "^.*tempita/.*py$",
+    "^nilearn/.*/tests/.*py$",
+    "^env/.*py$"
+]
 explicit_package_bases = false
 follow_imports = "normal"
 follow_imports_for_stubs = true
