@@ -13,7 +13,7 @@ def permuted_ols(
     model_intercept: bool = ...,
     n_perm: float = ...,
     two_sided_test: bool = ...,
-    random_state: int | random.mtrand.RandomState | None = ...,
+    random_state: int | random.RandomState | None = ...,
     n_jobs: int = ...,
     verbose: int = ...,
     masker: NiftiMasker | MultiNiftiMasker | None = ...,

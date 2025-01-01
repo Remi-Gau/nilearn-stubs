@@ -68,7 +68,7 @@ def run_glm(
     bins: int = ...,
     n_jobs: int = ...,
     verbose: int = ...,
-    random_state: int | random.mtrand.RandomState | None = ...,
+    random_state: int | random.RandomState | None = ...,
 ) -> (
     tuple[ndarray, dict[str_, RegressionResults]]
     | tuple[ndarray, dict[float, RegressionResults]]
@@ -98,7 +98,7 @@ class FirstLevelModel:
         n_jobs: int = ...,
         minimize_memory: Any = ...,
         subject_label: Any | None = ...,
-        random_state: int | random.mtrand.RandomState | None = ...,
+        random_state: int | random.RandomState | None = ...,
     ): ...
     def __sklearn_is_fitted__(self) -> bool: ...
     def __sklearn_tags__(self) -> Tags: ...

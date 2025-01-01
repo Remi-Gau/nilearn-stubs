@@ -17,7 +17,7 @@ class BaseAxes:
     ): ...
     def draw_2d(
         self,
-        data_2d: ndarray | ma.core.MaskedArray | None,
+        data_2d: ndarray | ma.MaskedArray | None,
         data_bounds: list[tuple[float64, float64]] | None,
         bounding_box: (
             list[tuple[float64, float64]]

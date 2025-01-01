@@ -11,7 +11,7 @@ class _MultiPCA:
         mask: Any | None = ...,
         smoothing_fwhm: Any | None = ...,
         do_cca: Any = ...,
-        random_state: int | random.mtrand.RandomState | None = ...,
+        random_state: int | random.RandomState | None = ...,
         standardize: Any = ...,
         standardize_confounds: Any = ...,
         detrend: Any = ...,

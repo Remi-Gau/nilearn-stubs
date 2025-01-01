@@ -19,7 +19,7 @@ class _BaseDecomposition:
     def __init__(
         self,
         n_components: Any = ...,
-        random_state: int | random.mtrand.RandomState | None = ...,
+        random_state: int | random.RandomState | None = ...,
         mask: Any | None = ...,
         smoothing_fwhm: Any | None = ...,
         standardize: Any = ...,

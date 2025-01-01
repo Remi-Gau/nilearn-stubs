@@ -20,7 +20,7 @@ def non_parametric_inference(
     model_intercept: bool = ...,
     n_perm: int = ...,
     two_sided_test: bool = ...,
-    random_state: int | random.mtrand.RandomState | None = ...,
+    random_state: int | random.RandomState | None = ...,
     n_jobs: int = ...,
     verbose: int = ...,
     threshold: float | None = ...,

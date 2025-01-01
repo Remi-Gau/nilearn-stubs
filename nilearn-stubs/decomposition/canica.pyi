@@ -13,7 +13,7 @@ class CanICA:
         do_cca: Any = ...,
         threshold: ndarray | str | float | list[int] | int = ...,
         n_init: ndarray | float | str | int | list[int] = ...,
-        random_state: int | random.mtrand.RandomState | None = ...,
+        random_state: int | random.RandomState | None = ...,
         standardize: Any = ...,
         standardize_confounds: Any = ...,
         detrend: Any = ...,

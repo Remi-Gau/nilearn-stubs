@@ -12,7 +12,7 @@ class HierarchicalKMeans:
         n_init: int = ...,
         max_no_improvement: int = ...,
         verbose: int = ...,
-        random_state: int | random.mtrand.RandomState | None = ...,
+        random_state: int | random.RandomState | None = ...,
         scaling: bool = ...,
     ): ...
     def __sklearn_tags__(self) -> Tags: ...

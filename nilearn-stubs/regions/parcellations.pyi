@@ -25,7 +25,7 @@ class Parcellations:
             "hierarchical_kmeans",
         ],
         n_parcels: int = ...,
-        random_state: int | random.mtrand.RandomState | None = ...,
+        random_state: int | random.RandomState | None = ...,
         mask: (
             NiimgLike
             | SurfaceImage
