@@ -1,26 +1,25 @@
-from typing import Any
+from typing import Literal
 
-from numpy import memmap, ndarray, random
+from numpy import ndarray, random
 from sklearn.utils._tags import Tags
-from sklearn.utils.estimator_checks import _NotAnArray
 
 class HierarchicalKMeans:
     def __init__(
         self,
-        n_clusters: ndarray | float | str | int | list[int],
-        init: ndarray | str | float | list[int] | int = ...,
-        batch_size: ndarray | float | str | int | list[int] = ...,
-        n_init: ndarray | float | str | int | list[int] = ...,
-        max_no_improvement: ndarray | float | str | int | list[int] = ...,
+        n_clusters: int,
+        init: Literal["k-means++", "random"] | ndarray = ...,
+        batch_size: int = ...,
+        n_init: int = ...,
+        max_no_improvement: int = ...,
         verbose: int = ...,
         random_state: int | random.mtrand.RandomState | None = ...,
-        scaling: Any = ...,
+        scaling: bool = ...,
     ): ...
     def __sklearn_tags__(self) -> Tags: ...
     def fit(
         self,
-        X: _NotAnArray | memmap | ndarray,
-        y: ndarray | _NotAnArray | memmap | None = ...,
+        X: ndarray,
+        y: None = ...,
     ) -> HierarchicalKMeans: ...
     def inverse_transform(self, X_red: ndarray) -> ndarray: ...
     def transform(self, X: ndarray, y: None = ...) -> ndarray: ...
