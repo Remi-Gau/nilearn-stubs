@@ -1,49 +1,52 @@
-from pathlib import PosixPath
+import os
+from typing import Literal
 
-from nibabel.freesurfer.mghformat import MGHImage
 from nibabel.nifti1 import Nifti1Image
-from nilearn.plotting.img_plotting import _MNI152Template
+from nibabel.nifti2 import Nifti2Image
 from numpy import (
-    float64,
     ndarray,
 )
+from typing_extensions import TypeAlias
+
+FilePath: TypeAlias = str | os.PathLike[str]
+NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image
 
 def coord_transform(
-    x: float64 | ndarray | float | list[int],
-    y: float64 | ndarray | float | list[int],
-    z: float64 | ndarray | float | list[int] | int,
+    x: float | ndarray,
+    y: float | ndarray,
+    z: float | ndarray,
     affine: ndarray,
-) -> tuple[float, float, float] | tuple[ndarray, ndarray, ndarray]: ...
+) -> tuple[float | ndarray, float | ndarray, float | ndarray]: ...
 def from_matrix_vector(matrix: ndarray, vector: ndarray) -> ndarray: ...
 def get_bounds(
     shape: tuple[int, int, int], affine: ndarray
-) -> list[tuple[float64, float64]]: ...
+) -> list[tuple[float, float]]: ...
 def get_mask_bounds(
-    img: _MNI152Template | Nifti1Image | None,
-) -> tuple[float64, float64, float64, float64, float64, float64]: ...
+    img: NiimgLike,
+) -> tuple[float, float, float, float, float, float]: ...
 def reorder_img(
-    img: _MNI152Template | Nifti1Image,
-    resample: str | None = ...,
+    img: NiimgLike,
+    resample: Literal["continuous", "linear", "nearest", None] = ...,
     copy_header: bool = ...,
-) -> _MNI152Template | Nifti1Image: ...
+) -> Nifti1Image: ...
 def resample_img(
-    img: PosixPath | str | Nifti1Image | MGHImage,
+    img: NiimgLike,
     target_affine: ndarray | None = ...,
     target_shape: tuple[int, int, int] | list[int] | None = ...,
-    interpolation: str = ...,
+    interpolation: Literal["continuous", "linear", "nearest"] = ...,
     copy: bool = ...,
-    order: str = ...,
+    order: Literal["F", "C"] = ...,
     clip: bool = ...,
     fill_value: float = ...,
     force_resample: bool | None = ...,
     copy_header: bool = ...,
-) -> MGHImage | Nifti1Image: ...
+) -> Nifti1Image: ...
 def resample_to_img(
-    source_img: Nifti1Image,
-    target_img: Nifti1Image,
-    interpolation: str = ...,
+    source_img: NiimgLike,
+    target_img: NiimgLike,
+    interpolation: Literal["continuous", "linear", "nearest"] = ...,
     copy: bool = ...,
-    order: str = ...,
+    order: Literal["F", "C"] = ...,
     clip: bool = ...,
     fill_value: float = ...,
     force_resample: bool | None = ...,

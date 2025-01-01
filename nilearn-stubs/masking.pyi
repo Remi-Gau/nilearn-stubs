@@ -9,7 +9,8 @@ from numpy import ndarray
 from numpy.typing import DTypeLike
 from typing_extensions import TypeAlias
 
-NiimgLike: TypeAlias = str | os.PathLike[str] | Nifti1Image | Nifti2Image
+FilePath: TypeAlias = str | os.PathLike[str]
+NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image
 
 __all__ = [
     "apply_mask",
