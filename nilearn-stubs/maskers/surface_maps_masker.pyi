@@ -1,13 +1,8 @@
 from pathlib import PosixPath
-from typing import (
-    Any,
-)
+from typing import Any
 
 from nilearn.surface.surface import SurfaceImage
-from numpy import (
-    memmap,
-    ndarray,
-)
+from numpy import memmap, ndarray
 from sklearn.utils.estimator_checks import _NotAnArray
 
 class SurfaceMapsMasker:

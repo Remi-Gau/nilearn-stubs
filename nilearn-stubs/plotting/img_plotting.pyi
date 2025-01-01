@@ -1,14 +1,9 @@
 from io import BufferedWriter
 from pathlib import PosixPath
-from typing import (
-    Any,
-)
+from typing import Any
 
 from matplotlib.axes._axes import Axes
-from matplotlib.colors import (
-    LinearSegmentedColormap,
-    ListedColormap,
-)
+from matplotlib.colors import LinearSegmentedColormap, ListedColormap
 from matplotlib.figure import Figure
 from nibabel.nifti1 import Nifti1Image
 from nilearn.maskers.nifti_masker import NiftiMasker
@@ -24,11 +19,7 @@ from nilearn.plotting.displays._slicers import (
     XSlicer,
     ZSlicer,
 )
-from numpy import (
-    float64,
-    int64,
-    ndarray,
-)
+from numpy import float64, int64, ndarray
 from numpy.ma.core import MaskedArray
 from scipy.sparse._coo import coo_matrix
 
@@ -213,11 +204,9 @@ def plot_prob_atlas(
 def plot_roi(
     roi_img: Nifti1Image | PosixPath,
     bg_img: Nifti1Image | _MNI152Template = ...,
-    cut_coords: tuple[int, int]
-    | tuple[int, int, int]
-    | int
-    | list[float | int]
-    | None = ...,
+    cut_coords: (
+        tuple[int, int] | tuple[int, int, int] | int | list[float | int] | None
+    ) = ...,
     output_file: PosixPath | BufferedWriter | None = ...,
     display_mode: str = ...,
     figure: None = ...,

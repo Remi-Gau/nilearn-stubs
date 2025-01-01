@@ -1,7 +1,5 @@
 from pathlib import PosixPath
-from typing import (
-    Any,
-)
+from typing import Any
 
 from nibabel.nifti1 import Nifti1Image
 from nilearn.glm.regression import RegressionResults

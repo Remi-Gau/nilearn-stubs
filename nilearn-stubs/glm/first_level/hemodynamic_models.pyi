@@ -1,16 +1,12 @@
-from typing import (
-    Callable,
-)
+from typing import Callable
 
-from numpy import (
-    float64,
-    int64,
-    ndarray,
-)
+from numpy import float64, int64, ndarray
 
 def compute_regressor(
-    exp_condition: tuple[ndarray, ndarray, ndarray]
-    | tuple[list[int | float], list[int], list[int]],
+    exp_condition: (
+        tuple[ndarray, ndarray, ndarray]
+        | tuple[list[int | float], list[int], list[int]]
+    ),
     hrf_model: Callable | str,
     frame_times: ndarray,
     con_id: str = ...,

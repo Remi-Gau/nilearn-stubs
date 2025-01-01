@@ -1,14 +1,10 @@
 from pathlib import PosixPath
 
-from matplotlib.colors import (
-    LinearSegmentedColormap,
-)
+from matplotlib.colors import LinearSegmentedColormap
 from nibabel.nifti1 import Nifti1Image
 from nilearn.plotting.html_document import HTMLDocument
 from nilearn.surface.surface import InMemoryMesh
-from numpy import (
-    ndarray,
-)
+from numpy import ndarray
 from sklearn.utils._bunch import Bunch
 
 class SurfaceView(HTMLDocument):

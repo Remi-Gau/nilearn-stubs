@@ -20,13 +20,15 @@ class BaseAxes:
         self,
         data_2d: ndarray | ma.core.MaskedArray | None,
         data_bounds: list[tuple[float64, float64]] | None,
-        bounding_box: list[tuple[float64, float64]]
-        | tuple[
-            tuple[float64, float64],
-            tuple[float64, float64],
-            tuple[float64, float64],
-        ]
-        | None,
+        bounding_box: (
+            list[tuple[float64, float64]]
+            | tuple[
+                tuple[float64, float64],
+                tuple[float64, float64],
+                tuple[float64, float64],
+            ]
+            | None
+        ),
         type: str = ...,
         **kwargs,
     ) -> AxesImage | QuadContourSet: ...

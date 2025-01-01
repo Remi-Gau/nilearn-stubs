@@ -1,17 +1,9 @@
 from pathlib import PosixPath
-from typing import (
-    Any,
-)
+from typing import Any
 
-from joblib.memory import (
-    MemorizedResult,
-    Memory,
-)
+from joblib.memory import MemorizedResult, Memory
 from nibabel.nifti1 import Nifti1Image
-from numpy import (
-    memmap,
-    ndarray,
-)
+from numpy import memmap, ndarray
 from pandas.core.frame import DataFrame
 from sklearn.utils.estimator_checks import _NotAnArray
 
@@ -31,11 +23,9 @@ class NiftiMasker:
         target_affine: int | ndarray | None = ...,
         target_shape: int | tuple[int, int, int] | None = ...,
         mask_strategy: int | str = ...,
-        mask_args: dict[str, float]
-        | dict[str, int]
-        | int
-        | dict[str, bool]
-        | None = ...,
+        mask_args: (
+            dict[str, float] | dict[str, int] | int | dict[str, bool] | None
+        ) = ...,
         dtype: int | str | None = ...,
         memory_level: int = ...,
         memory: int | Memory | None = ...,

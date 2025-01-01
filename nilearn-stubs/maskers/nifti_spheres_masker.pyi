@@ -1,18 +1,17 @@
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
-from numpy import (
-    memmap,
-    ndarray,
-)
+from numpy import memmap, ndarray
 from sklearn.utils.estimator_checks import _NotAnArray
 
 class NiftiSpheresMasker:
     def __init__(
         self,
-        seeds: list[tuple[int, int, int]]
-        | list[tuple[float, float, float]]
-        | list[int]
-        | int,
+        seeds: (
+            list[tuple[int, int, int]]
+            | list[tuple[float, float, float]]
+            | list[int]
+            | int
+        ),
         radius: int | float | None = ...,
         mask_img: Nifti1Image | int | None = ...,
         allow_overlap: int | bool = ...,

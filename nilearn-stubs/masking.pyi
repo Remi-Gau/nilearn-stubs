@@ -1,18 +1,9 @@
-from typing import (
-    Any,
-)
+from typing import Any
 
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
-from numpy import (
-    memmap,
-    ndarray,
-)
-from numpy.dtypes import (
-    Float32DType,
-    Float64DType,
-    Int32DType,
-)
+from numpy import memmap, ndarray
+from numpy.dtypes import Float32DType, Float64DType, Int32DType
 
 __all__ = [
     "apply_mask",

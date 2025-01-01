@@ -1,16 +1,8 @@
-from typing import (
-    Any,
-)
+from typing import Any
 
-from joblib.memory import (
-    MemorizedResult,
-    Memory,
-)
+from joblib.memory import MemorizedResult, Memory
 from nibabel.nifti1 import Nifti1Image
-from numpy import (
-    memmap,
-    ndarray,
-)
+from numpy import memmap, ndarray
 from sklearn.utils.estimator_checks import _NotAnArray
 
 class MultiNiftiMasker:

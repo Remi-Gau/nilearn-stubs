@@ -1,13 +1,8 @@
 from pathlib import PosixPath
-from typing import (
-    Any,
-)
+from typing import Any
 
 from nibabel.nifti1 import Nifti1Image
-from numpy import (
-    float64,
-    ndarray,
-)
+from numpy import float64, ndarray
 
 def load_surf_data(surf_data: str | ndarray | PosixPath) -> ndarray: ...
 def load_surf_mesh(surf_mesh: Any) -> InMemoryMesh: ...
@@ -60,15 +55,19 @@ class PolyMesh:
 class SurfaceImage:
     def __init__(
         self,
-        mesh: dict[str, InMemoryMesh]
-        | dict[str, str]
-        | PolyMesh
-        | dict[str, PosixPath],
-        data: dict[str, str]
-        | dict[str, PosixPath]
-        | int
-        | dict[str, ndarray]
-        | PolyData,
+        mesh: (
+            dict[str, InMemoryMesh]
+            | dict[str, str]
+            | PolyMesh
+            | dict[str, PosixPath]
+        ),
+        data: (
+            dict[str, str]
+            | dict[str, PosixPath]
+            | int
+            | dict[str, ndarray]
+            | PolyData
+        ),
     ): ...
     def __repr__(self) -> str: ...
     @classmethod

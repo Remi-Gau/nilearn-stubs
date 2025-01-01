@@ -1,8 +1,5 @@
 from nibabel.nifti1 import Nifti1Image
-from numpy import (
-    float64,
-    ndarray,
-)
+from numpy import float64, ndarray
 
 def cluster_level_inference(
     stat_img: Nifti1Image,

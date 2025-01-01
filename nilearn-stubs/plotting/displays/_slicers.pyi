@@ -1,9 +1,6 @@
 from io import BufferedWriter
 from pathlib import PosixPath
-from typing import (
-    Any,
-    Callable,
-)
+from typing import Any, Callable
 
 from matplotlib.axes._axes import Axes
 from matplotlib.backends.backend_agg import RendererAgg
@@ -19,13 +16,18 @@ from matplotlib.image import AxesImage
 from matplotlib.transforms import Bbox
 from nibabel.nifti1 import Nifti1Image
 from nilearn.plotting.img_plotting import _MNI152Template
-from numpy import (
-    float32,
-    float64,
-    ndarray,
-)
+from numpy import float32, float64, int64, ndarray
 from numpy.ma.core import MaskedArray
 
+def _get_cbar_ticks(
+    vmin: int64 | float64 | float | float32 | int,
+    vmax: int64 | float64 | float32 | float | int,
+    offset: ndarray | float | float64 | int | None,
+    n_ticks: int = ...,
+) -> ndarray: ...
+def _get_create_display_fun(
+    display_mode: str, class_dict: dict[str, Any]
+) -> Callable: ...
 def get_slicer(display_mode: str) -> Callable: ...
 
 class BaseSlicer:
@@ -39,7 +41,7 @@ class BaseSlicer:
     ): ...
     def _map_show(
         self,
-        img: Nifti1Image | _MNI152Template,
+        img: _MNI152Template | Nifti1Image,
         type: str = ...,
         resampling_interpolation: str = ...,
         threshold: float64 | ndarray | float | int | None = ...,
@@ -51,7 +53,7 @@ class BaseSlicer:
         norm: Normalize,
         cbar_vmin: int | float32 | None = ...,
         cbar_vmax: int | float32 | None = ...,
-        threshold: float64 | ndarray | float | int | None = ...,
+        threshold: ndarray | float | float64 | int | None = ...,
     ): ...
     @classmethod
     def _threshold(
@@ -72,15 +74,15 @@ class BaseSlicer:
     def add_markers(
         self,
         marker_coords: list[tuple[int, int, int]] | list[list[int]] | ndarray,
-        marker_color: list[tuple[float64, float64, float64, float64]]
-        | list[str]
-        | str = ...,
+        marker_color: (
+            list[tuple[float64, float64, float64, float64]] | list[str] | str
+        ) = ...,
         marker_size: int | float | list[int] | ndarray = ...,
         **kwargs,
     ): ...
     def add_overlay(
         self,
-        img: Nifti1Image | _MNI152Template,
+        img: _MNI152Template | Nifti1Image,
         threshold: float64 | ndarray | float | int | None = ...,
         colorbar: bool = ...,
         cbar_tick_format: str = ...,
@@ -108,7 +110,7 @@ class BaseSlicer:
     @classmethod
     def init_with_figure(
         cls,
-        img: Nifti1Image | _MNI152Template | bool | None,
+        img: bool | _MNI152Template | Nifti1Image | None,
         threshold: Any | None = ...,
         cut_coords: Any | None = ...,
         figure: Figure | None = ...,
@@ -143,7 +145,7 @@ class BaseStackedSlicer:
     @classmethod
     def find_cut_coords(
         cls,
-        img: Nifti1Image | _MNI152Template | bool | None = ...,
+        img: bool | _MNI152Template | Nifti1Image | None = ...,
         threshold: float64 | ndarray | float | int | None = ...,
         cut_coords: ndarray | int | list[float | int] | list[int] | None = ...,
     ) -> list[float | int] | list[float] | list[int] | ndarray: ...
@@ -152,7 +154,7 @@ class MosaicSlicer:
     @staticmethod
     def _find_cut_coords(
         img: Nifti1Image | None, cut_coords: list[int], cut_displayed: str
-    ) -> dict[str, list[float] | ndarray]: ...
+    ) -> dict[str, ndarray | list[float]]: ...
     def _init_axes(self, **kwargs): ...
     def _locator(self, axes: Axes, renderer: RendererAgg) -> Bbox: ...
     def draw_cross(self, cut_coords: None = ..., **kwargs): ...
@@ -161,12 +163,14 @@ class MosaicSlicer:
         cls,
         img: Nifti1Image | None = ...,
         threshold: float | None = ...,
-        cut_coords: tuple[int, int]
-        | tuple[int, int, int, int]
-        | tuple[int, int, int]
-        | int
-        | None = ...,
-    ) -> dict[str, list[float] | ndarray]: ...
+        cut_coords: (
+            tuple[int, int]
+            | tuple[int, int, int, int]
+            | tuple[int, int, int]
+            | int
+            | None
+        ) = ...,
+    ) -> dict[str, ndarray | list[float]]: ...
 
 class OrthoSlicer:
     def _init_axes(self, **kwargs): ...
@@ -177,13 +181,15 @@ class OrthoSlicer:
     @classmethod
     def find_cut_coords(
         cls,
-        img: Nifti1Image | _MNI152Template | bool | None = ...,
-        threshold: int | float | None = ...,
-        cut_coords: tuple[int, int]
-        | tuple[int, int, int]
-        | list[float]
-        | list[int]
-        | None = ...,
+        img: _MNI152Template | Nifti1Image | bool | None = ...,
+        threshold: float | int | None = ...,
+        cut_coords: (
+            tuple[int, int]
+            | tuple[int, int, int]
+            | list[float]
+            | list[int]
+            | None
+        ) = ...,
     ) -> tuple[int, int] | list[float] | list[int] | tuple[int, int, int]: ...
 
 class TiledSlicer:
@@ -217,14 +223,7 @@ class TiledSlicer:
     @classmethod
     def find_cut_coords(
         cls,
-        img: Nifti1Image | _MNI152Template | None = ...,
+        img: _MNI152Template | Nifti1Image | None = ...,
         threshold: float | None = ...,
         cut_coords: tuple[int, int] | tuple[int, int, int] | None = ...,
     ) -> tuple[int, int] | list[float] | tuple[int, int, int]: ...
-
-class XSlicer(BaseStackedSlicer): ...
-class XZSlicer(OrthoSlicer): ...
-class YSlicer(BaseStackedSlicer): ...
-class YXSlicer(OrthoSlicer): ...
-class YZSlicer(OrthoSlicer): ...
-class ZSlicer(BaseStackedSlicer): ...

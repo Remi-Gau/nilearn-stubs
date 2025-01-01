@@ -1,7 +1,4 @@
-from numpy import (
-    float64,
-    ndarray,
-)
+from numpy import float64, ndarray
 
 class ARModel:
     def __init__(self, design: ndarray, rho: float64 | float | ndarray): ...

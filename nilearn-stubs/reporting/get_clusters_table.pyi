@@ -1,7 +1,5 @@
 from nibabel.nifti1 import Nifti1Image
-from numpy import (
-    float64,
-)
+from numpy import float64
 from pandas.core.frame import DataFrame
 
 def get_clusters_table(

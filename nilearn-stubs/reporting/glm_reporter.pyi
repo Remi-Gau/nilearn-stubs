@@ -1,9 +1,7 @@
 from nilearn.glm.first_level.first_level import FirstLevelModel
 from nilearn.glm.second_level.second_level import SecondLevelModel
 from nilearn.reporting.html_report import HTMLReport
-from numpy import (
-    ndarray,
-)
+from numpy import ndarray
 
 def make_glm_report(
     model: FirstLevelModel | SecondLevelModel,

@@ -1,7 +1,5 @@
 from matplotlib.colors import LinearSegmentedColormap
-from numpy import (
-    ndarray,
-)
+from numpy import ndarray
 
 def alpha_cmap(
     color: tuple[int, int, int] | ndarray,

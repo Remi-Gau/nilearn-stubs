@@ -1,15 +1,8 @@
-from typing import (
-    Any,
-)
+from typing import Any
 
-from joblib.memory import (
-    MemorizedResult,
-)
+from joblib.memory import MemorizedResult
 from nibabel.nifti1 import Nifti1Image
-from numpy import (
-    memmap,
-    ndarray,
-)
+from numpy import memmap, ndarray
 from pandas.core.frame import DataFrame
 from sklearn.utils._tags import Tags
 from sklearn.utils.estimator_checks import _NotAnArray

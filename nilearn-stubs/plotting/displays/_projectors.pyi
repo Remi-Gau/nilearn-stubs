@@ -1,14 +1,8 @@
-from typing import (
-    Any,
-    Callable,
-)
+from typing import Any, Callable
 
 from matplotlib.colors import LinearSegmentedColormap
 from nibabel.nifti1 import Nifti1Image
-from numpy import (
-    int64,
-    ndarray,
-)
+from numpy import int64, ndarray
 from numpy.ma.core import MaskedArray
 from scipy.sparse._coo import coo_matrix
 

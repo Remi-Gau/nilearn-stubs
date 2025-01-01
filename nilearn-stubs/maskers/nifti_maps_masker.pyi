@@ -1,14 +1,9 @@
-from typing import (
-    Any,
-)
+from typing import Any
 
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from nilearn.maskers.multi_nifti_maps_masker import MultiNiftiMapsMasker
-from numpy import (
-    memmap,
-    ndarray,
-)
+from numpy import memmap, ndarray
 from sklearn.utils.estimator_checks import _NotAnArray
 
 class NiftiMapsMasker:

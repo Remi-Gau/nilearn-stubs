@@ -1,7 +1,5 @@
 from pathlib import PosixPath
-from typing import (
-    Callable,
-)
+from typing import Callable
 
 from numpy import ndarray
 from pandas.core.frame import DataFrame

@@ -1,24 +1,19 @@
 from pathlib import PosixPath
 
 from nibabel.nifti1 import Nifti1Image
-from nilearn.glm.regression import (
-    RegressionResults,
-    SimpleRegressionResults,
-)
+from nilearn.glm.regression import RegressionResults, SimpleRegressionResults
 from nilearn.maskers.surface_masker import SurfaceMasker
 from nilearn.surface.surface import SurfaceImage
-from numpy import (
-    int64,
-    ndarray,
-    str_,
-)
+from numpy import int64, ndarray, str_
 
 def compute_contrast(
     labels: ndarray,
-    regression_result: dict[str_, RegressionResults]
-    | dict[float, RegressionResults]
-    | dict[float, SimpleRegressionResults]
-    | dict[str_, SimpleRegressionResults],
+    regression_result: (
+        dict[str_, RegressionResults]
+        | dict[float, RegressionResults]
+        | dict[float, SimpleRegressionResults]
+        | dict[str_, SimpleRegressionResults]
+    ),
     con_val: list[int] | ndarray,
     stat_type: str | None = ...,
 ) -> Contrast: ...

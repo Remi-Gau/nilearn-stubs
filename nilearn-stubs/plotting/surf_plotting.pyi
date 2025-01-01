@@ -1,23 +1,13 @@
 from pathlib import PosixPath
-from typing import (
-    Any,
-    Callable,
-)
+from typing import Any, Callable
 
 from matplotlib.axes._axes import Axes
 from matplotlib.figure import Figure
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from nibabel.nifti1 import Nifti1Image
 from nilearn.plotting.displays._figures import PlotlySurfaceFigure
-from nilearn.surface.surface import (
-    InMemoryMesh,
-    PolyMesh,
-)
-from numpy import (
-    float32,
-    float64,
-    ndarray,
-)
+from nilearn.surface.surface import InMemoryMesh, PolyMesh
+from numpy import float32, float64, ndarray
 from sklearn.utils._bunch import Bunch
 
 def plot_img_on_surf(
@@ -27,11 +17,13 @@ def plot_img_on_surf(
     hemispheres: list[str] | None = ...,
     bg_on_data: bool = ...,
     inflate: bool = ...,
-    views: list[str | dict[str, str]]
-    | list[str]
-    | list[tuple[float, float]]
-    | int
-    | None = ...,
+    views: (
+        list[str | dict[str, str]]
+        | list[str]
+        | list[tuple[float, float]]
+        | int
+        | None
+    ) = ...,
     output_file: str | None = ...,
     title: str | None = ...,
     colorbar: bool = ...,

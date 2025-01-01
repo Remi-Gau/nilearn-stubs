@@ -1,6 +1,4 @@
-from typing import (
-    Any,
-)
+from typing import Any
 
 from numpy import ndarray
 from pandas.core.frame import DataFrame

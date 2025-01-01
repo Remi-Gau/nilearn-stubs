@@ -20,9 +20,7 @@ requires-python = ">=3.9"
 dev = [
     "nilearn-stubs",
     "mypy",
-    "pre-commit",
-    "pandas-stubs",
-    "ruff"
+    "pandas-stubs"
 ]
 
 [tool.hatch.build.hooks.vcs]

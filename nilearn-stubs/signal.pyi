@@ -1,12 +1,6 @@
-from typing import (
-    Any,
-)
+from typing import Any
 
-from numpy import (
-    float64,
-    memmap,
-    ndarray,
-)
+from numpy import float64, memmap, ndarray
 
 __all__ = [
     "butterworth",
