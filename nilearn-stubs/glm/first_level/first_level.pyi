@@ -101,58 +101,6 @@ class FirstLevelModel:
     ): ...
     def __sklearn_is_fitted__(self) -> bool: ...
     def __sklearn_tags__(self) -> Tags: ...
-    def _check_fit_inputs(
-        self,
-        run_imgs: Any,
-        events: Any,
-        confounds: DataFrame
-        | ndarray
-        | list[DataFrame]
-        | list[ndarray]
-        | None,
-        sample_masks: ndarray | None,
-        design_matrices: Any,
-    ) -> Any: ...
-    def _check_fitted(self): ...
-    def _create_all_designs(
-        self,
-        run_imgs: list[PosixPath | str | Nifti1Image | SurfaceImage],
-        events: list[DataFrame] | None,
-        confounds: list[ndarray] | list[DataFrame] | None,
-        design_matrices: list[DataFrame] | None,
-    ) -> list[DataFrame]: ...
-    def _create_single_design(
-        self,
-        n_scans: int,
-        events: list[DataFrame],
-        confounds: list[DataFrame] | list[ndarray] | None,
-        run_idx: int,
-    ) -> DataFrame: ...
-    def _fit_single_run(
-        self,
-        sample_masks: list[ndarray] | None,
-        bins: int,
-        run_img: Nifti1Image | PosixPath | str | SurfaceImage,
-        run_idx: int,
-    ): ...
-    def _get_voxelwise_model_attribute(
-        self, attribute: str, result_as_time_series: bool
-    ) -> list[Nifti1Image | SurfaceImage]: ...
-    def _log(
-        self,
-        step: str,
-        run_idx: int | None = ...,
-        n_runs: int | None = ...,
-        t0: float | None = ...,
-        time_in_second: float | None = ...,
-    ): ...
-    def _more_tags(self) -> Tags: ...
-    def _prepare_mask(
-        self, run_img: Nifti1Image | PosixPath | str | SurfaceImage
-    ): ...
-    def _report_progress(
-        self, run_idx: int, n_runs: int, t0: float
-    ) -> str: ...
     def compute_contrast(
         self,
         contrast_def: list[ndarray] | ndarray | str | int,
