@@ -1,7 +1,5 @@
 from pathlib import Path
-from typing import (
-    Any,
-)
+from typing import Any
 
 from joblib.memory import Memory
 from numpy import ndarray

@@ -1,7 +1,5 @@
 from pathlib import Path, PosixPath
-from typing import (
-    Any,
-)
+from typing import Any
 
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image

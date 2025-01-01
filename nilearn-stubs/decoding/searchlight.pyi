@@ -1,6 +1,4 @@
-from typing import (
-    Any,
-)
+from typing import Any
 
 from nibabel.nifti1 import Nifti1Image
 from numpy import (

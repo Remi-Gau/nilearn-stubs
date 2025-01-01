@@ -1,7 +1,5 @@
 from pathlib import PosixPath
-from typing import (
-    Any,
-)
+from typing import Any
 
 from sklearn.utils._bunch import Bunch
 
