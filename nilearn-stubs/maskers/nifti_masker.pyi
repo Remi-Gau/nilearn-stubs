@@ -1,4 +1,5 @@
-from pathlib import Path, PosixPath
+import os
+from pathlib import PosixPath
 from typing import Any
 
 from joblib.memory import MemorizedResult, Memory
@@ -6,6 +7,9 @@ from nibabel.nifti1 import Nifti1Image
 from numpy import memmap, ndarray
 from numpy.typing import DTypeLike
 from pandas.core.frame import DataFrame
+from typing_extensions import TypeAlias
+
+MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
 class NiftiMasker:
     def __init__(
@@ -28,7 +32,7 @@ class NiftiMasker:
         ) = ...,
         dtype: DTypeLike | None = ...,
         memory_level: int = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         verbose: int = ...,
         reports: int | bool = ...,
         cmap: int | str = ...,

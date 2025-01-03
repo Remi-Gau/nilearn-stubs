@@ -1,4 +1,4 @@
-from pathlib import Path
+import os
 
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
@@ -6,6 +6,9 @@ from nilearn.surface.surface import SurfaceImage
 from numpy import (
     ndarray,
 )
+from typing_extensions import TypeAlias
+
+MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
 class BaseSpaceNet:
     def __init__(
@@ -24,7 +27,7 @@ class BaseSpaceNet:
         t_r: float | None = ...,
         max_iter: int = ...,
         tol: float = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         memory_level: int = ...,
         standardize: bool = ...,
         verbose: int = ...,
@@ -59,7 +62,7 @@ class SpaceNetClassifier:
         t_r: float | None = ...,
         max_iter: int = ...,
         tol: float = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         memory_level: int = ...,
         standardize: bool = ...,
         verbose: int = ...,
@@ -87,7 +90,7 @@ class SpaceNetRegressor:
         t_r: float | None = ...,
         max_iter: int = ...,
         tol: float = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         memory_level: int = ...,
         standardize: bool = ...,
         verbose: int = ...,

@@ -1,4 +1,5 @@
-from pathlib import Path, PosixPath
+import os
+from pathlib import PosixPath
 from typing import Any
 
 from joblib.memory import Memory
@@ -8,6 +9,9 @@ from nilearn.surface.surface import SurfaceImage
 from numpy import ndarray, random, str_
 from pandas.core.frame import DataFrame
 from sklearn.utils._tags import Tags
+from typing_extensions import TypeAlias
+
+MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
 def first_level_from_bids(
     dataset_path: int | PosixPath | str,
@@ -30,7 +34,7 @@ def first_level_from_bids(
     target_affine: ndarray | None = ...,
     target_shape: tuple[int, int, int] | list[int] | None = ...,
     smoothing_fwhm: None = ...,
-    memory: Memory | str | Path | None = ...,
+    memory: MemoryLike = ...,
     memory_level: int = ...,
     standardize: bool = ...,
     signal_scaling: int = ...,
@@ -89,7 +93,7 @@ class FirstLevelModel:
         target_affine: ndarray | None = ...,
         target_shape: tuple[int, int, int] | list[int] | None = ...,
         smoothing_fwhm: Any | None = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         memory_level: int = ...,
         standardize: Any = ...,
         signal_scaling: Any = ...,

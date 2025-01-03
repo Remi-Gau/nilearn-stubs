@@ -1,5 +1,4 @@
 import os
-from pathlib import Path
 from typing import Literal
 
 from joblib.memory import Memory
@@ -7,6 +6,8 @@ from nibabel.nifti1 import Nifti1Image
 from nibabel.nifti2 import Nifti2Image
 from numpy import ndarray
 from typing_extensions import TypeAlias
+
+MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
 FilePath: TypeAlias = str | os.PathLike[str]
 NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image
@@ -45,7 +46,7 @@ class RegionExtractor:
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: float | None = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         memory_level: int = ...,
         verbose: int = ...,
     ): ...

@@ -1,10 +1,13 @@
-from pathlib import Path
+import os
 from typing import Any
 
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from nilearn.maskers.multi_nifti_labels_masker import MultiNiftiLabelsMasker
 from numpy import memmap, ndarray
+from typing_extensions import TypeAlias
+
+MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
 class NiftiLabelsMasker:
     def __init__(
@@ -23,7 +26,7 @@ class NiftiLabelsMasker:
         t_r: float | None = ...,
         dtype: int | None = ...,
         resampling_target: int | str | None = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         memory_level: int = ...,
         verbose: int = ...,
         strategy: int | str = ...,

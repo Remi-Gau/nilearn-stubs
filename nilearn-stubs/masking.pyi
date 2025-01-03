@@ -1,5 +1,4 @@
 import os
-from pathlib import Path
 from typing import Literal
 
 from joblib.memory import Memory
@@ -8,6 +7,8 @@ from nibabel.nifti2 import Nifti2Image
 from numpy import ndarray
 from numpy.typing import DTypeLike
 from typing_extensions import TypeAlias
+
+MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
 FilePath: TypeAlias = str | os.PathLike[str]
 NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image
@@ -38,7 +39,7 @@ def compute_background_mask(
     opening: int | bool = ...,
     target_affine: ndarray | None = ...,
     target_shape: tuple[int, int, int] | list[int] | None = ...,
-    memory: Memory | str | Path | None = ...,
+    memory: MemoryLike = ...,
     verbose: int = ...,
 ) -> Nifti1Image: ...
 def compute_brain_mask(
@@ -46,7 +47,7 @@ def compute_brain_mask(
     threshold: float = ...,
     connected: bool = ...,
     opening: int | bool = ...,
-    memory: Memory | str | Path | None = ...,
+    memory: MemoryLike = ...,
     verbose: int = ...,
     mask_type: Literal["whole-brain", "gm", "wm"] = ...,
 ) -> Nifti1Image: ...
@@ -60,7 +61,7 @@ def compute_epi_mask(
     ensure_finite: bool = ...,
     target_affine: ndarray | None = ...,
     target_shape: tuple[int, int, int] | list[int] | None = ...,
-    memory: Memory | str | Path | None = ...,
+    memory: MemoryLike = ...,
     verbose: int = ...,
 ) -> Nifti1Image: ...
 def compute_multi_background_mask(
@@ -72,7 +73,7 @@ def compute_multi_background_mask(
     target_affine: ndarray | None = ...,
     target_shape: tuple[int, int, int] | list[int] | None = ...,
     n_jobs: int = ...,
-    memory: Memory | str | Path | None = ...,
+    memory: MemoryLike = ...,
     verbose: int = ...,
 ) -> Nifti1Image: ...
 def compute_multi_brain_mask(
@@ -80,7 +81,7 @@ def compute_multi_brain_mask(
     threshold: float = ...,
     connected: bool = ...,
     opening: int | bool = ...,
-    memory: Memory | str | Path | None = ...,
+    memory: MemoryLike = ...,
     verbose: int = ...,
     mask_type: Literal["whole-brain", "gm", "wm"] = ...,
     **kwargs,
@@ -96,7 +97,7 @@ def compute_multi_epi_mask(
     target_shape: tuple[int, int, int] | list[int] | None = ...,
     exclude_zeros: bool = ...,
     n_jobs: int = ...,
-    memory: Memory | str | Path | None = ...,
+    memory: MemoryLike = ...,
     verbose: int = ...,
 ) -> Nifti1Image: ...
 def intersect_masks(

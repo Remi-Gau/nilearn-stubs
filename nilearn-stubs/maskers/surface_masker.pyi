@@ -1,10 +1,13 @@
-from pathlib import Path
+import os
 from typing import Any
 
 from joblib.memory import Memory
 from nilearn.reporting.html_report import HTMLReport
 from nilearn.surface.surface import SurfaceImage
 from numpy import memmap, ndarray
+from typing_extensions import TypeAlias
+
+MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
 class SurfaceMasker:
     def __init__(
@@ -18,7 +21,7 @@ class SurfaceMasker:
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: float | None = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         memory_level: int = ...,
         verbose: int = ...,
         reports: Any = ...,

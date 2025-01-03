@@ -1,4 +1,4 @@
-from pathlib import Path
+import os
 from typing import Any
 
 from joblib.memory import Memory
@@ -6,6 +6,9 @@ from nibabel.nifti1 import Nifti1Image
 from nilearn.maskers.multi_nifti_maps_masker import MultiNiftiMapsMasker
 from numpy import memmap, ndarray
 from numpy.typing import DTypeLike
+from typing_extensions import TypeAlias
+
+MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
 class NiftiMapsMasker:
     def __init__(
@@ -24,7 +27,7 @@ class NiftiMapsMasker:
         dtype: DTypeLike | None = ...,
         resampling_target: int | str | None = ...,
         keep_masked_maps: int | bool = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         memory_level: int = ...,
         verbose: int = ...,
         reports: int | bool = ...,

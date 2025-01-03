@@ -1,8 +1,11 @@
-from pathlib import Path
+import os
 from typing import Any
 
 from joblib.memory import Memory
 from numpy import ndarray, random
+from typing_extensions import TypeAlias
+
+MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
 class DictLearning:
     def __init__(
@@ -28,6 +31,6 @@ class DictLearning:
         mask_args: Any | None = ...,
         n_jobs: int = ...,
         verbose: int = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         memory_level: int = ...,
     ): ...

@@ -1,9 +1,13 @@
-from pathlib import Path, PosixPath
+import os
+from pathlib import PosixPath
 from typing import Any
 
 from joblib.memory import Memory
 from nilearn.surface.surface import SurfaceImage
 from numpy import memmap, ndarray
+from typing_extensions import TypeAlias
+
+MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
 class SurfaceMapsMasker:
     def __init__(
@@ -19,7 +23,7 @@ class SurfaceMapsMasker:
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: float | None = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         memory_level: int = ...,
         verbose: int = ...,
         reports: Any = ...,

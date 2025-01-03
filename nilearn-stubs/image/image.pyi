@@ -1,6 +1,5 @@
 import os
 from collections.abc import Iterable, Iterator
-from pathlib import Path
 from typing import Any, Literal
 
 from joblib.memory import Memory
@@ -13,6 +12,8 @@ from numpy import (
 )
 from numpy.typing import DTypeLike
 from typing_extensions import TypeAlias
+
+MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
 FilePath: TypeAlias = str | os.PathLike[str]
 NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image
@@ -41,7 +42,7 @@ def concat_imgs(
     niimgs: Iterable[NiimgLike],
     dtype: DTypeLike | None = ...,
     ensure_ndim: int | None = ...,
-    memory: Memory | str | Path | None = ...,
+    memory: MemoryLike = ...,
     memory_level: int = ...,
     auto_resample: bool = ...,
     verbose: int = ...,

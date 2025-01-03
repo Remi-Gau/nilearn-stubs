@@ -1,8 +1,11 @@
-from pathlib import Path
+import os
 from typing import Any
 
 from joblib.memory import Memory
 from numpy import ndarray, random
+from typing_extensions import TypeAlias
+
+MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
 class CanICA:
     def __init__(
@@ -24,7 +27,7 @@ class CanICA:
         target_shape: tuple[int, int, int] | list[int] | None = ...,
         mask_strategy: ndarray | float | str | int | list[int] = ...,
         mask_args: Any | None = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         memory_level: int = ...,
         n_jobs: int = ...,
         verbose: int = ...,

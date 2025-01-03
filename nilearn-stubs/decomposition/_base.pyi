@@ -1,4 +1,4 @@
-from pathlib import Path
+import os
 from typing import Any
 
 from joblib.memory import Memory
@@ -14,6 +14,9 @@ from numpy import (
     random,
 )
 from sklearn.utils._tags import Tags
+from typing_extensions import TypeAlias
+
+MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
 class _BaseDecomposition:
     def __init__(
@@ -32,7 +35,7 @@ class _BaseDecomposition:
         target_shape: tuple[int, int, int] | list[int] | None = ...,
         mask_strategy: ndarray | float | str | int | list[int] = ...,
         mask_args: Any | None = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         memory_level: int = ...,
         n_jobs: int = ...,
         verbose: int = ...,

@@ -1,4 +1,5 @@
-from pathlib import Path, PosixPath
+import os
+from pathlib import PosixPath
 from typing import Any
 
 from joblib.memory import Memory
@@ -8,6 +9,9 @@ from nilearn.surface.surface import SurfaceImage
 from numpy import ndarray, random
 from pandas.core.frame import DataFrame
 from sklearn.utils._tags import Tags
+from typing_extensions import TypeAlias
+
+MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
 def non_parametric_inference(
     second_level_input: Any,
@@ -34,7 +38,7 @@ class SecondLevelModel:
         target_affine: ndarray | None = ...,
         target_shape: tuple[int, int, int] | list[int] | None = ...,
         smoothing_fwhm: Any | None = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         memory_level: int = ...,
         verbose: int = ...,
         n_jobs: int = ...,

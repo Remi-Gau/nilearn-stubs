@@ -10,8 +10,8 @@ class BaseMasker:
     def __sklearn_tags__(self) -> Tags: ...
     def fit(
         self,
-        imgs: memmap | ndarray | None = ...,
-        y: memmap | ndarray | None = ...,
+        imgs: None = ...,
+        y: None = ...,
     ): ...
     def fit_transform(
         self,

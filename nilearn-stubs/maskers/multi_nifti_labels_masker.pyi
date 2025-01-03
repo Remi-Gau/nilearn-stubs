@@ -1,9 +1,12 @@
-from pathlib import Path
+import os
 
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from numpy import ndarray
 from numpy.typing import DTypeLike
+from typing_extensions import TypeAlias
+
+MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
 class MultiNiftiLabelsMasker:
     def __init__(
@@ -22,7 +25,7 @@ class MultiNiftiLabelsMasker:
         t_r: float | None = ...,
         dtype: DTypeLike | None = ...,
         resampling_target: int | str | None = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         memory_level: int = ...,
         verbose: int = ...,
         strategy: int | str = ...,

@@ -1,8 +1,11 @@
-from pathlib import Path
+import os
 from typing import Callable
 
 from joblib.memory import Memory
 from numpy import ndarray
+from typing_extensions import TypeAlias
+
+MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
 def group_sparse_covariance(
     subjects: list[ndarray],
@@ -22,7 +25,7 @@ class GroupSparseCovariance:
         tol: float = ...,
         max_iter: int = ...,
         verbose: int = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         memory_level: int = ...,
     ): ...
     def fit(

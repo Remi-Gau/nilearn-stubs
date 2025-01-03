@@ -1,5 +1,4 @@
 import os
-from pathlib import Path
 
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
@@ -8,6 +7,8 @@ from nilearn.surface.surface import SurfaceImage
 from numpy import ndarray
 from sklearn.utils._tags import Tags
 from typing_extensions import TypeAlias
+
+MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
 FilePath: TypeAlias = str | os.PathLike[str]
 NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image
@@ -29,7 +30,7 @@ class ReNA:
         scaling: bool = ...,
         n_iter: int = ...,
         threshold: float = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         memory_level: int = ...,
         verbose: int = ...,
     ): ...

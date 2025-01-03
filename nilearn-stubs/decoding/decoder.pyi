@@ -1,4 +1,5 @@
-from pathlib import Path, PosixPath
+import os
+from pathlib import PosixPath
 from typing import Any
 
 from joblib.memory import Memory
@@ -9,6 +10,9 @@ from numpy import (
     ndarray,
 )
 from sklearn.utils._tags import Tags
+from typing_extensions import TypeAlias
+
+MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
 class Decoder:
     def __init__(
@@ -27,7 +31,7 @@ class Decoder:
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: float | None = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         memory_level: int = ...,
         n_jobs: int = ...,
         verbose: int = ...,
@@ -51,7 +55,7 @@ class DecoderRegressor:
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: float | None = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         memory_level: int = ...,
         n_jobs: int = ...,
         verbose: int = ...,
@@ -76,7 +80,7 @@ class FREMClassifier:
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: float | None = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         memory_level: int = ...,
         n_jobs: int = ...,
         verbose: int = ...,
@@ -100,7 +104,7 @@ class FREMRegressor:
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: float | None = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         memory_level: int = ...,
         n_jobs: int = ...,
         verbose: int = ...,
@@ -125,7 +129,7 @@ class _BaseDecoder:
         t_r: float | None = ...,
         mask_strategy: ndarray | str | float | list[int] | int = ...,
         is_classification: Any = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         memory_level: int = ...,
         n_jobs: int = ...,
         verbose: int = ...,

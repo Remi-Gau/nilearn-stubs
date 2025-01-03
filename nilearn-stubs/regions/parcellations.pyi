@@ -1,5 +1,4 @@
 import os
-from pathlib import Path
 from typing import Literal
 
 from joblib.memory import Memory
@@ -9,6 +8,8 @@ from nilearn.maskers import MultiNiftiMasker, NiftiMasker, SurfaceMasker
 from nilearn.surface.surface import SurfaceImage
 from numpy import ndarray, random
 from typing_extensions import TypeAlias
+
+MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
 FilePath: TypeAlias = str | os.PathLike[str]
 NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image
@@ -46,7 +47,7 @@ class Parcellations:
         mask_args: None = ...,
         scaling: bool = ...,
         n_iter: int = ...,
-        memory: Memory | str | Path | None = ...,
+        memory: MemoryLike = ...,
         memory_level: int = ...,
         n_jobs: int = ...,
         verbose: int = ...,
