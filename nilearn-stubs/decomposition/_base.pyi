@@ -1,27 +1,24 @@
 import os
+from collections.abc import Iterable
 from typing import Any, Literal
 
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from nibabel.nifti2 import Nifti2Image
-from nilearn.decomposition._multi_pca import _MultiPCA
-from nilearn.decomposition.canica import CanICA
-from nilearn.decomposition.dict_learning import DictLearning
 from nilearn.maskers import NiftiMasker, SurfaceMasker
-from nilearn.regions.parcellations import Parcellations
 from nilearn.surface import SurfaceImage
 from numpy import (
     float64,
-    memmap,
     ndarray,
     random,
 )
+from pandas.core.frame import DataFrame
 from sklearn.utils._tags import Tags
 from typing_extensions import TypeAlias
 
-MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
-NiimgLike: TypeAlias = str | os.PathLike[str] | Nifti1Image | Nifti2Image
-MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
+FilePath: TypeAlias = str | os.PathLike[str]
+NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image
+MemoryLike: TypeAlias = Memory | FilePath | None
 
 class _BaseDecomposition:
     def __init__(
@@ -58,17 +55,17 @@ class _BaseDecomposition:
     def __sklearn_tags__(self) -> Tags: ...
     def fit(
         self,
-        imgs: Any,
-        y: memmap | ndarray | None = ...,
-        confounds: list[ndarray] | None = ...,
-    ) -> _MultiPCA | DictLearning | Parcellations | CanICA: ...
+        imgs: Iterable[NiimgLike] | Iterable[SurfaceImage],
+        y: None = ...,
+        confounds: list[ndarray, FilePath, DataFrame] | None = ...,
+    ) -> _BaseDecomposition: ...
     def inverse_transform(
-        self, loadings: list[ndarray]
+        self, loadings: Iterable[ndarray]
     ) -> list[Nifti1Image]: ...
     def score(
         self,
-        imgs: Nifti1Image | list[Nifti1Image],
-        confounds: None = ...,
+        imgs: list[NiimgLike] | list[SurfaceImage],
+        confounds: list[ndarray, FilePath, DataFrame] | None = ...,
         per_component: bool = ...,
     ) -> float64 | ndarray: ...
     def transform(
