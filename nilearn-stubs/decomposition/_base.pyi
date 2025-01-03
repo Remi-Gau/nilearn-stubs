@@ -8,7 +8,6 @@ from nibabel.nifti2 import Nifti2Image
 from nilearn.maskers import NiftiMasker, SurfaceMasker
 from nilearn.surface import SurfaceImage
 from numpy import (
-    float64,
     ndarray,
     random,
 )
@@ -67,7 +66,7 @@ class _BaseDecomposition:
         imgs: list[NiimgLike] | list[SurfaceImage],
         confounds: list[ndarray, FilePath, DataFrame] | None = ...,
         per_component: bool = ...,
-    ) -> float64 | ndarray: ...
+    ) -> ndarray: ...
     def transform(
         self, imgs: list[Nifti1Image] | ndarray, confounds: None = ...
     ) -> list[ndarray]: ...
