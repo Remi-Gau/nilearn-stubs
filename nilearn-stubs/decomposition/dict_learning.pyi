@@ -1,5 +1,5 @@
 import os
-from typing import Any
+from typing import Any, Literal
 
 from joblib.memory import Memory
 from numpy import ndarray, random
@@ -27,7 +27,13 @@ class DictLearning:
         t_r: float | None = ...,
         target_affine: ndarray | None = ...,
         target_shape: tuple[int, int, int] | list[int] | None = ...,
-        mask_strategy: ndarray | str | float | list[int] | int = ...,
+        mask_strategy: Literal[
+            "background",
+            "epi",
+            "whole-brain-template",
+            "gm-template",
+            "wm-template",
+        ] = ...,
         mask_args: Any | None = ...,
         n_jobs: int = ...,
         verbose: int = ...,

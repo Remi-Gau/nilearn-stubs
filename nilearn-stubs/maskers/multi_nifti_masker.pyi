@@ -5,7 +5,7 @@ from joblib.memory import MemorizedResult, Memory
 from nibabel.nifti1 import Nifti1Image
 from numpy import memmap, ndarray
 from numpy.typing import DTypeLike
-from typing_extensions import TypeAlias
+from typing_extensions import Literal, TypeAlias
 
 MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
@@ -23,14 +23,20 @@ class MultiNiftiMasker:
         t_r: float | None = ...,
         target_affine: ndarray | None = ...,
         target_shape: tuple[int, int, int] | list[int] | None = ...,
-        mask_strategy: int | str = ...,
+        mask_strategy: Literal[
+            "background",
+            "epi",
+            "whole-brain-template",
+            "gm-template",
+            "wm-template",
+        ] = ...,
         mask_args: int | dict[str, int] | None = ...,
         dtype: DTypeLike | None = ...,
         memory: MemoryLike = ...,
         memory_level: int = ...,
         n_jobs: int = ...,
         verbose: int = ...,
-        cmap: int | str = ...,
+        cmap: str = ...,
         **kwargs,
     ): ...
     def fit(

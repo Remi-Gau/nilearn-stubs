@@ -1,6 +1,6 @@
 import os
 from pathlib import PosixPath
-from typing import Any
+from typing import Any, Literal
 
 from joblib.memory import MemorizedResult, Memory
 from nibabel.nifti1 import Nifti1Image
@@ -26,7 +26,13 @@ class NiftiMasker:
         t_r: float | None = ...,
         target_affine: ndarray | None = ...,
         target_shape: tuple[int, int, int] | list[int] | None = ...,
-        mask_strategy: int | str = ...,
+        mask_strategy: Literal[
+            "background",
+            "epi",
+            "whole-brain-template",
+            "gm-template",
+            "wm-template",
+        ] = ...,
         mask_args: (
             dict[str, float] | dict[str, int] | int | dict[str, bool] | None
         ) = ...,

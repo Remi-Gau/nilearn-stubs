@@ -1,6 +1,6 @@
 import os
 from pathlib import PosixPath
-from typing import Any
+from typing import Any, Literal
 
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
@@ -27,7 +27,13 @@ class Decoder:
         standardize: Any = ...,
         target_affine: ndarray | None = ...,
         target_shape: tuple[int, int, int] | list[int] | None = ...,
-        mask_strategy: ndarray | str | float | list[int] | int = ...,
+        mask_strategy: Literal[
+            "background",
+            "epi",
+            "whole-brain-template",
+            "gm-template",
+            "wm-template",
+        ] = ...,
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: float | None = ...,
@@ -51,7 +57,13 @@ class DecoderRegressor:
         standardize: Any = ...,
         target_affine: ndarray | None = ...,
         target_shape: tuple[int, int, int] | list[int] | None = ...,
-        mask_strategy: ndarray | str | float | list[int] | int = ...,
+        mask_strategy: Literal[
+            "background",
+            "epi",
+            "whole-brain-template",
+            "gm-template",
+            "wm-template",
+        ] = ...,
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: float | None = ...,
@@ -76,7 +88,13 @@ class FREMClassifier:
         standardize: Any = ...,
         target_affine: ndarray | None = ...,
         target_shape: tuple[int, int, int] | list[int] | None = ...,
-        mask_strategy: ndarray | str | float | list[int] | int = ...,
+        mask_strategy: Literal[
+            "background",
+            "epi",
+            "whole-brain-template",
+            "gm-template",
+            "wm-template",
+        ] = ...,
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: float | None = ...,
@@ -100,7 +118,13 @@ class FREMRegressor:
         standardize: Any = ...,
         target_affine: ndarray | None = ...,
         target_shape: tuple[int, int, int] | list[int] | None = ...,
-        mask_strategy: ndarray | float | str | int | list[int] = ...,
+        mask_strategy: Literal[
+            "background",
+            "epi",
+            "whole-brain-template",
+            "gm-template",
+            "wm-template",
+        ] = ...,
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: float | None = ...,
@@ -127,7 +151,13 @@ class _BaseDecoder:
         low_pass: float | None = ...,
         high_pass: float | None = ...,
         t_r: float | None = ...,
-        mask_strategy: ndarray | str | float | list[int] | int = ...,
+        mask_strategy: Literal[
+            "background",
+            "epi",
+            "whole-brain-template",
+            "gm-template",
+            "wm-template",
+        ] = ...,
         is_classification: Any = ...,
         memory: MemoryLike = ...,
         memory_level: int = ...,
