@@ -1,5 +1,6 @@
 # TODO
 import os
+from collections.abc import Iterable
 from typing import Any
 
 from nibabel.nifti1 import Nifti1Image
@@ -61,7 +62,7 @@ def fetch_development_fmri(
     data_dir: FilePath | None = ...,
     resume: bool = ...,
     verbose: int = ...,
-    age_group: str = ...,
+    age_group: Literal["adults", "chlid", "both"] = ...,
 ) -> Bunch: ...
 def fetch_ds000030_urls(
     data_dir: FilePath | None = ...,
@@ -73,7 +74,7 @@ def fetch_fiac_first_level(
 ) -> Bunch: ...
 def fetch_haxby(
     data_dir: FilePath | None = ...,
-    subjects: int | list[int] | list[str] | None = ...,
+    subjects: Iterable[int] = ...,
     fetch_stimuli: bool = ...,
     url: str | None = ...,
     resume: bool = ...,
@@ -108,9 +109,11 @@ def fetch_localizer_first_level(
     verbose: int = ...,
 ) -> Bunch: ...
 def fetch_megatrawls_netmats(
-    dimensionality: int = ...,
-    timeseries: str = ...,
-    matrices: str = ...,
+    dimensionality: Literal[25, 50, 100, 200, 300] = ...,
+    timeseries: Literal[
+        "multiple_spatial_regression", "eigen_regression"
+    ] = ...,
+    matrices: Literal["full_correlation", "partial_correlation"] = ...,
     data_dir: FilePath | None = ...,
     resume: bool = ...,
     verbose: int = ...,
