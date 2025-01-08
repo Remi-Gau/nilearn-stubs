@@ -5,25 +5,47 @@ from typing import Any
 from nibabel.nifti1 import Nifti1Image
 from nibabel.nifti2 import Nifti2Image
 from sklearn.utils._bunch import Bunch
-from typing_extensions import TypeAlias
+from typing_extensions import Literal, TypeAlias
 
 FilePath: TypeAlias = str | os.PathLike[str]
 NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image
 
 def fetch_abide_pcp(
     data_dir: FilePath | None = ...,
-    n_subjects: None = ...,
-    pipeline: str = ...,
+    n_subjects: int | None = ...,
+    pipeline: Literal["cpac", "css", "dparsf", "niak"] = ...,
     band_pass_filtering: bool = ...,
     global_signal_regression: bool = ...,
-    derivatives: str | None = ...,
+    derivatives: Literal[
+        "alff",
+        "degree_binarize",
+        "degree_weighted",
+        "dual_regression",
+        "eigenvector_binarize",
+        "eigenvector_weighted",
+        "falff",
+        "func_mask",
+        "func_mean",
+        "func_preproc",
+        "lfcd",
+        "reho",
+        "rois_aal",
+        "rois_cc200",
+        "rois_cc400",
+        "rois_dosenbach160",
+        "rois_ez",
+        "rois_ho",
+        "rois_tt",
+        "vmhc",
+        None,
+    ] = ...,
     quality_checked: bool = ...,
     url: str | None = ...,
     verbose: int = ...,
     **kwargs,
 ) -> Bunch: ...
 def fetch_adhd(
-    n_subjects: int | None = ...,
+    n_subjects: int = ...,
     data_dir: FilePath | None = ...,
     url: str | None = ...,
     resume: bool = ...,
