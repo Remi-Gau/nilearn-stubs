@@ -8,9 +8,6 @@ from sklearn.utils._bunch import Bunch
 FilePath: TypeAlias = str | os.PathLike[str]
 NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image
 
-FilePath: TypeAlias = str | os.PathLike[str]
-NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image
-
 def fetch_atlas_aal(
     version: Literal["3v2", "SPM12", "SPM5", "SPM8"] = ...,
     data_dir: FilePath | None = ...,
