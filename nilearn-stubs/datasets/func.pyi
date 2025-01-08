@@ -1,12 +1,10 @@
-# TODO
 import os
 from collections.abc import Iterable
-from typing import Any
+from typing import Any, Literal, TypeAlias
 
 from nibabel.nifti1 import Nifti1Image
 from nibabel.nifti2 import Nifti2Image
 from sklearn.utils._bunch import Bunch
-from typing_extensions import Literal, TypeAlias
 
 FilePath: TypeAlias = str | os.PathLike[str]
 NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image

@@ -1,5 +1,5 @@
 import os
-from typing import Literal
+from typing import Literal, TypeAlias
 
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
@@ -7,7 +7,6 @@ from nibabel.nifti2 import Nifti2Image
 from nilearn.maskers import MultiNiftiMasker, NiftiMasker, SurfaceMasker
 from nilearn.surface.surface import SurfaceImage
 from numpy import ndarray, random
-from typing_extensions import TypeAlias
 
 MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 

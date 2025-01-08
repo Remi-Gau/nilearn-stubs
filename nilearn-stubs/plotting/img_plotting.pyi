@@ -1,6 +1,6 @@
 from io import BufferedWriter
 from pathlib import PosixPath
-from typing import Any
+from typing import Any, Literal, TypeAlias
 
 from matplotlib.axes._axes import Axes
 from matplotlib.colors import LinearSegmentedColormap, ListedColormap
@@ -23,11 +23,15 @@ from numpy import float64, int64, ndarray
 from numpy.ma.core import MaskedArray
 from scipy.sparse._coo import coo_matrix
 
+DisplayMode: TypeAlias = Literal[
+    "ortho", "tiled", "mosaic", "x", "y", "z", "yx", "xz", "yz"
+]
+
 def plot_anat(
     anat_img: Nifti1Image | _MNI152Template | bool = ...,
     cut_coords: int | tuple[int, int] | tuple[int, int, int] | None = ...,
     output_file: PosixPath | None = ...,
-    display_mode: str = ...,
+    display_mode: DisplayMode = ...,
     figure: None = ...,
     axes: None = ...,
     title: str | None = ...,
@@ -86,7 +90,7 @@ def plot_epi(
     epi_img: Nifti1Image | None = ...,
     cut_coords: int | tuple[int, int] | tuple[int, int, int] | None = ...,
     output_file: PosixPath | None = ...,
-    display_mode: str = ...,
+    display_mode: DisplayMode = ...,
     figure: None = ...,
     axes: None = ...,
     title: str | None = ...,
@@ -127,7 +131,7 @@ def plot_img(
     img: Nifti1Image | _MNI152Template | bool,
     cut_coords: Any | None = ...,
     output_file: PosixPath | None = ...,
-    display_mode: str = ...,
+    display_mode: DisplayMode = ...,
     figure: Figure | None = ...,
     axes: Axes | None = ...,
     title: str | None = ...,
@@ -185,7 +189,7 @@ def plot_prob_atlas(
     linewidths: float = ...,
     cut_coords: None = ...,
     output_file: PosixPath | None = ...,
-    display_mode: str = ...,
+    display_mode: DisplayMode = ...,
     figure: None = ...,
     axes: None = ...,
     title: None = ...,
@@ -210,7 +214,7 @@ def plot_roi(
     | list[float]
     | None = ...,
     output_file: PosixPath | BufferedWriter | None = ...,
-    display_mode: str = ...,
+    display_mode: DisplayMode = ...,
     figure: None = ...,
     axes: None = ...,
     title: str | None = ...,
@@ -236,7 +240,7 @@ def plot_stat_map(
     bg_img: Nifti1Image | _MNI152Template | None = ...,
     cut_coords: Any | None = ...,
     output_file: PosixPath | None = ...,
-    display_mode: str = ...,
+    display_mode: DisplayMode = ...,
     colorbar: bool = ...,
     cbar_tick_format: str = ...,
     figure: None = ...,

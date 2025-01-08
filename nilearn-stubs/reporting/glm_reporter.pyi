@@ -1,5 +1,5 @@
 import os
-from typing import Literal
+from typing import Literal, TypeAlias
 
 from nibabel.nifti1 import Nifti1Image
 from nibabel.nifti2 import Nifti2Image
@@ -7,7 +7,6 @@ from nilearn.glm.first_level.first_level import FirstLevelModel
 from nilearn.glm.second_level.second_level import SecondLevelModel
 from nilearn.reporting.html_report import HTMLReport
 from numpy import ndarray
-from typing_extensions import TypeAlias
 
 NiimgLike: TypeAlias = str | os.PathLike[str] | Nifti1Image | Nifti2Image
 

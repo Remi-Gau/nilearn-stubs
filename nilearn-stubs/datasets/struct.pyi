@@ -1,12 +1,11 @@
 import os
 from pathlib import Path
-from typing import Literal
+from typing import Literal, TypeAlias
 
 from nibabel.nifti1 import Nifti1Image
 from nibabel.nifti2 import Nifti2Image
 from nilearn.surface.surface import SurfaceImage
 from sklearn.utils._bunch import Bunch
-from typing_extensions import TypeAlias
 
 FilePath: TypeAlias = str | os.PathLike[str]
 NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image

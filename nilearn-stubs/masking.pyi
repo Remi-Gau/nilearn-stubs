@@ -1,12 +1,11 @@
 import os
-from typing import Literal
+from typing import Literal, TypeAlias
 
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from nibabel.nifti2 import Nifti2Image
 from numpy import ndarray
 from numpy.typing import DTypeLike
-from typing_extensions import TypeAlias
 
 MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 

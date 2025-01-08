@@ -1,6 +1,6 @@
 import os
 from collections.abc import Iterable
-from typing import Any, Literal
+from typing import Any, Literal, TypeAlias
 
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
@@ -13,7 +13,6 @@ from numpy import (
 )
 from pandas.core.frame import DataFrame
 from sklearn.utils._tags import Tags
-from typing_extensions import TypeAlias
 
 FilePath: TypeAlias = str | os.PathLike[str]
 NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image

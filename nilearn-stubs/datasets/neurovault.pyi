@@ -1,11 +1,10 @@
 import os
 from collections.abc import Container
-from typing import Callable, Literal
+from typing import Callable, Literal, TypeAlias
 
 from nibabel.nifti1 import Nifti1Image
 from nibabel.nifti2 import Nifti2Image
 from sklearn.utils._bunch import Bunch
-from typing_extensions import TypeAlias
 
 FilePath: TypeAlias = str | os.PathLike[str]
 NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image

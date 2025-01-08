@@ -1,11 +1,10 @@
 import os
-from typing import Any
+from typing import Any, TypeAlias
 
 from joblib.memory import Memory
 from nilearn.reporting.html_report import HTMLReport
 from nilearn.surface.surface import SurfaceImage
 from numpy import memmap, ndarray
-from typing_extensions import TypeAlias
 
 MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 

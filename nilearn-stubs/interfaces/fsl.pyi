@@ -1,9 +1,9 @@
 import os
+from typing import TypeAlias
 
 from nibabel.nifti1 import Nifti1Image
 from nibabel.nifti2 import Nifti2Image
 from pandas.core.frame import DataFrame
-from typing_extensions import TypeAlias
 
 FilePath: TypeAlias = str | os.PathLike[str]
 NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image

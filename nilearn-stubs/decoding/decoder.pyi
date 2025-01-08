@@ -1,6 +1,6 @@
 import os
 from pathlib import PosixPath
-from typing import Any, Literal
+from typing import Any, Literal, TypeAlias
 
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
@@ -10,7 +10,6 @@ from numpy import (
     ndarray,
 )
 from sklearn.utils._tags import Tags
-from typing_extensions import TypeAlias
 
 MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 

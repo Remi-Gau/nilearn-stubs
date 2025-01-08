@@ -1,9 +1,8 @@
 import os
-from typing import Callable
+from typing import Callable, TypeAlias
 
 from joblib.memory import Memory
 from numpy import ndarray
-from typing_extensions import TypeAlias
 
 MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
