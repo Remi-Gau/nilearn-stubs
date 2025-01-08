@@ -56,7 +56,7 @@ class _BaseDecomposition:
         self,
         imgs: Iterable[NiimgLike] | Iterable[SurfaceImage],
         y: None = ...,
-        confounds: list[ndarray, FilePath, DataFrame] | None = ...,
+        confounds: list[ndarray | FilePath | DataFrame] | None = ...,
     ) -> _BaseDecomposition: ...
     def inverse_transform(
         self, loadings: Iterable[ndarray]
@@ -64,7 +64,7 @@ class _BaseDecomposition:
     def score(
         self,
         imgs: list[NiimgLike] | list[SurfaceImage],
-        confounds: list[ndarray, FilePath, DataFrame] | None = ...,
+        confounds: list[ndarray | FilePath | DataFrame] | None = ...,
         per_component: bool = ...,
     ) -> ndarray: ...
     def transform(

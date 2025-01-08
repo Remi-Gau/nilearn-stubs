@@ -1,5 +1,6 @@
 # TODO
 import os
+from typing import Literal
 
 from nibabel.nifti1 import Nifti1Image
 from nibabel.nifti2 import Nifti2Image
@@ -10,7 +11,7 @@ FilePath: TypeAlias = str | os.PathLike[str]
 NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image
 
 def fetch_atlas_aal(
-    version: str = ...,
+    version: Literal["3v2", "SPM12", "SPM5", "SPM8"] = ...,
     data_dir: FilePath | None = ...,
     url: str | None = ...,
     resume: bool = ...,
@@ -27,15 +28,15 @@ def fetch_atlas_basc_multiscale_2015(
     url: str | None = ...,
     resume: bool = ...,
     verbose: int = ...,
-    resolution: int | None = ...,
-    version: str = ...,
+    resolution: Literal[7, 12, 20, 36, 64, 122, 197, 325, 444, None] = ...,
+    version: Literal["sym", "asym"] = ...,
 ) -> Bunch: ...
 def fetch_atlas_craddock_2012(
     data_dir: FilePath | None = ...,
     url: str | None = ...,
     resume: bool = ...,
     verbose: int = ...,
-    homogeneity: str | None = ...,
+    homogeneity: Literal["spatial", "temporal", "random", None] = ...,
     grp_mean: bool = ...,
 ) -> Bunch: ...
 def fetch_atlas_destrieux_2009(
@@ -46,7 +47,7 @@ def fetch_atlas_destrieux_2009(
     verbose: int = ...,
 ) -> Bunch: ...
 def fetch_atlas_difumo(
-    dimension: int = ...,
+    dimension: Literal[64, 128, 256, 512, 1024] = ...,
     resolution_mm: int = ...,
     data_dir: FilePath | None = ...,
     resume: bool = ...,
@@ -78,11 +79,11 @@ def fetch_atlas_pauli_2017(
     verbose: int = ...,
 ) -> Bunch: ...
 def fetch_atlas_schaefer_2018(
-    n_rois: int = ...,
-    yeo_networks: int = ...,
-    resolution_mm: int = ...,
+    n_rois: Literal[100, 200, 300, 400, 500, 600, 700, 800, 900, 1000] = ...,
+    yeo_networks: Literal[7, 17] = ...,
+    resolution_mm: Literal[1, 2] = ...,
     data_dir: FilePath | None = ...,
-    base_url: None = ...,
+    base_url: str | None = ...,
     resume: bool = ...,
     verbose: int = ...,
 ) -> Bunch: ...
@@ -92,7 +93,7 @@ def fetch_atlas_smith_2009(
     resume: bool = ...,
     verbose: int = ...,
     mirror: str = ...,
-    dimension: int | None = ...,
+    dimension: Literal[10, 20, 70, None] = ...,
     resting: bool = ...,
 ) -> Bunch: ...
 def fetch_atlas_surf_destrieux(
