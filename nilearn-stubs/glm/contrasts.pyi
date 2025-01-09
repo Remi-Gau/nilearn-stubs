@@ -4,15 +4,15 @@ from nibabel.nifti1 import Nifti1Image
 from nilearn.glm.regression import RegressionResults, SimpleRegressionResults
 from nilearn.maskers.surface_masker import SurfaceMasker
 from nilearn.surface.surface import SurfaceImage
-from numpy import ndarray, str_
+from numpy import ndarray
 
 def compute_contrast(
     labels: ndarray,
     regression_result: (
-        dict[str_, RegressionResults]
+        dict[str, RegressionResults]
         | dict[float, RegressionResults]
         | dict[float, SimpleRegressionResults]
-        | dict[str_, SimpleRegressionResults]
+        | dict[str, SimpleRegressionResults]
     ),
     con_val: list[int] | ndarray,
     stat_type: str | None = ...,
@@ -21,8 +21,8 @@ def compute_fixed_effect_contrast(
     labels: list[ndarray],
     results: list[
         dict[float, RegressionResults]
-        | dict[str_, RegressionResults]
-        | dict[str_, SimpleRegressionResults]
+        | dict[str, RegressionResults]
+        | dict[str, SimpleRegressionResults]
     ],
     con_vals: list[ndarray],
     stat_type: str | None = ...,

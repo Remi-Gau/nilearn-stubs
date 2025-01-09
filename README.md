@@ -7,4 +7,3 @@
 - [ ] nilearn-stubs/decoding
 - [ ] nilearn-stubs/decomposition
 - [ ] nilearn-stubs/plotting
-- [ ] nilearn-stubs/datasets/func.pyi
