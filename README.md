@@ -1,11 +1,16 @@
 # nilearn-stubs: unofficial type stubs for nilearn
 
+## Install
+
+pip install -e '.[dev]'
+
+
 ## Run tests with monkeytype
 
 For example on `nilearn/_utils`
 
 ```bash
-monkeytype run -m pytest nilearn/nilearn/_utils
+monkeytype run -m pytest -n 20 -c pyproject.toml nilearn/nilearn/_utils
 ```
 
 ## List annotated modules
