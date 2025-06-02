@@ -1,21 +1,20 @@
+from pathlib import Path
 from typing import Union
 
 import libcst as cst
 from rich import print
 
-stub_file = "/home/remi/github/nilearn/nilearn_types/nilearn-stubs/mass_univariate/permuted_least_squares.pyi"
-source_file = "/home/remi/github/nilearn/nilearn/nilearn/mass_univariate/permuted_least_squares.py"
-
-
-# stub_file = "/home/remi/github/nilearn/nilearn_types/foo.pyi"
-# source_file = "/home/remi/github/nilearn/nilearn_types/foo.py"
+file = "mass_univariate/permuted_least_squares.pyi"
+cwd = Path(__file__).parents[1]
+stub_file = cwd / "nilearn-stubs"
+source_file = cwd / "nilearn" / "nilearn"
 
 
 def parse_stub_file(
     stub_path: str,
 ) -> dict[str, Union[str, tuple[str, dict[str, str]]]]:
     """Parse the stub file and return a mapping of function/method signatures to their type annotations."""
-    with open(stub_path) as f:
+    with Path(stub_path).open() as f:
         stub_tree = cst.parse_module(f.read())
 
     annotations = {}
@@ -24,17 +23,11 @@ def parse_stub_file(
         def visit_FunctionDef(self, node: cst.FunctionDef) -> None:
             func_name = node.name.value
             args = {
-                param.name.value: cst.Module([]).code_for_node(
-                    param.annotation.annotation
-                )
+                param.name.value: cst.Module([]).code_for_node(param.annotation.annotation)
                 for param in node.params.params
                 if param.annotation
             }
-            return_type = (
-                cst.Module([]).code_for_node(node.returns.annotation)
-                if node.returns
-                else None
-            )
+            return_type = cst.Module([]).code_for_node(node.returns.annotation) if node.returns else None
             annotations[func_name] = (return_type, args)
 
         def visit_ClassDef(self, node: cst.ClassDef) -> None:
@@ -44,18 +37,12 @@ def parse_stub_file(
                 if isinstance(body_elem, cst.FunctionDef):
                     func_name = body_elem.name.value
                     args = {
-                        param.name.value: cst.Module([]).code_for_node(
-                            param.annotation.annotation
-                        )
+                        param.name.value: cst.Module([]).code_for_node(param.annotation.annotation)
                         for param in body_elem.params.params
                         if param.annotation
                     }
                     return_type = (
-                        cst.Module([]).code_for_node(
-                            body_elem.returns.annotation
-                        )
-                        if body_elem.returns
-                        else None
+                        cst.Module([]).code_for_node(body_elem.returns.annotation) if body_elem.returns else None
                     )
                     class_annotations[func_name] = (return_type, args)
             annotations[class_name] = class_annotations
@@ -66,85 +53,55 @@ def parse_stub_file(
 
 
 class AnnotationTransformer(cst.CSTTransformer):
-    def __init__(
-        self, annotations: dict[str, Union[str, tuple[str, dict[str, str]]]]
-    ):
+    """Apply annotations."""
+
+    def __init__(self, annotations: dict[str, Union[str, tuple[str, dict[str, str]]]]):
         self.annotations = annotations
 
-    def leave_FunctionDef(
-        self, original_node: cst.FunctionDef, updated_node: cst.FunctionDef
-    ) -> cst.FunctionDef:
+    def leave_FunctionDef(self, original_node: cst.FunctionDef, updated_node: cst.FunctionDef) -> cst.FunctionDef:
         func_name = original_node.name.value
-        if func_name in self.annotations:
-            # Check if this is a top-level function
-            if isinstance(self.annotations[func_name], tuple):
-                return_type, args = self.annotations[func_name]
-                print(
-                    f"Applying annotations to function: {func_name}, args: {args}, return: {return_type}"
-                )
+        if func_name in self.annotations and isinstance(self.annotations[func_name], tuple):
+            return_type, args = self.annotations[func_name]
+            print(f"Applying annotations to function: {func_name}, args: {args}, return: {return_type}")
 
-                updated_params = [
-                    param.with_changes(
-                        annotation=cst.Annotation(
-                            cst.parse_expression(args[param.name.value])
-                        )
-                    )
-                    if param.name.value in args
-                    else param
-                    for param in updated_node.params.params
-                ]
+            updated_params = [
+                param.with_changes(annotation=cst.Annotation(cst.parse_expression(args[param.name.value])))
+                if param.name.value in args
+                else param
+                for param in updated_node.params.params
+            ]
 
-                updated_returns = (
-                    cst.Annotation(cst.parse_expression(return_type))
-                    if return_type
-                    else updated_node.returns
-                )
+            updated_returns = cst.Annotation(cst.parse_expression(return_type)) if return_type else updated_node.returns
 
-                return updated_node.with_changes(
-                    params=updated_node.params.with_changes(
-                        params=updated_params
-                    ),
-                    returns=updated_returns,
-                )
+            return updated_node.with_changes(
+                params=updated_node.params.with_changes(params=updated_params),
+                returns=updated_returns,
+            )
         return updated_node
 
-    def leave_ClassDef(
-        self, original_node: cst.ClassDef, updated_node: cst.ClassDef
-    ) -> cst.ClassDef:
+    def leave_ClassDef(self, original_node: cst.ClassDef, updated_node: cst.ClassDef) -> cst.ClassDef:
         class_name = original_node.name.value
-        if class_name in self.annotations and isinstance(
-            self.annotations[class_name], dict
-        ):
+        if class_name in self.annotations and isinstance(self.annotations[class_name], dict):
             class_annotations = self.annotations[class_name]
             updated_body = []
 
             for elem in updated_node.body.body:
-                if (
-                    isinstance(elem, cst.FunctionDef)
-                    and elem.name.value in class_annotations
-                ):
+                if isinstance(elem, cst.FunctionDef) and elem.name.value in class_annotations:
                     method_name = elem.name.value
                     return_type, args = class_annotations[method_name]
                     print(
-                        f"Applying annotations to method: {class_name}.{method_name}, args: {args}, return: {return_type}"
+                        f"Applying annotations to method: {class_name}.{method_name}, "
+                        f"args: {args}, return: {return_type}"
                     )
 
                     updated_params = [
-                        param.with_changes(
-                            annotation=cst.Annotation(
-                                cst.parse_expression(args[param.name.value])
-                            )
-                        )
+                        param.with_changes(annotation=cst.Annotation(cst.parse_expression(args[param.name.value])))
                         if param.name.value in args
                         else param
                         for param in elem.params.params
                     ]
 
-                    updated_returns = (
-                        cst.Annotation(cst.parse_expression(return_type))
-                        if return_type
-                        else elem.returns
-                    )
+                    updated_returns = cst.Annotation(cst.parse_expression(return_type)) if return_type else elem.returns
 
                     elem = elem.with_changes(
                         params=elem.params.with_changes(params=updated_params),
@@ -153,26 +110,25 @@ class AnnotationTransformer(cst.CSTTransformer):
 
                 updated_body.append(elem)
 
-            return updated_node.with_changes(
-                body=updated_node.body.with_changes(body=updated_body)
-            )
+            return updated_node.with_changes(body=updated_node.body.with_changes(body=updated_body))
 
         return updated_node
 
 
 def main(
-    source_path: str,
+    source: str,
     annotations: dict[str, Union[str, tuple[str, dict[str, str]]]],
 ):
     """Apply the annotations from the stub file to the source code."""
-    with open(source_path) as f:
+    source_path = Path(source)
+    with source_path.open("r") as f:
         source_code = f.read()
 
     source_tree = cst.parse_module(source_code)
     transformer = AnnotationTransformer(annotations)
     updated_tree = source_tree.visit(transformer)
 
-    with open(source_path, "w") as f:
+    with source_path.open("w") as f:
         f.write(updated_tree.code)
 
 

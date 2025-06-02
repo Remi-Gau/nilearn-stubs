@@ -5,14 +5,15 @@ from typing import Any, Literal, TypeAlias
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from nibabel.nifti2 import Nifti2Image
-from nilearn.maskers import NiftiMasker, SurfaceMasker
-from nilearn.surface import SurfaceImage
 from numpy import (
     ndarray,
     random,
 )
 from pandas.core.frame import DataFrame
 from sklearn.utils._tags import Tags
+
+from nilearn.maskers import NiftiMasker, SurfaceMasker
+from nilearn.surface import SurfaceImage
 
 FilePath: TypeAlias = str | os.PathLike[str]
 NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image
@@ -23,11 +24,7 @@ class _BaseDecomposition:
         self,
         n_components: Any = ...,
         random_state: int | random.RandomState | None = ...,
-        mask: NiimgLike
-        | SurfaceImage
-        | SurfaceMasker
-        | NiftiMasker
-        | None = ...,
+        mask: NiimgLike | SurfaceImage | SurfaceMasker | NiftiMasker | None = ...,
         smoothing_fwhm: float | None = ...,
         standardize: bool = ...,
         standardize_confounds: bool = ...,
@@ -57,15 +54,11 @@ class _BaseDecomposition:
         y: None = ...,
         confounds: list[ndarray | FilePath | DataFrame] | None = ...,
     ) -> _BaseDecomposition: ...
-    def inverse_transform(
-        self, loadings: Iterable[ndarray]
-    ) -> list[Nifti1Image]: ...
+    def inverse_transform(self, loadings: Iterable[ndarray]) -> list[Nifti1Image]: ...
     def score(
         self,
         imgs: list[NiimgLike] | list[SurfaceImage],
         confounds: list[ndarray | FilePath | DataFrame] | None = ...,
         per_component: bool = ...,
     ) -> ndarray: ...
-    def transform(
-        self, imgs: list[Nifti1Image] | ndarray, confounds: None = ...
-    ) -> list[ndarray]: ...
+    def transform(self, imgs: list[Nifti1Image] | ndarray, confounds: None = ...) -> list[ndarray]: ...

@@ -34,6 +34,4 @@ def load_confounds(
     n_compcor: int | Literal["all"] = ...,
     ica_aroma: Literal["basic", "full"] = ...,
     demean: bool = ...,
-) -> tuple[
-    DataFrame | list[DataFrame], None | ndarray | list[ndarray | None]
-]: ...
+) -> tuple[DataFrame | list[DataFrame], None | ndarray | list[ndarray | None]]: ...

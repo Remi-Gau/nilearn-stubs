@@ -1,10 +1,11 @@
 from typing import Literal
 
-from nilearn.maskers import MultiNiftiMasker, NiftiMasker
 from numpy import (
     ndarray,
     random,
 )
+
+from nilearn.maskers import MultiNiftiMasker, NiftiMasker
 
 def permuted_ols(
     tested_vars: ndarray,

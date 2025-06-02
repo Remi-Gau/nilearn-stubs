@@ -1,10 +1,11 @@
 from pathlib import PosixPath
 
 from nibabel.nifti1 import Nifti1Image
+from numpy import ndarray
+
 from nilearn.glm.regression import RegressionResults, SimpleRegressionResults
 from nilearn.maskers.surface_masker import SurfaceMasker
 from nilearn.surface.surface import SurfaceImage
-from numpy import ndarray
 
 def compute_contrast(
     labels: ndarray,
@@ -19,11 +20,7 @@ def compute_contrast(
 ) -> Contrast: ...
 def compute_fixed_effect_contrast(
     labels: list[ndarray],
-    results: list[
-        dict[float, RegressionResults]
-        | dict[str, RegressionResults]
-        | dict[str, SimpleRegressionResults]
-    ],
+    results: list[dict[float, RegressionResults] | dict[str, RegressionResults] | dict[str, SimpleRegressionResults]],
     con_vals: list[ndarray],
     stat_type: str | None = ...,
 ) -> Contrast: ...
@@ -39,9 +36,7 @@ def compute_fixed_effects(
     | tuple[Nifti1Image, Nifti1Image, Nifti1Image, Nifti1Image]
     | tuple[Nifti1Image, Nifti1Image, Nifti1Image]
 ): ...
-def expression_to_contrast_vector(
-    expression: str, design_columns: list[str]
-) -> ndarray: ...
+def expression_to_contrast_vector(expression: str, design_columns: list[str]) -> ndarray: ...
 
 class Contrast:
     def __add__(self, other: Contrast) -> Contrast: ...

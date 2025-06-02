@@ -4,11 +4,12 @@ from typing import Any, TypeAlias
 
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
-from nilearn.maskers.nifti_masker import NiftiMasker
-from nilearn.surface.surface import SurfaceImage
 from numpy import ndarray, random
 from pandas.core.frame import DataFrame
 from sklearn.utils._tags import Tags
+
+from nilearn.maskers.nifti_masker import NiftiMasker
+from nilearn.surface.surface import SurfaceImage
 
 MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
@@ -50,12 +51,7 @@ class SecondLevelModel:
         first_level_contrast: str | None = ...,
         second_level_stat_type: str | None = ...,
         output_type: str = ...,
-    ) -> (
-        SurfaceImage
-        | dict[str, Nifti1Image]
-        | Nifti1Image
-        | dict[str, SurfaceImage]
-    ): ...
+    ) -> SurfaceImage | dict[str, Nifti1Image] | Nifti1Image | dict[str, SurfaceImage]: ...
     def fit(
         self,
         second_level_input: Any,

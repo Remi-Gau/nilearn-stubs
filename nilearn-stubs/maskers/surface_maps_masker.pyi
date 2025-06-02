@@ -3,8 +3,9 @@ from pathlib import PosixPath
 from typing import Any, TypeAlias
 
 from joblib.memory import Memory
-from nilearn.surface.surface import SurfaceImage
 from numpy import memmap, ndarray
+
+from nilearn.surface.surface import SurfaceImage
 
 MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
@@ -42,9 +43,7 @@ class SurfaceMapsMasker:
         confounds: PosixPath | str | ndarray | None = ...,
         sample_mask: None = ...,
     ) -> ndarray: ...
-    def inverse_transform(
-        self, region_signals: ndarray | None
-    ) -> SurfaceImage: ...
+    def inverse_transform(self, region_signals: ndarray | None) -> SurfaceImage: ...
     def transform(
         self,
         img: SurfaceImage | ndarray | None,

@@ -3,9 +3,10 @@ from typing import Any, TypeAlias
 
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
-from nilearn.maskers.multi_nifti_maps_masker import MultiNiftiMapsMasker
 from numpy import memmap, ndarray
 from numpy.typing import DTypeLike
+
+from nilearn.maskers.multi_nifti_maps_masker import MultiNiftiMapsMasker
 
 MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 

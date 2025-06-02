@@ -108,9 +108,7 @@ def fetch_localizer_first_level(
 ) -> Bunch: ...
 def fetch_megatrawls_netmats(
     dimensionality: Literal[25, 50, 100, 200, 300] = ...,
-    timeseries: Literal[
-        "multiple_spatial_regression", "eigen_regression"
-    ] = ...,
+    timeseries: Literal["multiple_spatial_regression", "eigen_regression"] = ...,
     matrices: Literal["full_correlation", "partial_correlation"] = ...,
     data_dir: FilePath | None = ...,
     resume: bool = ...,

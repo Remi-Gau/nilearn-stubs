@@ -45,10 +45,7 @@ class MultiNiftiMasker:
     ) -> MultiNiftiMasker: ...
     def transform(
         self,
-        imgs: list[Nifti1Image]
-        | list[list[Nifti1Image]]
-        | ndarray
-        | Nifti1Image,
+        imgs: list[Nifti1Image] | list[list[Nifti1Image]] | ndarray | Nifti1Image,
         confounds: None = ...,
         sample_mask: None = ...,
     ) -> MemorizedResult | list[ndarray] | ndarray | list[MemorizedResult]: ...

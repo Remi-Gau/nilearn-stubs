@@ -63,21 +63,15 @@ def high_variance_confounds(
     detrend: bool = ...,
     mask_img: NiimgLike | None = ...,
 ) -> ndarray: ...
-def index_img(
-    imgs: NiimgLike | Iterable[NiimgLike], index: Any
-) -> Nifti1Image: ...
+def index_img(imgs: NiimgLike | Iterable[NiimgLike], index: Any) -> Nifti1Image: ...
 def iter_img(
     imgs: NiimgLike | list[NiimgLike],
 ) -> Iterator[Nifti1Image]: ...
 def largest_connected_component_img(
     imgs: NiimgLike | Iterable[NiimgLike],
 ) -> Nifti1Image | list[Nifti1Image]: ...
-def load_img(
-    img: NiimgLike, wildcards: bool = ..., dtype: DTypeLike | None = ...
-) -> Nifti1Image: ...
-def math_img(
-    formula: str, copy_header_from: str | None = ..., **imgs
-) -> Nifti1Image: ...
+def load_img(img: NiimgLike, wildcards: bool = ..., dtype: DTypeLike | None = ...) -> Nifti1Image: ...
+def math_img(formula: str, copy_header_from: str | None = ..., **imgs) -> Nifti1Image: ...
 def mean_img(
     imgs: NiimgLike | Iterable[NiimgLike],
     target_affine: ndarray | None = ...,
@@ -95,23 +89,13 @@ def new_img_like(
 def smooth_array(
     arr: ndarray,
     affine: ndarray,
-    fwhm: float
-    | ndarray
-    | tuple[float, ...]
-    | list[float]
-    | Literal["fast"]
-    | None = ...,
+    fwhm: float | ndarray | tuple[float, ...] | list[float] | Literal["fast"] | None = ...,
     ensure_finite: bool = ...,
     copy: bool = ...,
 ) -> ndarray: ...
 def smooth_img(
     imgs: NiimgLike | Iterable[NiimgLike],
-    fwhm: float
-    | ndarray
-    | tuple[float, ...]
-    | list[float]
-    | Literal["fast"]
-    | None,
+    fwhm: float | ndarray | tuple[float, ...] | list[float] | Literal["fast"] | None,
 ) -> Nifti1Image | list[Nifti1Image]: ...
 def swap_img_hemispheres(img: NiimgLike) -> Nifti1Image: ...
 def threshold_img(

@@ -1,6 +1,7 @@
 from nibabel.nifti1 import Nifti1Image
-from nilearn.plotting.img_plotting import _MNI152Template
 from numpy import float32, float64, ndarray
+
+from nilearn.plotting.img_plotting import _MNI152Template
 
 def find_cut_slices(
     img: Nifti1Image | _MNI152Template,

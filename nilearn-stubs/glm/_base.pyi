@@ -3,8 +3,9 @@ from typing import Literal, TypeAlias
 
 from nibabel.nifti1 import Nifti1Image
 from nibabel.nifti2 import Nifti2Image
-from nilearn.reporting.html_report import HTMLReport
 from numpy import ndarray
+
+from nilearn.reporting.html_report import HTMLReport
 
 FilePath: TypeAlias = str | os.PathLike[str]
 NiimgLike: TypeAlias = FilePath | Nifti1Image | Nifti2Image

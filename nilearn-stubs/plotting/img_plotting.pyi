@@ -6,6 +6,10 @@ from matplotlib.axes._axes import Axes
 from matplotlib.colors import LinearSegmentedColormap, ListedColormap
 from matplotlib.figure import Figure
 from nibabel.nifti1 import Nifti1Image
+from numpy import float64, int64, ndarray
+from numpy.ma.core import MaskedArray
+from scipy.sparse._coo import coo_matrix
+
 from nilearn.maskers.nifti_masker import NiftiMasker
 from nilearn.plotting.displays._projectors import (
     LYRZProjector,
@@ -19,13 +23,8 @@ from nilearn.plotting.displays._slicers import (
     XSlicer,
     ZSlicer,
 )
-from numpy import float64, int64, ndarray
-from numpy.ma.core import MaskedArray
-from scipy.sparse._coo import coo_matrix
 
-DisplayMode: TypeAlias = Literal[
-    "ortho", "tiled", "mosaic", "x", "y", "z", "yx", "xz", "yz"
-]
+DisplayMode: TypeAlias = Literal["ortho", "tiled", "mosaic", "x", "y", "z", "yx", "xz", "yz"]
 
 def plot_anat(
     anat_img: Nifti1Image | _MNI152Template | bool = ...,
@@ -208,11 +207,7 @@ def plot_prob_atlas(
 def plot_roi(
     roi_img: Nifti1Image | PosixPath,
     bg_img: Nifti1Image | _MNI152Template = ...,
-    cut_coords: tuple[int, int]
-    | tuple[int, int, int]
-    | int
-    | list[float]
-    | None = ...,
+    cut_coords: tuple[int, int] | tuple[int, int, int] | int | list[float] | None = ...,
     output_file: PosixPath | BufferedWriter | None = ...,
     display_mode: DisplayMode = ...,
     figure: None = ...,

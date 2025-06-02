@@ -3,8 +3,9 @@ from pathlib import PosixPath
 from typing import Any, TypeAlias
 
 from joblib.memory import Memory
-from nilearn.surface.surface import SurfaceImage
 from numpy import memmap, ndarray
+
+from nilearn.surface.surface import SurfaceImage
 
 MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 

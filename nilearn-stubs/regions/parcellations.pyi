@@ -4,9 +4,10 @@ from typing import Literal, TypeAlias
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from nibabel.nifti2 import Nifti2Image
+from numpy import ndarray, random
+
 from nilearn.maskers import MultiNiftiMasker, NiftiMasker, SurfaceMasker
 from nilearn.surface.surface import SurfaceImage
-from numpy import ndarray, random
 
 MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
@@ -26,14 +27,7 @@ class Parcellations:
         ],
         n_parcels: int = ...,
         random_state: int | random.RandomState | None = ...,
-        mask: (
-            NiimgLike
-            | SurfaceImage
-            | NiftiMasker
-            | MultiNiftiMasker
-            | SurfaceMasker
-            | None
-        ) = ...,
+        mask: (NiimgLike | SurfaceImage | NiftiMasker | MultiNiftiMasker | SurfaceMasker | None) = ...,
         smoothing_fwhm: float = ...,
         standardize: bool = ...,
         detrend: bool = ...,
@@ -62,9 +56,7 @@ class Parcellations:
         imgs: list[NiimgLike] | NiimgLike | SurfaceImage | list[SurfaceImage],
         confounds: list[ndarray] | None = ...,
     ) -> list[ndarray] | ndarray: ...
-    def inverse_transform(
-        self, signals: list[ndarray] | ndarray
-    ) -> Nifti1Image | SurfaceImage: ...
+    def inverse_transform(self, signals: list[ndarray] | ndarray) -> Nifti1Image | SurfaceImage: ...
     def transform(
         self,
         imgs: list[NiimgLike] | NiimgLike | SurfaceImage | list[SurfaceImage],

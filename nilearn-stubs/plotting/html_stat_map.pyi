@@ -1,4 +1,5 @@
 from nibabel.nifti1 import Nifti1Image
+
 from nilearn.plotting.html_document import HTMLDocument
 
 class StatMapView(HTMLDocument):

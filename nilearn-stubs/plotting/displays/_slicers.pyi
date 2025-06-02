@@ -5,8 +5,9 @@ from typing import Any, Callable
 from matplotlib.axes._axes import Axes
 from matplotlib.figure import Figure
 from nibabel.nifti1 import Nifti1Image
-from nilearn.plotting.img_plotting import _MNI152Template
 from numpy import float32, float64, ndarray
+
+from nilearn.plotting.img_plotting import _MNI152Template
 
 def get_slicer(display_mode: str) -> Callable: ...
 
@@ -30,9 +31,7 @@ class BaseSlicer:
     def add_markers(
         self,
         marker_coords: list[tuple[int, int, int]] | list[list[int]] | ndarray,
-        marker_color: (
-            list[tuple[float64, float64, float64, float64]] | list[str] | str
-        ) = ...,
+        marker_color: (list[tuple[float64, float64, float64, float64]] | list[str] | str) = ...,
         marker_size: int | float | list[int] | ndarray = ...,
         **kwargs,
     ): ...
@@ -77,9 +76,7 @@ class BaseSlicer:
         brain_color: tuple[float, float, float] = ...,
         **kwargs,
     ) -> BaseSlicer: ...
-    def savefig(
-        self, filename: BufferedWriter | PosixPath, dpi: None = ...
-    ): ...
+    def savefig(self, filename: BufferedWriter | PosixPath, dpi: None = ...): ...
     def title(
         self,
         text: str,
@@ -109,13 +106,7 @@ class MosaicSlicer:
         cls,
         img: Nifti1Image | None = ...,
         threshold: float | None = ...,
-        cut_coords: (
-            tuple[int, int]
-            | tuple[int, int, int, int]
-            | tuple[int, int, int]
-            | int
-            | None
-        ) = ...,
+        cut_coords: (tuple[int, int] | tuple[int, int, int, int] | tuple[int, int, int] | int | None) = ...,
     ) -> dict[str, ndarray | list[float]]: ...
 
 class OrthoSlicer:
@@ -125,13 +116,7 @@ class OrthoSlicer:
         cls,
         img: _MNI152Template | Nifti1Image | bool | None = ...,
         threshold: float | None = ...,
-        cut_coords: (
-            tuple[int, int]
-            | tuple[int, int, int]
-            | list[float]
-            | list[int]
-            | None
-        ) = ...,
+        cut_coords: (tuple[int, int] | tuple[int, int, int] | list[float] | list[int] | None) = ...,
     ) -> tuple[int, int] | list[float] | list[int] | tuple[int, int, int]: ...
 
 class TiledSlicer:

@@ -32,9 +32,7 @@ class RegionExtractor:
         mask_img: NiimgLike | None = ...,
         min_region_size: float = ...,
         threshold: float | None = ...,
-        thresholding_strategy: Literal[
-            "ratio_n_voxels", "img_value", "percentile"
-        ] = ...,
+        thresholding_strategy: Literal["ratio_n_voxels", "img_value", "percentile"] = ...,
         two_sided: bool = ...,
         extractor: Literal["local_regions", "connected_components"] = ...,
         str=...,

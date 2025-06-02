@@ -5,10 +5,11 @@ from matplotlib.axes._axes import Axes
 from matplotlib.figure import Figure
 from mpl_toolkits.mplot3d.axes3d import Axes3D
 from nibabel.nifti1 import Nifti1Image
-from nilearn.plotting.displays._figures import PlotlySurfaceFigure
-from nilearn.surface.surface import InMemoryMesh, PolyMesh
 from numpy import float32, float64, ndarray
 from sklearn.utils._bunch import Bunch
+
+from nilearn.plotting.displays._figures import PlotlySurfaceFigure
+from nilearn.surface.surface import InMemoryMesh, PolyMesh
 
 def plot_img_on_surf(
     stat_map: Nifti1Image | PosixPath | str,
@@ -17,13 +18,7 @@ def plot_img_on_surf(
     hemispheres: list[str] | None = ...,
     bg_on_data: bool = ...,
     inflate: bool = ...,
-    views: (
-        list[str | dict[str, str]]
-        | list[str]
-        | list[tuple[float, float]]
-        | int
-        | None
-    ) = ...,
+    views: (list[str | dict[str, str]] | list[str] | list[tuple[float, float]] | int | None) = ...,
     output_file: str | None = ...,
     title: str | None = ...,
     colorbar: bool = ...,
@@ -69,11 +64,7 @@ def plot_surf_contours(
     figure: Figure | PlotlySurfaceFigure | None = ...,
     levels: list[int] | None = ...,
     labels: list[str] | None = ...,
-    colors: list[list[int]]
-    | list[str]
-    | str
-    | list[list[int] | int]
-    | None = ...,
+    colors: list[list[int]] | list[str] | str | list[list[int] | int] | None = ...,
     legend: bool = ...,
     cmap: str = ...,
     title: str | None = ...,

@@ -3,10 +3,11 @@ from typing import TypeAlias
 
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
-from nilearn.surface.surface import SurfaceImage
 from numpy import (
     ndarray,
 )
+
+from nilearn.surface.surface import SurfaceImage
 
 MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 

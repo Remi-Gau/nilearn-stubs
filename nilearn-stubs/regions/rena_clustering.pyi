@@ -4,9 +4,10 @@ from typing import TypeAlias
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
 from nibabel.nifti2 import Nifti2Image
-from nilearn.surface.surface import SurfaceImage
 from numpy import ndarray
 from sklearn.utils._tags import Tags
+
+from nilearn.surface.surface import SurfaceImage
 
 MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 

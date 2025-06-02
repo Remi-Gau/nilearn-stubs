@@ -2,9 +2,10 @@ from pathlib import PosixPath
 from typing import Any
 
 from matplotlib.figure import Figure
-from nilearn.surface.surface import SurfaceImage
 from numpy import ndarray
 from plotly.graph_objs._figure import Figure as PlotlyFigure
+
+from nilearn.surface.surface import SurfaceImage
 
 class PlotlySurfaceFigure:
     def __init__(
@@ -19,12 +20,7 @@ class PlotlySurfaceFigure:
         roi_map: SurfaceImage | ndarray,
         levels: list[int] | None = ...,
         labels: list[str] | None = ...,
-        lines: (
-            list[dict[Any, Any]]
-            | list[dict[str, int]]
-            | list[dict[str, str]]
-            | None
-        ) = ...,
+        lines: (list[dict[Any, Any]] | list[dict[str, int]] | list[dict[str, str]] | None) = ...,
         elevation: float = ...,
     ): ...
     def savefig(self, output_file: str | None = ...): ...

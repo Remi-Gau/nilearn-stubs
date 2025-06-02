@@ -1,6 +1,7 @@
 from matplotlib.colors import LinearSegmentedColormap
-from nilearn.plotting.html_document import HTMLDocument
 from numpy import ndarray
+
+from nilearn.plotting.html_document import HTMLDocument
 
 class ConnectomeView(HTMLDocument):
     pass

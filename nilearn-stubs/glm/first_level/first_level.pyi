@@ -4,11 +4,12 @@ from typing import Any, TypeAlias
 
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
-from nilearn.glm.regression import RegressionResults
-from nilearn.surface.surface import SurfaceImage
 from numpy import ndarray, random, str_
 from pandas.core.frame import DataFrame
 from sklearn.utils._tags import Tags
+
+from nilearn.glm.regression import RegressionResults
+from nilearn.surface.surface import SurfaceImage
 
 MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
@@ -17,10 +18,7 @@ def first_level_from_bids(
     task_label: int | str,
     space_label: int | str | None = ...,
     sub_labels: list[str | int] | list[str] | str | list[int] | None = ...,
-    img_filters: str
-    | list[tuple[int, int]]
-    | list[tuple[str, str]]
-    | None = ...,
+    img_filters: str | list[tuple[int, int]] | list[tuple[str, str]] | None = ...,
     t_r: float | None = ...,
     slice_time_ref: float | str | None = ...,
     hrf_model: str = ...,
@@ -72,10 +70,7 @@ def run_glm(
     n_jobs: int = ...,
     verbose: int = ...,
     random_state: int | random.RandomState | None = ...,
-) -> (
-    tuple[ndarray, dict[str_, RegressionResults]]
-    | tuple[ndarray, dict[float, RegressionResults]]
-): ...
+) -> tuple[ndarray, dict[str_, RegressionResults]] | tuple[ndarray, dict[float, RegressionResults]]: ...
 
 class FirstLevelModel:
     def __init__(
@@ -110,21 +105,12 @@ class FirstLevelModel:
         contrast_def: list[ndarray] | ndarray | str | int,
         stat_type: str | None = ...,
         output_type: str = ...,
-    ) -> (
-        Nifti1Image
-        | dict[str, SurfaceImage]
-        | dict[str, Nifti1Image]
-        | SurfaceImage
-    ): ...
+    ) -> Nifti1Image | dict[str, SurfaceImage] | dict[str, Nifti1Image] | SurfaceImage: ...
     def fit(
         self,
         run_imgs: Any,
         events: Any | None = ...,
-        confounds: DataFrame
-        | ndarray
-        | list[DataFrame]
-        | list[ndarray]
-        | None = ...,
+        confounds: DataFrame | ndarray | list[DataFrame] | list[ndarray] | None = ...,
         sample_masks: ndarray | None = ...,
         design_matrices: Any | None = ...,
         bins: int = ...,

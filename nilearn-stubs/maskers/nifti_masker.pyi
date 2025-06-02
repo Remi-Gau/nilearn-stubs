@@ -32,9 +32,7 @@ class NiftiMasker:
             "gm-template",
             "wm-template",
         ] = ...,
-        mask_args: (
-            dict[str, float] | dict[str, int] | int | dict[str, bool] | None
-        ) = ...,
+        mask_args: (dict[str, float] | dict[str, int] | int | dict[str, bool] | None) = ...,
         dtype: DTypeLike | None = ...,
         memory_level: int = ...,
         memory: MemoryLike = ...,

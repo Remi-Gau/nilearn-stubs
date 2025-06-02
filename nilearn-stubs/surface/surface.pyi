@@ -69,9 +69,7 @@ class SurfaceImage:
         cls,
         mesh: PolyMesh,
         volume_img: NiimgLike,
-        inner_mesh: (
-            dict[str, SurfaceMesh] | dict[str, FilePath] | PolyMesh | None
-        ) = ...,
+        inner_mesh: (dict[str, SurfaceMesh] | dict[str, FilePath] | PolyMesh | None) = ...,
         **vol_to_surf_kwargs,
     ) -> SurfaceImage: ...
     @property

@@ -12,9 +12,7 @@ class OrthoProjector:
     def add_graph(
         self,
         adjacency_matrix: coo_matrix | MaskedArray | ndarray,
-        node_coords: list[list[float]]
-        | list[tuple[int64, int64, int64]]
-        | ndarray,
+        node_coords: list[list[float]] | list[tuple[int64, int64, int64]] | ndarray,
         node_color: list[str] | ndarray | str = ...,
         node_size: int | list[int] = ...,
         edge_cmap: LinearSegmentedColormap | str = ...,
@@ -32,12 +30,7 @@ class OrthoProjector:
         img: Nifti1Image | None = ...,
         threshold: Any | None = ...,
         cut_coords: None = ...,
-    ) -> (
-        tuple[None, None, None, None]
-        | tuple[None, None]
-        | tuple[None]
-        | tuple[None, None, None]
-    ): ...
+    ) -> tuple[None, None, None, None] | tuple[None, None] | tuple[None] | tuple[None, None, None]: ...
 
 class LYRProjector(OrthoProjector): ...
 class LYRZProjector(OrthoProjector): ...

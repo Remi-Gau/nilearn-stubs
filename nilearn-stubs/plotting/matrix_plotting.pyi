@@ -28,10 +28,7 @@ def plot_design_matrix_correlation(
     **kwargs,
 ) -> AxesImage: ...
 def plot_event(
-    model_event: list[PosixPath | str]
-    | DataFrame
-    | PosixPath
-    | list[DataFrame],
+    model_event: list[PosixPath | str] | DataFrame | PosixPath | list[DataFrame],
     cmap: str | None = ...,
     output_file: PosixPath | None = ...,
     **fig_kwargs,

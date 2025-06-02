@@ -4,12 +4,13 @@ from typing import Any, Literal, TypeAlias
 
 from joblib.memory import Memory
 from nibabel.nifti1 import Nifti1Image
-from nilearn.surface.surface import SurfaceImage
 from numpy import (
     memmap,
     ndarray,
 )
 from sklearn.utils._tags import Tags
+
+from nilearn.surface.surface import SurfaceImage
 
 MemoryLike: TypeAlias = Memory | str | os.PathLike[str] | None
 
@@ -164,16 +165,12 @@ class _BaseDecoder:
         verbose: int = ...,
     ): ...
     def __sklearn_tags__(self) -> Tags: ...
-    def decision_function(
-        self, X: SurfaceImage | Nifti1Image | list[PosixPath] | ndarray
-    ) -> ndarray: ...
+    def decision_function(self, X: SurfaceImage | Nifti1Image | list[PosixPath] | ndarray) -> ndarray: ...
     def fit(
         self,
         X: Any,
         y: ndarray | list[str] | memmap | None,
         groups: ndarray | None = ...,
     ): ...
-    def predict(
-        self, X: SurfaceImage | list[PosixPath] | Nifti1Image
-    ) -> ndarray: ...
+    def predict(self, X: SurfaceImage | list[PosixPath] | Nifti1Image) -> ndarray: ...
     def score(self, X: Nifti1Image, y: ndarray, *args) -> float: ...
