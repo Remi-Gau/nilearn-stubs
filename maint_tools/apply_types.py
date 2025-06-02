@@ -1,18 +1,17 @@
+from __future__ import annotations
+
+import sys
+from argparse import ArgumentParser, HelpFormatter
 from pathlib import Path
-from typing import Union
+from typing import Any
 
 import libcst as cst
 from rich import print
 
-file = "mass_univariate/permuted_least_squares.pyi"
-cwd = Path(__file__).parents[1]
-stub_file = cwd / "nilearn-stubs"
-source_file = cwd / "nilearn" / "nilearn"
-
 
 def parse_stub_file(
     stub_path: str,
-) -> dict[str, Union[str, tuple[str, dict[str, str]]]]:
+) -> dict[str, str | tuple[str, dict[str, str]]]:
     """Parse the stub file and return a mapping of function/method signatures to their type annotations."""
     with Path(stub_path).open() as f:
         stub_tree = cst.parse_module(f.read())
@@ -55,7 +54,7 @@ def parse_stub_file(
 class AnnotationTransformer(cst.CSTTransformer):
     """Apply annotations."""
 
-    def __init__(self, annotations: dict[str, Union[str, tuple[str, dict[str, str]]]]):
+    def __init__(self, annotations: dict[str, str | tuple[str, dict[str, str]]]):
         self.annotations = annotations
 
     def leave_FunctionDef(self, original_node: cst.FunctionDef, updated_node: cst.FunctionDef) -> cst.FunctionDef:
@@ -115,12 +114,22 @@ class AnnotationTransformer(cst.CSTTransformer):
         return updated_node
 
 
-def main(
-    source: str,
-    annotations: dict[str, Union[str, tuple[str, dict[str, str]]]],
-):
+def main(argv: Any = sys.argv):
     """Apply the annotations from the stub file to the source code."""
-    source_path = Path(source)
+    parser = _common_parser()
+    args = parser.parse_args(argv[1:])
+
+    file = args.file
+
+    cwd = Path(__file__).parents[1]
+    stub_dir = cwd / "nilearn-stubs"
+    source_dir = cwd / "nilearn" / "nilearn"
+
+    annotations = parse_stub_file(stub_dir / file)
+
+    print("Extracted Annotations:", annotations)
+
+    source_path = source_dir / file[:-1]
     with source_path.open("r") as f:
         source_code = f.read()
 
@@ -132,7 +141,22 @@ def main(
         f.write(updated_tree.code)
 
 
+def _common_parser(
+    formatter_class: type[HelpFormatter] = HelpFormatter,
+) -> ArgumentParser:
+    """Execute the main script."""
+    parser = ArgumentParser(
+        description="Apply stub to a certain file.",
+        formatter_class=formatter_class,
+    )
+
+    parser.add_argument(
+        "file",
+        help="""File to apply the stub to. For example _utils/path_finding.py.""",
+    )
+
+    return parser
+
+
 if __name__ == "__main__":
-    annotations = parse_stub_file(stub_file)
-    print("Extracted Annotations:", annotations)
-    main(source_file, annotations)
+    main()

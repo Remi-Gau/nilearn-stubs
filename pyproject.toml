@@ -26,7 +26,8 @@ dev = [
     "requests",
     "pandas-stubs",
     "lxml-stubs",
-    "types-requests"
+    "types-requests",
+    "rich"
 ]
 
 [tool.hatch.build.hooks.vcs]
