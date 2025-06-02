@@ -1,0 +1,4 @@
+[submodule "nilearn"]
+	path = nilearn
+	url = https://github.com/nilearn/nilearn.git
+	datalad-url = https://github.com/nilearn/nilearn.git
