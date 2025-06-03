@@ -1,0 +1,6 @@
+from typing import (
+    Any,
+)
+
+def _indentcount_lines(lines: list[str | Any]) -> int: ...
+def fill_doc(f: Any) -> Any: ...

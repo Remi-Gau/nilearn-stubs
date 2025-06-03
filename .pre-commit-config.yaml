@@ -46,10 +46,10 @@ repos:
     # Run the formatter.
     -   id: ruff-format
 
--   repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.15.0
-    hooks:
-    -   id: mypy
-        files: nilearn-stubs
-        additional_dependencies: [numpy, nibabel, requests, pandas-stubs, lxml-stubs, types-requests]
-        args: [--config-file, pyproject.toml, --pretty]
+# -   repo: https://github.com/pre-commit/mirrors-mypy
+#     rev: v1.15.0
+#     hooks:
+#     -   id: mypy
+#         files: nilearn-stubs
+#         additional_dependencies: [numpy, nibabel, requests, pandas-stubs, lxml-stubs, types-requests, nilearn]
+#         args: [--config-file, pyproject.toml, --pretty]

@@ -1,0 +1,13 @@
+from sklearn.base import BaseEstimator
+
+def _has_rich() -> bool: ...
+def compose_err_msg(msg: str, **kwargs) -> str: ...
+def find_stack_level() -> int: ...
+def log(
+    msg: str,
+    verbose: int = ...,
+    object_classes: tuple[type[BaseEstimator]] = ...,
+    stack_level: int | None = ...,
+    msg_level: int = ...,
+    with_traceback: bool = ...,
+) -> None: ...

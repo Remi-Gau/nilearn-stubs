@@ -1,0 +1,23 @@
+from pathlib import PosixPath
+from typing import (
+    Any,
+)
+
+from nibabel.nifti1 import Nifti1Image
+from numpy import (
+    dtype,
+    float32,
+    int32,
+    memmap,
+    ndarray,
+)
+
+from nilearn._utils.tests.test_niimg_conversions import PhonyNiimage
+
+def _get_data(img: PhonyNiimage | Nifti1Image) -> memmap | ndarray: ...
+def _get_target_dtype(dtype: dtype, target_dtype: str | None) -> type[float32] | type[int32] | None: ...
+def _short_repr(niimg_rep: PosixPath | str, shorten: bool = ..., truncate: int = ...) -> str: ...
+def img_data_dtype(niimg: Nifti1Image) -> Any: ...
+def load_niimg(niimg: Any, dtype: str | None = ...) -> PhonyNiimage | Nifti1Image: ...
+def repr_niimgs(niimgs: Any, shorten: bool = ...) -> str: ...
+def safe_get_data(img: Nifti1Image, ensure_finite: bool = ..., copy_data: bool = ...) -> ndarray: ...

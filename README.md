@@ -10,7 +10,7 @@ pip install -e '.[dev]'
 For example on `nilearn/_utils`
 
 ```bash
-monkeytype run -m pytest -n 20 -c pyproject.toml nilearn/nilearn/_utils
+monkeytype run -m pytest nilearn/nilearn/_utils
 ```
 
 ## List annotated modules
@@ -24,8 +24,13 @@ monkeytype list-modules
 For example on `nilearn/_utils/path_finding.py`
 
 ```bash
-monkeytype stub nilearn._utils.path_finding > nilearn/_utils/path_finding.py
+monkeytype stub nilearn._utils.path_finding > nilearn/_utils/path_finding.pyi
 ```
+
+
+monkeytype stub nilearn._utils.path_finding > nilearn/_utils/path_finding.pyi
+
+
 
 ## TODO
 
