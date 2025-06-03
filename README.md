@@ -27,17 +27,16 @@ For example on `nilearn/_utils/path_finding.py`
 monkeytype stub nilearn._utils.path_finding > nilearn/_utils/path_finding.pyi
 ```
 
+### Several files at once
 
-monkeytype stub nilearn._utils.path_finding > nilearn/_utils/path_finding.pyi
+Use a script:
 
+```bash
+python generate_nilearn_stubs.py
+```
 
+## Add annotation to codebase
 
-## TODO
-
-### Public classees and functions
-
-- [ ] nilearn-stubs/glm
-- [ ] nilearn-stubs/maskers
-- [ ] nilearn-stubs/decoding
-- [ ] nilearn-stubs/decomposition
-- [ ] nilearn-stubs/plotting
+```bash
+python maint_tools/apply_types.py _utils/bids.pyi
+```
